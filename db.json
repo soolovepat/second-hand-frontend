@@ -1,0 +1,486 @@
+{
+  "posts": [
+    {
+      "title": "게시글 1 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "디지털기기",
+      "isSold": false,
+      "img": [],
+      "commentList": [
+        {
+          "commentId": 10,
+          "nickname": "닉넴1",
+          "content": "댓글2",
+          "createdAt": "2022-12-01T12:54:57.049359",
+          "modifiedAt": "2022-12-01T12:54:57.049359",
+          "username": "bin1234"
+        },
+        {
+          "commentId": 11,
+          "nickname": "닉넴1",
+          "content": "댓글2",
+          "createdAt": "2022-12-01T12:54:57.049359",
+          "modifiedAt": "2022-12-01T12:54:57.049359",
+          "username": "bin1234"
+        },
+        {
+          "commentId": 12,
+          "nickname": "닉넴1",
+          "content": "댓글2",
+          "createdAt": "2022-12-01T12:54:57.049359",
+          "modifiedAt": "2022-12-01T12:54:57.049359",
+          "username": "bin1234"
+        }
+      ]
+    },
+    {
+      "title": "게시글 2 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "디지털기기",
+      "isSold": false,
+      "img": [],
+      "commentList": [
+        {
+          "commentId": 13,
+          "nickname": "닉넴1",
+          "content": "댓글2",
+          "createdAt": "2022-12-01T12:54:57.049359",
+          "modifiedAt": "2022-12-01T12:54:57.049359",
+          "username": "bin1234"
+        },
+        {
+          "commentId": 14,
+          "nickname": "닉넴1",
+          "content": "댓글2",
+          "createdAt": "2022-12-01T12:54:57.049359",
+          "modifiedAt": "2022-12-01T12:54:57.049359",
+          "username": "bin1234"
+        },
+        {
+          "commentId": 15,
+          "nickname": "닉넴1",
+          "content": "댓글2",
+          "createdAt": "2022-12-01T12:54:57.049359",
+          "modifiedAt": "2022-12-01T12:54:57.049359",
+          "username": "bin1234"
+        }
+      ]
+    },
+    {
+      "title": "게시글 3 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "디지털기기",
+      "isSold": false,
+      "img": [],
+      "commentList": [
+        {
+          "commentId": 16,
+          "nickname": "닉넴1",
+          "content": "댓글2",
+          "createdAt": "2022-12-01T12:54:57.049359",
+          "modifiedAt": "2022-12-01T12:54:57.049359",
+          "username": "bin1234"
+        },
+        {
+          "commentId": 17,
+          "nickname": "닉넴1",
+          "content": "댓글2",
+          "createdAt": "2022-12-01T12:54:57.049359",
+          "modifiedAt": "2022-12-01T12:54:57.049359",
+          "username": "bin1234"
+        },
+        {
+          "commentId": 18,
+          "nickname": "닉넴1",
+          "content": "댓글2",
+          "createdAt": "2022-12-01T12:54:57.049359",
+          "modifiedAt": "2022-12-01T12:54:57.049359",
+          "username": "bin1234"
+        }
+      ]
+    },
+    {
+      "title": "게시글 4 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "디지털기기",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 5 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "디지털기기",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 6 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "디지털기기",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 7 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "생활가전",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 8 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "생활가전",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 9 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "생활가전",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 10 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "생활가전",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 11 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "생활가전",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 12 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "생활가전",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 13 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "가구/인테리어",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 14 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "가구/인테리어",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 15 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "가구/인테리어",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 16 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "가구/인테리어",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 17 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "가구/인테리어",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 18 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "가구/인테리어",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 19 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "생활/주방",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 20 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "생활/주방",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 21 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "생활/주방",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 22 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "생활/주방",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 23 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "생활/주방",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 24 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "생활/주방",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 25 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "유아동",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 26 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "유아동",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 27 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "유아동",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 28 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "유아동",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 29 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "유아동",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 30 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "유아동",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 31 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "여성의류",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 32 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "여성의류",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 33 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "여성의류",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 34 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "여성의류",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 35 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "여성의류",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 36 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "여성의류",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 37 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "여성잡화",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 38 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "여성잡화",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 39 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "여성잡화",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 40 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "여성잡화",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 41 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "여성잡화",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 42 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "여성잡화",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 43 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "뷰티/미용",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 44 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "뷰티/미용",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 45 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "뷰티/미용",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 46 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "뷰티/미용",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 47 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "뷰티/미용",
+      "isSold": false,
+      "img": []
+    },
+    {
+      "title": "게시글 48 판매",
+      "content": "판매합니다.",
+      "price": 9900,
+      "category": "뷰티/미용",
+      "isSold": false,
+      "img": []
+    }
+  ],
+  "users": [
+    {
+      "username": "111",
+      "password": "111",
+      "nickname": "닉넴1",
+      "userCategory": "디지털기기"
+    },
+    {
+      "username": "222",
+      "password": "222",
+      "nickname": "닉넴2",
+      "userCategory": "유아동"
+    },
+    {
+      "username": "333",
+      "password": "333",
+      "nickname": "닉넴3",
+      "userCategory": "뷰티/미용"
+    }
+  ]
+}
