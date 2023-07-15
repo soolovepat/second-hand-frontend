@@ -394,7 +394,7 @@
       "title": "게시글 40 판매",
       "content": "판매합니다.",
       "price": 9900,
-      "category": "생활/주방",
+      "category": "뷰티/미용",
       "isSold": false,
       "img": []
     },
@@ -410,7 +410,7 @@
       "title": "게시글 42 판매",
       "content": "판매합니다.",
       "price": 9900,
-      "category": "생활/주방",
+      "category": "뷰티/미용",
       "isSold": false,
       "img": []
     },
