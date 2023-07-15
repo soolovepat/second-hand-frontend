@@ -1,7 +1,12 @@
-import React from "react";
+import AuthTemplate from "../../containers/auth/AuthTemplate";
+import LoginContainer from "../../containers/auth/LoginContainer";
 
 const LoginPage = () => {
-  return <div>LoginPage</div>;
+  return (
+    <AuthTemplate>
+      <LoginContainer />
+    </AuthTemplate>
+  );
 };
 
 export default LoginPage;
