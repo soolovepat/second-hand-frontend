@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import List from "./List";
+import List from "../components/common/List";
 import { styled } from "styled-components";
-import Category from "./Category";
+import Category from "../components/common/Category";
 
 const ListContainer = () => {
   const [postList, setPostList] = useState([]);
@@ -59,7 +59,7 @@ const ListContainerBlock = styled.div`
   justify-content: center;
   align-items: center;
 
-  max-width: 1200px;
+  max-width: 1020px;
   margin: 30px auto 0;
   padding: 0 15px;
 `;
