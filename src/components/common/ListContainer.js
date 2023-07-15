@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import List from "./List";
 import { styled } from "styled-components";
+import Category from "./Category";
 
 const ListContainer = () => {
   const [postList, setPostList] = useState([]);
   const [userList, setUserList] = useState([]);
+  const [selectList, setSelectList] = useState(false);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -34,11 +36,17 @@ const ListContainer = () => {
   }, []);
 
   return (
-    <ListContainerBlock>
-      {postList.map((post) => (
-        <List key={post.title} post={post} />
-      ))}
-    </ListContainerBlock>
+    <>
+      <Category selectList={selectList} setSelectList={setSelectList} />
+      {/* Category 컴포넌트에 selectList와 setSelectList를 전달 */}
+      <ListContainerBlock>
+        {postList
+          .filter((post) => !selectList || post.category === selectList.id) // selectList가 null이거나 post.category와 selectList.id가 같은 경우만 필터링
+          .map((post) => (
+            <List key={post.title} post={post} />
+          ))}
+      </ListContainerBlock>
+    </>
   );
 };
 

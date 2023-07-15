@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { styled } from "styled-components";
 
-const Category = () => {
+const Category = ({ selectList, setSelectList }) => {
   const CATENAME = [
     { id: 0, name: "All" },
     { id: 1, name: "디지털기기" },
@@ -12,12 +12,8 @@ const Category = () => {
     { id: 6, name: "뷰티/미용" },
     { id: 7, name: "도서" },
   ];
-  const [selectList, setSelectList] = useState(CATENAME[0].name);
-  const [cateList, setCateList] = useState(false);
   const onClickCate = (cate) => {
-    setSelectList(cate);
-    setCateList(!cateList);
-    console.log(cateList);
+    setSelectList(cate); // selectList 값을 업데이트
   };
 
   return (
@@ -54,5 +50,6 @@ const CategoryBlock = styled.ul`
   li {
     padding: 10px 20px;
     border-radius: 20px;
+    cursor: pointer;
   }
 `;
