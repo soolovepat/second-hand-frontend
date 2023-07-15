@@ -78,7 +78,7 @@ const ListContainer = () => {
         CATENAME={CATENAME}
       />
       <ListContainerBlock>
-        {postList?.map((post) => (
+        {getCurrentList()?.map((post) => (
           <div onClick={() => onClickHandler(post.postId)}>
             <List key={post.title} post={post} />
           </div>
