@@ -34,7 +34,7 @@ const BannerBlock = styled.div`
   }
 
   p {
-    margin-top: 1rem;
+    margin-top: 14px;
 
     font-size: 1rem;
     font-weight: 600;

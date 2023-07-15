@@ -18,4 +18,9 @@ export default Header;
 const HeaderBlock = styled.div`
   display: flex;
   justify-content: space-between;
+  padding: 30px;
+
+  span:first-child {
+    padding-right: 14px;
+  }
 `;
