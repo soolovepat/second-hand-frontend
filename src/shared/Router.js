@@ -15,7 +15,7 @@ const Router = () => {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/mypage" element={<Mypage />} />
         <Route path="/write" element={<WritePage />} />
-        <Route path="/detail" element={<DetailPage />} />
+        <Route path="/:postId/detail" element={<DetailPage />} />
       </Routes>
     </BrowserRouter>
   );

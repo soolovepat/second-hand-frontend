@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import List from "./List";
 import { styled } from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const ListContainer = () => {
   const [postList, setPostList] = useState([]);
+  const navigate = useNavigate();
   const [userList, setUserList] = useState([]);
 
   useEffect(() => {
@@ -33,10 +35,17 @@ const ListContainer = () => {
     fetchPosts();
   }, []);
 
+  const onClickHandler = (postId) => {
+    console.log(postId);
+    navigate(`/${postId}/detail`);
+  };
+
   return (
     <ListContainerBlock>
-      {postList.map((post) => (
-        <List key={post.title} post={post} />
+      {postList?.map((post) => (
+        <div onClick={() => onClickHandler(post.postId)}>
+          <List key={post.title} post={post} />
+        </div>
       ))}
     </ListContainerBlock>
   );

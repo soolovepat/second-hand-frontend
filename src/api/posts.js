@@ -9,7 +9,12 @@ export const getPosts = (req) => {
 
 export const getUserPosts = (req) => {};
 
-export const getPost = (req) => {};
+export const getPost = async (postId) => {
+  const res = await api.get("/posts");
+  console.log(res);
+  const post = res.filter((post) => post.postId === postId);
+  return post;
+};
 
 export const editPost = (req) => {};
 
