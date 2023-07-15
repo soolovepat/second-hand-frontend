@@ -5,6 +5,7 @@ import { styled } from "styled-components";
 import Category from "../components/common/Category";
 import LikeItemList from "../components/common/LikeItemList";
 import Pagenation from "../components/common/Pagenation";
+import { getPosts } from "../api/posts";
 
 const ListContainer = () => {
   const [postList, setPostList] = useState([]);
@@ -26,7 +27,8 @@ const ListContainer = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/posts");
+        //const response = await axios.get("http://localhost:4000/posts");
+        const response = await getPosts();
         setPostList(response.data);
       } catch (error) {
         console.error(error);

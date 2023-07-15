@@ -10,7 +10,9 @@ const Header = () => {
         <span>
           <Link to={"/login"}>로그인</Link>
         </span>
-        <span>회원가입</span>
+        <span>
+          <Link to={"/register"}>회원가입</Link>
+        </span>
       </div>
     </HeaderBlock>
   );
