@@ -6,8 +6,10 @@ import Category from "../components/common/Category";
 import LikeItemList from "../components/common/LikeItemList";
 import Pagenation from "../components/common/Pagenation";
 import { getPosts } from "../api/posts";
+import { useNavigate } from "react-router-dom";
 
 const ListContainer = () => {
+  const navigate = useNavigate();
   const [postList, setPostList] = useState([]);
   const [userInfo, setUserInfo] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -62,6 +64,11 @@ const ListContainer = () => {
           .slice(indexOfFirstItem, indexOfLastItem);
   };
 
+  const onClickHandler = (postId) => {
+    console.log(postId);
+    navigate(`/${postId}/detail`);
+  };
+
   return (
     <>
       <LikeItemList postList={postList} userInfo={userInfo} />
@@ -71,8 +78,10 @@ const ListContainer = () => {
         CATENAME={CATENAME}
       />
       <ListContainerBlock>
-        {getCurrentList().map((post) => (
-          <List key={post.title} post={post} />
+        {postList?.map((post) => (
+          <div onClick={() => onClickHandler(post.postId)}>
+            <List key={post.title} post={post} />
+          </div>
         ))}
       </ListContainerBlock>
       <Pagenation
