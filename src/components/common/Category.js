@@ -12,6 +12,11 @@ const Category = ({ selectList, setSelectList }) => {
     { id: 6, name: "뷰티/미용" },
     { id: 7, name: "도서" },
   ];
+
+  useState(() => {
+    setSelectList(CATENAME[0]);
+  }, []);
+
   const onClickCate = (cate) => {
     setSelectList(cate); // selectList 값을 업데이트
   };
