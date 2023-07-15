@@ -13,6 +13,7 @@ const comments = ({ comments }) => {
 export default comments;
 
 const CommentsBlock = styled.div`
+  min-height: 500px;
   li {
     height: 30px;
     list-style: none;
