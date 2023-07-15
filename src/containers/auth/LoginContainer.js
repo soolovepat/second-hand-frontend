@@ -27,6 +27,10 @@ const LoginContainer = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const goToRegister = () => {
+    navigate("/register");
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
     if (!Object.values(formData).every((item) => item !== "")) {
@@ -47,6 +51,7 @@ const LoginContainer = () => {
         formData={formData}
         onChangeform={onChangeform}
         onSubmit={onSubmit}
+        goToRegister={goToRegister}
       />
       <Toast />
     </>

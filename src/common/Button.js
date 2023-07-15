@@ -1,8 +1,8 @@
 import { css, styled } from "styled-components";
 
-const Button = ({ children, size, icon, theme, onClick }) => {
+const Button = ({ children, size, color, icon, onClick }) => {
   return (
-    <ButtonStyle size={size} icon={icon} theme={theme} onClick={onClick}>
+    <ButtonStyle size={size} icon={icon} color={color} onClick={onClick}>
       {children}
     </ButtonStyle>
   );
@@ -24,15 +24,26 @@ const ButtonStyle = styled.button`
     switch (props.size) {
       case "lg":
         return css`
-          background-color: white;
+          ${(props) =>
+            props.color &&
+            css`
+              background-color: ${(props) => props.color};
+              color: white;
+            `}
           height: 50px;
-          width: 200px;
+          width: 130px;
           font-weight: 600;
         `;
       case "md":
         return css`
-          height: 45px;
-          width: 130px;
+          ${(props) =>
+            props.color &&
+            css`
+              background-color: ${(props) => props.color};
+              color: white;
+            `}
+          height: 50px;
+          width: 80px;
         `;
       case "sm":
         return css`
