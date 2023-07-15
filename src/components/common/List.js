@@ -2,7 +2,6 @@ import React from "react";
 import { styled } from "styled-components";
 
 const List = ({ post }) => {
-  console.log(post);
   return (
     <ListBlock>
       <span className="wrap-thumb">
