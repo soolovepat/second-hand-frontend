@@ -1,5 +1,8 @@
 import styled, { css } from "styled-components";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { getPost } from "../../api/posts";
 
 const Details = ({
   example,
@@ -9,6 +12,18 @@ const Details = ({
   onDecreaseIdx,
 }) => {
   const { title, price, content, category, img } = example;
+  const { postId } = useParams();
+  console.log(postId);
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      const post = await getPost(postId);
+      return post;
+    };
+
+    fetchPost();
+  }, [postId]);
+
   return (
     <>
       <DetailHeaderBlock className="detailHeader">
@@ -19,25 +34,31 @@ const Details = ({
             <p className="nickname">{exampleNickname}</p>
           </div>
           <div>
-            <p className="category">{category}</p>
             <p className="price">₩ {price.toLocaleString()}</p>
           </div>
         </div>
       </DetailHeaderBlock>
       <DetailDescBlock>
-        <div className="images">
-          <p>
+        <div className="carousel">
+          <div
+            className="img-container"
+            style={{ transform: `translateX(-${currImgIndex * 100}%)` }}
+          >
+            {img.map((src, idx) => (
+              <div key={idx} className="img-wrapper">
+                <img src={src} alt="product" />
+              </div>
+            ))}
+          </div>
+          <p className="icons left">
             <FaChevronLeft onClick={onDecreaseIdx} />
           </p>
-          <ImageBlock>
-            <img src={img[currImgIndex]} alt="product" />
-          </ImageBlock>
-          <p>
+          <p className="icons right">
             <FaChevronRight onClick={onIncreaseIdx} />
           </p>
         </div>
-        <CarouselDots currImgIndex={currImgIndex} imgLength={img.length} />
         <div className="content">{content}</div>
+        <CarouselDots currImgIndex={currImgIndex} imgLength={img.length} />
       </DetailDescBlock>
     </>
   );
@@ -119,38 +140,64 @@ const DetailHeaderBlock = styled.div`
 `;
 
 const DetailDescBlock = styled.div`
-  width: 60%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-bottom: 1px solid lightgray;
 
-  p {
-    width: 50px;
-    font-size: 3rem;
-    color: #ccc;
-    margin: 20px;
-    cursor: pointer;
+  .carousel {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+
+    .img-container {
+      display: flex;
+      transition: transform 0.5s ease-out;
+      width: 100%;
+      position: relative;
+    }
+    .icons {
+      position: absolute; // 아이콘들을 절대 위치로 배치해 주세요.
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: gray;
+      cursor: pointer;
+      width: auto;
+
+      &.left {
+        left: 10px;
+      }
+
+      &.right {
+        right: 10px;
+      }
+    }
+
+    .img-wrapper {
+      flex: 0 0 100%;
+      max-width: 100%;
+      display: flex;
+      justify-content: center;
+
+      img {
+        max-width: 80%;
+        max-height: 300px;
+        object-fit: contain;
+      }
+    }
   }
 
-  .images {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+  .icons {
+    width: 100px;
   }
+
   .content {
     width: 100%;
     text-align: start;
-    min-height: 250px;
-    padding: 50px;
-  }
-`;
-
-const ImageBlock = styled.div`
-  transition: transform 1s ease-out;
-  img {
-    max-width: 500px;
-    max-height: 400px;
+    min-height: 200px;
+    padding: 40px 20px;
   }
 `;

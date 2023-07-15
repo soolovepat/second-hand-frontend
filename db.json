@@ -1,6 +1,7 @@
 {
   "posts": [
     {
+      "postId": 1,
       "title": "게시글 1 판매",
       "content": "판매합니다.",
       "price": 9900,
@@ -35,6 +36,7 @@
       ]
     },
     {
+      "postId": 2,
       "title": "게시글 2 판매",
       "content": "판매합니다.",
       "price": 9900,
