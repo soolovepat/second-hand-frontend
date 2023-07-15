@@ -3,13 +3,25 @@ import axios from "axios";
 import List from "../components/common/List";
 import { styled } from "styled-components";
 import Category from "../components/common/Category";
+import LikeItemList from "../components/common/LikeItemList";
+import Pagenation from "../components/common/Pagenation";
 
 const ListContainer = () => {
   const [postList, setPostList] = useState([]);
-  const [userList, setUserList] = useState([]);
-  const [selectList, setSelectList] = useState(false);
+  const [userInfo, setUserInfo] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(9);
+  const CATENAME = [
+    { id: 0, name: "All" },
+    { id: 1, name: "디지털기기" },
+    { id: 2, name: "가구/인테리어" },
+    { id: 3, name: "생활/주방" },
+    { id: 4, name: "유아동" },
+    { id: 5, name: "의류" },
+    { id: 6, name: "뷰티/미용" },
+    { id: 7, name: "도서" },
+  ];
+  const [selectList, setSelectList] = useState(CATENAME[0]);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -28,7 +40,7 @@ const ListContainer = () => {
     const fetchPosts = async () => {
       try {
         const response = await axios.get("http://localhost:4000/users");
-        setUserList(response.data);
+        setUserInfo(response.data);
       } catch (error) {
         console.error(error);
       }
@@ -48,48 +60,26 @@ const ListContainer = () => {
           .slice(indexOfFirstItem, indexOfLastItem);
   };
 
-  // 페이지 번호를 변경하는 함수
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
-  useEffect(() => {
-    setCurrentPage(1); // CATENAME이 변경될 때마다 페이지네이션 초기화
-  }, [selectList]);
-
-  // 리스트의 총 개수를 구하는 함수
-  const getTotalItemCount = () => {
-    return selectList.name === "All"
-      ? postList.length
-      : postList.filter((post) => post.category === selectList.name).length;
-  };
-
-  // 페이지네이션 숫자를 동적으로 생성하는 함수
-  const generatePaginationNumbers = () => {
-    const totalItems = getTotalItemCount();
-    const totalPages = Math.ceil(totalItems / itemsPerPage);
-    return Array.from({ length: totalPages }, (_, index) => index + 1);
-  };
-
   return (
     <>
-      <Category selectList={selectList} setSelectList={setSelectList} />
+      <LikeItemList postList={postList} userInfo={userInfo} />
+      <Category
+        selectList={selectList}
+        setSelectList={setSelectList}
+        CATENAME={CATENAME}
+      />
       <ListContainerBlock>
         {getCurrentList().map((post) => (
           <List key={post.title} post={post} />
         ))}
       </ListContainerBlock>
-      <Pagination>
-        {generatePaginationNumbers().map((pageNumber) => (
-          <PageNumber
-            key={pageNumber}
-            active={currentPage === pageNumber}
-            onClick={() => handlePageChange(pageNumber)}
-          >
-            {pageNumber}
-          </PageNumber>
-        ))}
-      </Pagination>
+      <Pagenation
+        setCurrentPage={setCurrentPage}
+        selectList={selectList}
+        postList={postList}
+        itemsPerPage={itemsPerPage}
+        currentPage={currentPage}
+      />
     </>
   );
 };
@@ -105,25 +95,4 @@ const ListContainerBlock = styled.div`
   max-width: 1020px;
   margin: 30px auto 0;
   padding: 0 15px;
-`;
-
-const Pagination = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-`;
-
-const PageNumber = styled.button`
-  padding: 5px 10px;
-  margin: 0 2px;
-  background-color: ${(props) => (props.active ? "#a6d3ff" : "#ffffff")};
-  color: ${(props) => (props.active ? "#ffffff" : "#000000")};
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #a6d3ff;
-    color: #ffffff;
-  }
 `;
