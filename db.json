@@ -132,7 +132,7 @@
       "title": "게시글 7 판매",
       "content": "판매합니다.",
       "price": 9900,
-      "category": "생활가전",
+      "category": "도서",
       "isSold": false,
       "img": []
     },
@@ -140,7 +140,7 @@
       "title": "게시글 8 판매",
       "content": "판매합니다.",
       "price": 9900,
-      "category": "생활가전",
+      "category": "도서",
       "isSold": false,
       "img": []
     },
@@ -148,7 +148,7 @@
       "title": "게시글 9 판매",
       "content": "판매합니다.",
       "price": 9900,
-      "category": "생활가전",
+      "category": "도서",
       "isSold": false,
       "img": []
     },
@@ -156,7 +156,7 @@
       "title": "게시글 10 판매",
       "content": "판매합니다.",
       "price": 9900,
-      "category": "생활가전",
+      "category": "도서",
       "isSold": false,
       "img": []
     },
@@ -164,7 +164,7 @@
       "title": "게시글 11 판매",
       "content": "판매합니다.",
       "price": 9900,
-      "category": "생활가전",
+      "category": "도서",
       "isSold": false,
       "img": []
     },
@@ -172,7 +172,7 @@
       "title": "게시글 12 판매",
       "content": "판매합니다.",
       "price": 9900,
-      "category": "생활가전",
+      "category": "도서",
       "isSold": false,
       "img": []
     },
@@ -324,7 +324,7 @@
       "title": "게시글 31 판매",
       "content": "판매합니다.",
       "price": 9900,
-      "category": "여성의류",
+      "category": "의류",
       "isSold": false,
       "img": []
     },
@@ -332,7 +332,7 @@
       "title": "게시글 32 판매",
       "content": "판매합니다.",
       "price": 9900,
-      "category": "여성의류",
+      "category": "의류",
       "isSold": false,
       "img": []
     },
@@ -340,7 +340,7 @@
       "title": "게시글 33 판매",
       "content": "판매합니다.",
       "price": 9900,
-      "category": "여성의류",
+      "category": "의류",
       "isSold": false,
       "img": []
     },
@@ -348,7 +348,7 @@
       "title": "게시글 34 판매",
       "content": "판매합니다.",
       "price": 9900,
-      "category": "여성의류",
+      "category": "의류",
       "isSold": false,
       "img": []
     },
@@ -356,7 +356,7 @@
       "title": "게시글 35 판매",
       "content": "판매합니다.",
       "price": 9900,
-      "category": "여성의류",
+      "category": "의류",
       "isSold": false,
       "img": []
     },
@@ -364,7 +364,7 @@
       "title": "게시글 36 판매",
       "content": "판매합니다.",
       "price": 9900,
-      "category": "여성의류",
+      "category": "의류",
       "isSold": false,
       "img": []
     },
@@ -372,7 +372,7 @@
       "title": "게시글 37 판매",
       "content": "판매합니다.",
       "price": 9900,
-      "category": "여성잡화",
+      "category": "디지털기기",
       "isSold": false,
       "img": []
     },
@@ -380,7 +380,7 @@
       "title": "게시글 38 판매",
       "content": "판매합니다.",
       "price": 9900,
-      "category": "여성잡화",
+      "category": "디지털기기",
       "isSold": false,
       "img": []
     },
@@ -388,7 +388,7 @@
       "title": "게시글 39 판매",
       "content": "판매합니다.",
       "price": 9900,
-      "category": "여성잡화",
+      "category": "뷰티/미용",
       "isSold": false,
       "img": []
     },
@@ -396,7 +396,7 @@
       "title": "게시글 40 판매",
       "content": "판매합니다.",
       "price": 9900,
-      "category": "여성잡화",
+      "category": "뷰티/미용",
       "isSold": false,
       "img": []
     },
@@ -404,7 +404,7 @@
       "title": "게시글 41 판매",
       "content": "판매합니다.",
       "price": 9900,
-      "category": "여성잡화",
+      "category": "뷰티/미용",
       "isSold": false,
       "img": []
     },
@@ -412,7 +412,7 @@
       "title": "게시글 42 판매",
       "content": "판매합니다.",
       "price": 9900,
-      "category": "여성잡화",
+      "category": "뷰티/미용",
       "isSold": false,
       "img": []
     },
