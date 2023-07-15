@@ -12,7 +12,7 @@ export const getUserPosts = (req) => {};
 export const getPost = async (postId) => {
   const res = await api.get("/posts");
   console.log(res);
-  const post = res.filter((post) => post.postId === postId);
+  const post = Array.from(res).filter((post) => post.postId === postId);
   return post;
 };
 
