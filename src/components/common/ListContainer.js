@@ -39,11 +39,13 @@ const ListContainer = () => {
     <>
       <Category selectList={selectList} setSelectList={setSelectList} />
       <ListContainerBlock>
-        {postList
-          .filter((post) => !selectList || post.category === selectList.name)
-          .map((post) => (
-            <List key={post.title} post={post} />
-          ))}
+        {selectList.name === "All"
+          ? postList.map((post) => <List key={post.title} post={post} />)
+          : postList
+              .filter(
+                (post) => !selectList || post.category === selectList.name
+              )
+              .map((post) => <List key={post.title} post={post} />)}
       </ListContainerBlock>
     </>
   );
