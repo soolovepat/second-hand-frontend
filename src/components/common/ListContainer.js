@@ -40,9 +40,9 @@ const ListContainer = () => {
       <Category selectList={selectList} setSelectList={setSelectList} />
       <ListContainerBlock>
         {postList
-          .filter((post) => !selectList || post.category === selectList.id) // selectList가 null이거나 post.category와 selectList.id가 같은 경우만 필터링
+          .filter((post) => !selectList || post.category === selectList.name)
           .map((post) => (
-            <List key={post.title} post={post} selectId={selectList.id} />
+            <List key={post.title} post={post} />
           ))}
       </ListContainerBlock>
     </>
