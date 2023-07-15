@@ -38,12 +38,11 @@ const ListContainer = () => {
   return (
     <>
       <Category selectList={selectList} setSelectList={setSelectList} />
-      {/* Category 컴포넌트에 selectList와 setSelectList를 전달 */}
       <ListContainerBlock>
         {postList
           .filter((post) => !selectList || post.category === selectList.id) // selectList가 null이거나 post.category와 selectList.id가 같은 경우만 필터링
           .map((post) => (
-            <List key={post.title} post={post} />
+            <List key={post.title} post={post} selectId={selectList.id} />
           ))}
       </ListContainerBlock>
     </>
