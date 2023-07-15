@@ -61,9 +61,14 @@ const AuthForm = ({
         </>
       )}
       {!openSelect && (
-        <Button size="lg" onClick={rest.onSubmit}>
+        <Button size="lg" color={"black"} onClick={rest.onSubmit}>
           {type === "register" ? "회원가입" : "로그인"}
         </Button>
+      )}
+      {type === "login" && (
+        <p className="go-to-register" onClick={rest.goToRegister}>
+          {"회원가입 >"}
+        </p>
       )}
     </AuthFormBlock>
   );
@@ -77,6 +82,7 @@ const AuthFormBlock = styled.div`
   align-items: center;
   padding: 50px 20px;
   height: 100%;
+  position: relative;
   .title {
     font-size: 1.5rem;
     margin-bottom: 35px;
@@ -99,4 +105,12 @@ const AuthFormBlock = styled.div`
       height: 400px;
       margin-top: 100px;
     `}
+
+  .go-to-register {
+    position: absolute;
+    bottom: -18%;
+    right: 8%;
+    color: #565656;
+    cursor: pointer;
+  }
 `;

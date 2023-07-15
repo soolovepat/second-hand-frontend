@@ -24,4 +24,5 @@ const StyledInput = styled.input`
   height: ${(props) => `${props.h}`};
   height: 50px;
   font-size: 1.2rem;
+  padding: 20px;
 `;
