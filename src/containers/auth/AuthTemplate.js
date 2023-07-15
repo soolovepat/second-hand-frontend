@@ -1,10 +1,20 @@
 import styled from "styled-components";
 
 const AuthTemplate = ({ children }) => {
-  return <AuthTemplateBlock>{children}</AuthTemplateBlock>;
+  return (
+    <Wrapper>
+      <div>로고</div>
+      <AuthTemplateBlock>{children}</AuthTemplateBlock>
+    </Wrapper>
+  );
 };
 
 export default AuthTemplate;
+
+const Wrapper = styled.div`
+  display: flex;
+  height: 100vh;
+`;
 
 const AuthTemplateBlock = styled.div`
   width: 480px;
