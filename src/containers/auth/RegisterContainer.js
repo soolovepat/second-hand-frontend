@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const CATEGORIES = [
+export const CATEGORIES = [
   "All",
   "디지털기기",
   "가구/인테리어",

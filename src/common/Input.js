@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-const Input = ({ w, h, ph, type, name, value, onChange }) => {
+const Input = ({ w, h, ph, type, name, value, maxLength, onChange }) => {
   return (
     <StyledInput
       w={w}
@@ -10,6 +10,7 @@ const Input = ({ w, h, ph, type, name, value, onChange }) => {
       name={name}
       value={value}
       onChange={onChange}
+      maxLength={maxLength}
     />
   );
 };
