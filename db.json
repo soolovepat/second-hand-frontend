@@ -10,7 +10,7 @@
       "img": [],
       "commentList": [
         {
-          "commentId": 10,
+          "commentId": 100,
           "nickname": "닉넴1",
           "content": "댓글2",
           "createdAt": "2022-12-01T12:54:57.049359",
@@ -18,7 +18,7 @@
           "username": "bin1234"
         },
         {
-          "commentId": 11,
+          "commentId": 110,
           "nickname": "닉넴1",
           "content": "댓글2",
           "createdAt": "2022-12-01T12:54:57.049359",
@@ -26,7 +26,7 @@
           "username": "bin1234"
         },
         {
-          "commentId": 12,
+          "commentId": 120,
           "nickname": "닉넴1",
           "content": "댓글2",
           "createdAt": "2022-12-01T12:54:57.049359",
@@ -45,7 +45,7 @@
       "img": [],
       "commentList": [
         {
-          "commentId": 13,
+          "commentId": 130,
           "nickname": "닉넴1",
           "content": "댓글2",
           "createdAt": "2022-12-01T12:54:57.049359",
@@ -53,7 +53,7 @@
           "username": "bin1234"
         },
         {
-          "commentId": 14,
+          "commentId": 140,
           "nickname": "닉넴1",
           "content": "댓글2",
           "createdAt": "2022-12-01T12:54:57.049359",
@@ -61,7 +61,7 @@
           "username": "bin1234"
         },
         {
-          "commentId": 15,
+          "commentId": 150,
           "nickname": "닉넴1",
           "content": "댓글2",
           "createdAt": "2022-12-01T12:54:57.049359",
@@ -80,7 +80,7 @@
       "img": [],
       "commentList": [
         {
-          "commentId": 16,
+          "commentId": 160,
           "nickname": "닉넴1",
           "content": "댓글2",
           "createdAt": "2022-12-01T12:54:57.049359",
@@ -88,7 +88,7 @@
           "username": "bin1234"
         },
         {
-          "commentId": 17,
+          "commentId": 170,
           "nickname": "닉넴1",
           "content": "댓글2",
           "createdAt": "2022-12-01T12:54:57.049359",
@@ -96,7 +96,7 @@
           "username": "bin1234"
         },
         {
-          "commentId": 18,
+          "commentId": 180,
           "nickname": "닉넴1",
           "content": "댓글2",
           "createdAt": "2022-12-01T12:54:57.049359",

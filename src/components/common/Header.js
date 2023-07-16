@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <HeaderBlock>
-      <h3>로고</h3>
+      <h3>
+        <Link to={"/mainpage"}>로고</Link>
+      </h3>
       <div>
         <span>
           <Link to={"/login"}>로그인</Link>
