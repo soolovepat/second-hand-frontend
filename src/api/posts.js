@@ -1,6 +1,10 @@
 import api from "./axios";
 
-export const writePost = (req) => {};
+export const writePost = async (formData) => {
+  const res = await api.post("/posts", formData);
+  console.log(res);
+  return res;
+};
 
 export const getPosts = (req) => {
   const res = api.get("/posts");

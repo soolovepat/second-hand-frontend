@@ -42,8 +42,7 @@ const Details = ({
         <div className="carousel">
           <div
             className="img-container"
-            style={{ transform: `translateX(-${currImgIndex * 100}%)` }}
-          >
+            style={{ transform: `translateX(-${currImgIndex * 100}%)` }}>
             {img.map((src, idx) => (
               <div key={idx} className="img-wrapper">
                 <img src={src} alt="product" />

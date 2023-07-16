@@ -36,6 +36,7 @@ export const SelectStyle = styled.div`
   width: ${(props) => props.w || "80%"};
   min-width: 80px;
   max-height: 50px;
+  z-index: 100;
 
   .selected {
     border: 1px solid lightgray;
