@@ -11,12 +11,16 @@ import { Toast } from "../../components/common/Toast";
 import Button from "../../common/Button";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 
 const WriteContainer = () => {
   const navigate = useNavigate();
   const id = uuidv4();
+  const userEmail = jwt_decode(localStorage.getItem("google_token")).email;
+
   const [formData, setFormData] = useState({
     id: id,
+    username: userEmail,
     title: "",
     content: "",
     price: "",
@@ -60,6 +64,14 @@ const WriteContainer = () => {
     try {
       const response = await writePost(formData);
       console.log(response);
+      Swal.fire({
+        position: "top",
+        icon: "success",
+        title: "작성 완료 되었습니다 :)",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      navigate(`/${formData.id}/detail`);
     } catch (e) {
       console.log(e);
     }
@@ -76,14 +88,7 @@ const WriteContainer = () => {
       return;
     }
     handlePost();
-    Swal.fire({
-      position: "center",
-      icon: "success",
-      title: "작성 완료 되었습니다 :)",
-      showConfirmButton: false,
-      timer: 1500,
-    });
-    navigate(`${id}/detail`);
+
     setFormData({
       ...formData,
       id: uuidv4(),
