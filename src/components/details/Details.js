@@ -1,13 +1,7 @@
 import styled, { css } from "styled-components";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-const Details = ({
-  post,
-  exampleNickname,
-  currImgIndex,
-  onIncreaseIdx,
-  onDecreaseIdx,
-}) => {
+const Details = ({ post, currImgIndex, onIncreaseIdx, onDecreaseIdx }) => {
   const { title, price, content, category, img } = post;
 
   if (!post) {
@@ -21,7 +15,7 @@ const Details = ({
         <div className="header-detail">
           <div>
             <p className="title">{title}</p>
-            <p className="nickname">{exampleNickname}</p>
+            <p className="username">{post.username?.split("@")[0]}</p>
           </div>
           <div>
             <p className="category">{category}</p>
@@ -116,9 +110,9 @@ const DetailHeaderBlock = styled.div`
       font-size: 1.3rem;
       font-weight: bold;
     }
-    .nickname {
-      margin-top: 15px;
-      font-size: 0.8rem;
+    .username {
+      margin-top: 20px;
+      font-size: 1rem;
     }
     .price {
       margin-left: 13px;
@@ -126,7 +120,7 @@ const DetailHeaderBlock = styled.div`
       font-weight: bold;
     }
     .category {
-      margin: 10px;
+      margin-bottom: 20px;
     }
   }
 `;
