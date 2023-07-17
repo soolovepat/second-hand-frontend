@@ -2,13 +2,16 @@ import React from "react";
 import { styled } from "styled-components";
 
 const List = ({ post }) => {
+  if (!post) {
+    return <ListBlock>Loading...</ListBlock>;
+  }
   return (
     <ListBlock>
       <span className="wrap-thumb">
         <span className="thumb-img" />
       </span>
       <strong>{post.title}</strong>
-      <span>nickname123</span>
+      <span>{post.username?.split("@")[0]}</span>
       <span>
         <span>
           <span>icon · </span>
