@@ -108,20 +108,20 @@ const AuthFormBlock = styled.div`
   ${({ type }) =>
     type === "login" &&
     css`
-      height: 400px;
-      margin-top: 50px;
+      height: 550px;
+      margin-top: 40px;
     `}
 
   .go-to-register {
     position: absolute;
-    bottom: -28%;
+    bottom: 5%;
     right: 8%;
     color: #565656;
+    font-size: 1.1rem;
     cursor: pointer;
   }
   .google {
-    position: absolute;
-    bottom: -8%;
-    width: 80%;
+    margin-top: 60px;
+    transform: scale(1.3);
   }
 `;
