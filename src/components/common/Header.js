@@ -15,6 +15,9 @@ const Header = () => {
         <span>
           <Link to={"/register"}>회원가입</Link>
         </span>
+        <span>
+          <Link to={"/mypage"}> (마이페이지)</Link>
+        </span>
       </div>
     </HeaderBlock>
   );
