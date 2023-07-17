@@ -12,7 +12,6 @@ const DetailContainer = () => {
   const { id } = useParams();
   const [post, setPost] = useState(null);
   //mockup data
-  const exampleNickname = "nickname213";
 
   const [currImgIndex, setCurrImgIndex] = useState(0);
 
@@ -49,7 +48,6 @@ const DetailContainer = () => {
     <DetailBlock>
       <Details
         post={post}
-        exampleNickname={exampleNickname}
         currImgIndex={currImgIndex}
         onIncreaseIdx={onIncreaseIdx}
         onDecreaseIdx={onDecreaseIdx}
