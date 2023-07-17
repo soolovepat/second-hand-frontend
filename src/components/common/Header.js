@@ -33,6 +33,14 @@ const Header = () => {
     });
   };
 
+  const handleWrite = () => {
+    navigate("/write");
+  };
+
+  const handleMypage = () => {
+    navigate("/mypage");
+  };
+
   return (
     <HeaderBlock>
       <h3>
@@ -41,16 +49,26 @@ const Header = () => {
         </Link>
       </h3>
       {userLoggedIn ? (
-        <Button size={"sm"} onClick={handleLogout}>
-          로그아웃
-        </Button>
+        <>
+          <Button size={"sm"} onClick={handleLogout}>
+            로그아웃
+          </Button>
+          <Button size={"sm"} onClick={handleMypage}>
+            마이페이지
+          </Button>
+          <Button size={"sm"} onClick={handleWrite}>
+            글쓰기
+          </Button>
+        </>
       ) : (
-        <Button size={"sm"} onClick={handleLogin}>
-          로그인
-        </Button>
-        // <span>
-        //   <Link to={"/mypage"}> (마이페이지)</Link>
-        // </span>
+        <>
+          <Button size={"sm"} onClick={handleLogin}>
+            로그인
+          </Button>
+          <Button size={"sm"} onClick={handleWrite}>
+            글쓰기
+          </Button>
+        </>
       )}
     </HeaderBlock>
   );
