@@ -4,10 +4,14 @@ import RegisterPage from "../pages/auth/RegisterPage";
 import { DetailPage, MainPage, Mypage, WritePage } from "../pages/pages";
 import { useEffect } from "react";
 import jwt_decode from "jwt-decode";
-import AuthRoutes from "./AuthRoutes";
-import ProtectedRoutes from "./ProtectedRoutes";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser, logoutuser, setUser } from "../redux/modules/user";
+import {
+  loginUser,
+  logoutuser,
+  setLoading,
+  setUser,
+} from "../redux/modules/user";
+import { Navigate, Outlet } from "react-router-dom";
 
 const checkIsLoggedIn = () => {
   if (localStorage.getItem("google_token")) {
@@ -18,9 +22,10 @@ const checkIsLoggedIn = () => {
 
 const Router = () => {
   const dispatch = useDispatch();
-  const { user, userLoggedIn } = useSelector(({ user }) => ({
+  const { user, userLoggedIn, isLoading } = useSelector(({ user }) => ({
     user: user.user,
     userLoggedIn: user.isLoggedIn,
+    isLoading: user.isLoading,
   }));
 
   useEffect(() => {
@@ -35,25 +40,29 @@ const Router = () => {
       } else {
         dispatch(logoutuser());
       }
+      dispatch(setLoading(false));
     };
     verifyUser();
-  }, []);
+  }, [userLoggedIn]);
 
   useEffect(() => {
-    console.log(user);
-  }, [user]);
+    console.log(userLoggedIn);
+  }, [userLoggedIn]);
+
+  if (isLoading) {
+    return null; // 권한 체크중 라우터 렌더링 방지
+  }
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/mainpage" element={<MainPage />} />
 
-        <Route element={<AuthRoutes userLoggedIn={userLoggedIn} />}>
+        <Route element={<AuthRoute userLoggedIn={userLoggedIn} />}>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
         </Route>
-
-        <Route element={<ProtectedRoutes userLoggedIn={userLoggedIn} />}>
+        <Route element={<ProtectedRoute userLoggedIn={userLoggedIn} />}>
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/write" element={<WritePage />} />
           <Route path="/:postId/detail" element={<DetailPage />} />
@@ -64,3 +73,11 @@ const Router = () => {
 };
 
 export default Router;
+
+const AuthRoute = ({ userLoggedIn }) => {
+  return userLoggedIn ? <Navigate to={"/mainpage"} /> : <Outlet />;
+};
+
+const ProtectedRoute = ({ userLoggedIn }) => {
+  return userLoggedIn ? <Outlet /> : <Navigate to={"/login"} />;
+};

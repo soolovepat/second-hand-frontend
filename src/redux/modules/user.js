@@ -8,6 +8,7 @@ const initialState = {
     picture: "",
   },
   isLoggedIn: false,
+  isLoading: true,
 };
 
 export const userSlice = createSlice({
@@ -26,9 +27,12 @@ export const userSlice = createSlice({
       state.user.email = action.payload.email;
       state.user.picture = action.payload.picture;
     },
+    setLoading: (state, action) => {
+      state.isLoading = action.payload;
+    },
   },
 });
 
-export const { loginUser, logoutuser, setUser } = userSlice.actions;
+export const { loginUser, logoutuser, setUser, setLoading } = userSlice.actions;
 
 export default userSlice.reducer;
