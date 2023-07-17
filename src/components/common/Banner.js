@@ -35,7 +35,7 @@ const Carousel = () => {
           return prevIndex + 1;
         }
       });
-    }, 2000);
+    }, 3000);
 
     return () => {
       clearInterval(interval);
@@ -160,6 +160,7 @@ const BannerBlock = styled.div`
       flex: 0 0 100%;
       align-items: center;
       max-width: 100%;
+      height: 300px;
       display: flex;
       justify-content: center;
 
@@ -171,12 +172,12 @@ const BannerBlock = styled.div`
         display: flex;
         height: 100%;
         align-items: end;
-        max-width: 40%;
-        max-height: 300px;
+        max-width: 30%;
         margin-left: 30px;
 
         img {
           width: 100%;
+          max-height: 300px;
         }
       }
     }
