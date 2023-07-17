@@ -6,6 +6,7 @@ import Button from "../../common/Button";
 import Swal from "sweetalert2";
 import { logoutuser } from "../../redux/modules/user";
 import { logo } from "../../assets/logo";
+import theme from "../../lib/styles/Theme";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -62,10 +63,14 @@ const Header = () => {
         </div>
       ) : (
         <div className="button-wrapper">
-          <Button size={"sm"} onClick={handleLogin}>
+          <Button size={"md"} bgcolor={theme.grayColor} onClick={handleLogin}>
             로그인
           </Button>
-          <Button size={"sm"} onClick={handleWrite}>
+          <Button
+            size={"md"}
+            bgcolor={theme.primaryColor}
+            onClick={handleWrite}
+          >
             글쓰기
           </Button>
         </div>

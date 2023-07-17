@@ -82,6 +82,6 @@ const Dot = styled.div`
   ${(props) =>
     props.active &&
     css`
-      background: #333;
+      background: ${(props) => props.theme.whiteColor};
     `}
 `;

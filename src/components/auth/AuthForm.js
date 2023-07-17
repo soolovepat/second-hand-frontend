@@ -3,6 +3,7 @@ import Input from "../../common/Input";
 import Select from "../../common/Select";
 import Button from "../../common/Button";
 import { GoogleLoginButton } from "./GoogleAuthForm";
+import theme from "../../lib/styles/Theme";
 
 const AuthForm = ({
   type,
@@ -62,7 +63,12 @@ const AuthForm = ({
         </>
       )}
       {!openSelect && (
-        <Button size="lg" color={"black"} onClick={rest.onSubmit}>
+        <Button
+          size="lg"
+          bgcolor={theme.primaryColor}
+          color={theme.whiteColor}
+          onClick={rest.onSubmit}
+        >
           {type === "register" ? "회원가입" : "로그인"}
         </Button>
       )}
