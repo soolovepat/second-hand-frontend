@@ -2,19 +2,22 @@ import React from "react";
 import { styled } from "styled-components";
 
 const List = ({ post }) => {
+  if (!post) {
+    return <ListBlock>Loading...</ListBlock>;
+  }
   return (
     <ListBlock>
       <span className="wrap-thumb">
         <span className="thumb-img" />
       </span>
       <strong>{post.title}</strong>
-      <span>nickname123</span>
+      <span>{post.username?.split("@")[0]}</span>
       <span>
         <span>
-          <span>icon · </span>
-          <span>서울특별시</span>
+          <span className="location">📍 </span>
+          <span>{post.location}</span>
         </span>
-        <strong>{post.price}</strong>
+        <strong> ₩ {post.price?.toLocaleString()}</strong>
       </span>
 
       <span></span>
@@ -28,7 +31,6 @@ const ListBlock = styled.div`
   width: 300px;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   margin: 15px;
   padding: 0 24px 28px;
   border-radius: 20px;
@@ -51,6 +53,10 @@ const ListBlock = styled.div`
     width: 100%;
     height: 170px;
     background-color: #34d46d;
+  }
+
+  .location {
+    font-size: 1.1rem;
   }
 
   strong {
