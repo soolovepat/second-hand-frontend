@@ -1,6 +1,17 @@
 import { styled } from "styled-components";
 
-const Input = ({ w, h, ph, type, name, value, maxLength, onChange }) => {
+const Input = ({
+  w,
+  h,
+  ph,
+  type,
+  name,
+  value,
+  maxLength,
+  onChange,
+  onClick,
+  onBlur,
+}) => {
   return (
     <StyledInput
       w={w}
@@ -10,7 +21,9 @@ const Input = ({ w, h, ph, type, name, value, maxLength, onChange }) => {
       name={name}
       value={value}
       onChange={onChange}
+      onClick={onClick}
       maxLength={maxLength}
+      onBlur={onBlur}
     />
   );
 };
