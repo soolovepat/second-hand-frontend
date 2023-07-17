@@ -63,12 +63,12 @@ const PageNumber = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: #4ae982;
+    background-color: #34d46d;
     color: #fff;
   }
 
   &.active {
-    background-color: #4ae982;
+    background-color: #34d46d;
     color: #fff;
   }
 `;
