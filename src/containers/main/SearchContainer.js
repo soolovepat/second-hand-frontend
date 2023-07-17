@@ -25,7 +25,7 @@ const SearchContainer = () => {
       response.data?.map((post) => ({
         title: post.title,
         id: post.id,
-      })),
+      }))
     );
   };
 
@@ -69,7 +69,8 @@ const SearchContainer = () => {
                   onClick={(e) => {
                     e.stopPropagation();
                     onClickItem(post.id);
-                  }}>
+                  }}
+                >
                   {post.title} {" →"}
                 </li>
               );
