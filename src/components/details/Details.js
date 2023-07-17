@@ -1,28 +1,18 @@
 import styled, { css } from "styled-components";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { getPost } from "../../api/posts";
 
 const Details = ({
-  example,
+  post,
   exampleNickname,
   currImgIndex,
   onIncreaseIdx,
   onDecreaseIdx,
 }) => {
-  const { title, price, content, category, img } = example;
-  const { postId } = useParams();
-  console.log(postId);
+  const { title, price, content, category, img } = post;
 
-  useEffect(() => {
-    const fetchPost = async () => {
-      const post = await getPost(postId);
-      return post;
-    };
-
-    fetchPost();
-  }, [postId]);
+  if (!post) {
+    return <div>...로딩</div>;
+  }
 
   return (
     <>
@@ -34,7 +24,9 @@ const Details = ({
             <p className="nickname">{exampleNickname}</p>
           </div>
           <div>
-            <p className="price">₩ {price.toLocaleString()}</p>
+            <p className="category">{category}</p>
+
+            <p className="price">₩ {price?.toLocaleString()}</p>
           </div>
         </div>
       </DetailHeaderBlock>
@@ -43,7 +35,7 @@ const Details = ({
           <div
             className="img-container"
             style={{ transform: `translateX(-${currImgIndex * 100}%)` }}>
-            {img.map((src, idx) => (
+            {img?.map((src, idx) => (
               <div key={idx} className="img-wrapper">
                 <img src={src} alt="product" />
               </div>
@@ -57,7 +49,7 @@ const Details = ({
           </p>
         </div>
         <div className="content">{content}</div>
-        <CarouselDots currImgIndex={currImgIndex} imgLength={img.length} />
+        <CarouselDots currImgIndex={currImgIndex} imgLength={img?.length} />
       </DetailDescBlock>
     </>
   );
@@ -129,11 +121,12 @@ const DetailHeaderBlock = styled.div`
       font-size: 0.8rem;
     }
     .price {
+      margin-left: 13px;
       font-size: 1.1rem;
       font-weight: bold;
     }
     .category {
-      margin: 10px 15px;
+      margin: 10px;
     }
   }
 `;

@@ -61,7 +61,6 @@ const RegisterContainer = () => {
   };
 
   const onSubmit = (e) => {
-    console.log(formData);
     e.preventDefault();
     //유효성검사
 
