@@ -4,7 +4,6 @@ import { styled } from "styled-components";
 const Category = ({ selectList, setSelectList, CATENAME }) => {
   const onClickCate = (cate) => {
     setSelectList(cate);
-    console.log(selectList);
   };
 
   return (
@@ -13,8 +12,7 @@ const Category = ({ selectList, setSelectList, CATENAME }) => {
         <li
           key={id}
           className={id === selectList.id ? "active" : ""}
-          onClick={() => onClickCate(cate)}
-        >
+          onClick={() => onClickCate(cate)}>
           {cate.name}
         </li>
       ))}

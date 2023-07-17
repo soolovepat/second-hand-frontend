@@ -45,10 +45,6 @@ const Router = () => {
     verifyUser();
   }, [userLoggedIn]);
 
-  useEffect(() => {
-    console.log(userLoggedIn);
-  }, [userLoggedIn]);
-
   if (isLoading) {
     return null; // 권한 체크중 라우터 렌더링 방지
   }
@@ -57,7 +53,7 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/:postId/detail" element={<DetailPage />} />
+        <Route path="/:id/detail" element={<DetailPage />} />
         <Route element={<AuthRoute userLoggedIn={userLoggedIn} />}>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />

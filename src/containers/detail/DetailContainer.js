@@ -2,56 +2,59 @@ import styled from "styled-components";
 import Details from "../../components/details/Details";
 import { useParams } from "react-router-dom";
 import CommentsContainer from "../comments/CommentsContainer";
-import { carrot1, carrot0, carrot2, carrot3 } from "../../assets/exampleImages";
+// import { carrot1, carrot0, carrot2, carrot3 } from "../../assets/exampleImages";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import { getPost } from "../../api/posts";
 
 const DetailContainer = () => {
-  //   const params = useParams();
+  const { id } = useParams();
+  const [post, setPost] = useState(null);
   //mockup data
   const exampleNickname = "nickname213";
-  const example = {
-    title: "당근 판매해요.",
-    content: "판매합니다. 귀여워요 🥕 ",
-    price: 2000,
-    category: "유아동",
-    isSold: false,
-    img: [carrot0, carrot1, carrot2, carrot3],
-    commentList: [
-      { postId: 3, content: "우와 갖고싶어요" },
-      { postId: 4, content: "귀엽다" },
-      { postId: 4, content: "500원에 살게요" },
-    ],
-  };
+
   const [currImgIndex, setCurrImgIndex] = useState(0);
 
+  useEffect(() => {
+    const fetchPost = async () => {
+      const response = await getPost(id);
+      console.log(response);
+      setPost(response[0]);
+    };
+    fetchPost();
+  }, [id]);
+
   const onIncreaseIdx = () => {
-    if (currImgIndex >= example.img.length - 1) {
+    if (post?.img && currImgIndex >= post.img.length - 1) {
       toast.warn("마지막 사진입니다.");
     } else {
       setCurrImgIndex(currImgIndex + 1);
     }
   };
   const onDecreaseIdx = () => {
-    if (currImgIndex <= 0) {
+    if (post?.img && currImgIndex <= 0) {
       toast.warn("첫번째 사진입니다.");
     } else {
       setCurrImgIndex(currImgIndex - 1);
     }
   };
 
+  if (!post) {
+    //수정필요
+    return <div>로딩중...</div>;
+  }
+
   return (
     <DetailBlock>
       <Details
-        example={example}
+        post={post}
         exampleNickname={exampleNickname}
-        xu
         currImgIndex={currImgIndex}
         onIncreaseIdx={onIncreaseIdx}
         onDecreaseIdx={onDecreaseIdx}
       />
-      <CommentsContainer comments={example.commentList} />
+      <CommentsContainer comments={post.commentList} />
       <ToastContainer position={toast.POSITION.TOP_CENTER} />
     </DetailBlock>
   );
