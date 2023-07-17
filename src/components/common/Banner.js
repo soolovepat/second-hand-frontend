@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
 import { ToastContainer, toast } from "react-toastify";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
@@ -17,63 +17,101 @@ const Carousel = () => {
       content: "설명입니다!",
       img: nearby_stores,
     },
+    {
+      title: `3번째 배너 :)`,
+      content: "설명입니다!",
+      img: "ss",
+    },
   ];
 
-  const [currImgIndex, setCurrImgIndex] = useState(0);
+  const [currItemIndex, setCurrItemIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrItemIndex((prevIndex) => {
+        if (prevIndex >= example.length - 1) {
+          return 0;
+        } else {
+          return prevIndex + 1;
+        }
+      });
+    }, 2000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   const onIncreaseIdx = () => {
-    if (currImgIndex >= example.length - 1) {
-      toast.warn("마지막 사진입니다.");
+    if (currItemIndex >= example.length - 1) {
+      setCurrItemIndex(0);
     } else {
-      setCurrImgIndex(currImgIndex + 1);
+      setCurrItemIndex(currItemIndex + 1);
     }
   };
   const onDecreaseIdx = () => {
-    if (currImgIndex <= 0) {
-      toast.warn("첫번째 사진입니다.");
+    if (currItemIndex <= 0) {
+      setCurrItemIndex(example.length - 1);
     } else {
-      setCurrImgIndex(currImgIndex - 1);
+      setCurrItemIndex(currItemIndex - 1);
     }
   };
-  return (
-    <BannerBlock>
-      <div className="carousel">
-        <div
-          className="banner-container"
-          style={{ transform: `translateX(-${currImgIndex * 100}%)` }}
-        >
-          {example.map((banner, idx) => (
-            <div key={idx} className="banner-wrapper">
-              <span className="banner-text">
-                <strong className="title">{banner.title}</strong>
-                <p className="content">{banner.content}</p>
-              </span>
-              <span className="banner-img">
-                <img src={banner.img} alt="banner" />
-              </span>
-            </div>
-          ))}
-        </div>
-        <p className="icons left">
-          <FaChevronLeft onClick={onDecreaseIdx} />
-        </p>
-        <p className="icons right">
-          <FaChevronRight onClick={onIncreaseIdx} />
-        </p>
-      </div>
 
-      <CarouselDots currImgIndex={currImgIndex} imgLength={example.length} />
-    </BannerBlock>
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     onIncreaseIdx();
+  //     console.log(currItemIndex);
+  //   }, 2000);
+
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, []);
+  return (
+    <>
+      <BannerBlock>
+        <div className="carousel">
+          <div
+            className="banner-container"
+            style={{ transform: `translateX(-${currItemIndex * 100}%)` }}
+          >
+            {example.map((banner, idx) => (
+              <div key={idx} className="banner-wrapper">
+                <span className="banner-text">
+                  <strong className="title">{banner.title}</strong>
+                  <p className="content">{banner.content}</p>
+                </span>
+                <span className="banner-img">
+                  <img src={banner.img} alt="banner" />
+                </span>
+              </div>
+            ))}
+          </div>
+          <p className="icons left">
+            <FaChevronLeft onClick={onDecreaseIdx} />
+          </p>
+          <p className="icons right">
+            <FaChevronRight onClick={onIncreaseIdx} />
+          </p>
+        </div>
+
+        <CarouselDots
+          currItemIndex={currItemIndex}
+          itemLength={example.length}
+        />
+      </BannerBlock>
+      {/* <ToastContainer position={toast.POSITION.TOP_CENTER} /> */}
+    </>
   );
 };
 
-const CarouselDots = ({ currImgIndex, imgLength }) => {
+const CarouselDots = ({ currItemIndex, itemLength }) => {
   return (
     <DotsBlock>
-      {Array(imgLength)
+      {Array(itemLength)
         .fill(null)
         .map((_, idx) => (
-          <Dot key={idx} active={currImgIndex === idx} />
+          <Dot key={idx} active={currItemIndex === idx} />
         ))}
     </DotsBlock>
   );
