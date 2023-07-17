@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Button from "../../common/Button";
 import Swal from "sweetalert2";
 import { logoutuser } from "../../redux/modules/user";
+import { logo } from "../../assets/logo";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -35,7 +36,9 @@ const Header = () => {
   return (
     <HeaderBlock>
       <h3>
-        <Link to={"/"}>로고</Link>
+        <Link to={"/"}>
+          <img className="logo-img" src={logo} />
+        </Link>
       </h3>
       {userLoggedIn ? (
         <Button size={"sm"} onClick={handleLogout}>
@@ -58,5 +61,12 @@ export default Header;
 const HeaderBlock = styled.div`
   display: flex;
   justify-content: space-between;
+
+  max-width: 1020px;
+  margin: 0 auto;
   padding: 30px;
+
+  .logo-img {
+    width: 200px;
+  }
 `;

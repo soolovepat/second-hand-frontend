@@ -19,7 +19,7 @@ const Banner = () => {
     {
       title: `3번째 배너 :)`,
       content: "설명입니다!",
-      img: "ss",
+      img: jobs_hero,
     },
   ];
 
@@ -85,11 +85,11 @@ const BannerBlock = styled.div`
       width: auto;
 
       &.left {
-        left: 380px;
+        left: 10%;
       }
 
       &.right {
-        right: 380px;
+        right: 10%;
       }
     }
 
@@ -103,6 +103,7 @@ const BannerBlock = styled.div`
 
       .banner-text {
         width: 20%;
+        min-width: 240px;
       }
 
       .banner-img {
@@ -110,6 +111,7 @@ const BannerBlock = styled.div`
         height: 100%;
         align-items: end;
         max-width: 30%;
+        min-width: 400px;
         margin-left: 30px;
 
         img {

@@ -58,16 +58,17 @@ const PageNumber = styled.button`
   padding: 5px 10px;
   margin: 0 2px;
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
+  background-color: #fff;
   cursor: pointer;
 
   &:hover {
-    background-color: #a6d3ff;
-    color: #ffffff;
+    background-color: #34d46d;
+    color: #fff;
   }
 
   &.active {
-    background-color: #a6d3ff;
-    color: #ffffff;
+    background-color: #34d46d;
+    color: #fff;
   }
 `;
