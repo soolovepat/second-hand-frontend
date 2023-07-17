@@ -45,9 +45,9 @@ const Header = () => {
         <Button size={"sm"} onClick={handleLogin}>
           로그인
         </Button>
-        <span>
-          <Link to={"/mypage"}> (마이페이지)</Link>
-        </span>
+        // <span>
+        //   <Link to={"/mypage"}> (마이페이지)</Link>
+        // </span>
       )}
     </HeaderBlock>
   );
