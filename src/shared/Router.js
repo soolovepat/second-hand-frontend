@@ -57,7 +57,7 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainPage />} />
-
+        <Route path="/:postId/detail" element={<DetailPage />} />
         <Route element={<AuthRoute userLoggedIn={userLoggedIn} />}>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
@@ -65,7 +65,6 @@ const Router = () => {
         <Route element={<ProtectedRoute userLoggedIn={userLoggedIn} />}>
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/write" element={<WritePage />} />
-          <Route path="/:postId/detail" element={<DetailPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
