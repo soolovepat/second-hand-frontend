@@ -59,16 +59,16 @@ const PageNumber = styled.button`
   margin: 0 2px;
   border: none;
   border-radius: 20px;
-  background-color: #fff;
+  background-color: ${(props) => props.theme.whiteColor};
   cursor: pointer;
 
   &:hover {
-    background-color: #34d46d;
-    color: #fff;
+    background-color: ${(props) => props.theme.primaryColor};
+    color: ${(props) => props.theme.whiteColor};
   }
 
   &.active {
-    background-color: #34d46d;
-    color: #fff;
+    background-color: ${(props) => props.theme.primaryColor};
+    color: ${(props) => props.theme.whiteColor};
   }
 `;
