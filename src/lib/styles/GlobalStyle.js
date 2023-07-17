@@ -6,10 +6,12 @@ const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
     }
+
     a{
         text-decoration: none;
         color: inherit;
     }
+
     body {
       margin: 0;
       font-family: "Noto Sans KR", sans-serif, -apple-system, BlinkMacSystemFont,
@@ -22,6 +24,20 @@ const GlobalStyle = createGlobalStyle`
     code {
       font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight:500;
+    }
+
+    strong {
+      font-weight:700;
+    }
+
+    button {
+      font-family: "Noto Sans KR", sans-serif;
+      font-size: 16px;
     }
     `;
 

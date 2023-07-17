@@ -28,7 +28,6 @@ const CategoryBlock = styled.ul`
   align-items: center;
   justify-content: center;
   gap: 30px;
-
   margin-top: 100px;
 
   & li:hover {
@@ -44,6 +43,8 @@ const CategoryBlock = styled.ul`
   li {
     padding: 10px 20px;
     border-radius: 20px;
+    color: ${(props) => props.theme.mediumGrayColor};
     cursor: pointer;
+    transition: all 0.1s ease-in-out;
   }
 `;

@@ -44,20 +44,22 @@ const Header = () => {
 
   return (
     <HeaderBlock>
-      <h3>
+      <div className="logo-wrapper">
         <Link to={"/"}>
           <img className="logo-img" src={logo} />
         </Link>
-      </h3>
+      </div>
       {userLoggedIn ? (
         <div className="button-wrapper">
-          <Button size={"sm"} onClick={handleLogout}>
-            로그아웃
-          </Button>
-          <Button size={"sm"} onClick={handleMypage}>
-            마이페이지
-          </Button>
-          <Button size={"sm"} onClick={handleWrite}>
+          <span onClick={handleLogout}>로그아웃</span>
+          <Link to={"/mypage"}>마이페이지</Link>
+
+          <Button
+            size={"md"}
+            bgcolor={theme.darkColor}
+            color={theme.whiteColor}
+            onClick={handleWrite}
+          >
             글쓰기
           </Button>
         </div>
@@ -69,6 +71,7 @@ const Header = () => {
           <Button
             size={"md"}
             bgcolor={theme.primaryColor}
+            color={theme.whiteColor}
             onClick={handleWrite}
           >
             글쓰기
@@ -85,9 +88,31 @@ const HeaderBlock = styled.div`
   display: flex;
   justify-content: space-between;
 
-  max-width: 1020px;
+  position: fixed;
+  top: 0;
+
+  width: 100%;
   margin: 0 auto;
-  padding: 30px;
+  padding: 20px 30px;
+
+  .button-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    span {
+      cursor: pointer;
+    }
+
+    a {
+      margin-right: 6px;
+    }
+  }
+
+  .logo-wrapper {
+    display: flex;
+    align-items: center;
+  }
 
   .logo-img {
     width: 200px;

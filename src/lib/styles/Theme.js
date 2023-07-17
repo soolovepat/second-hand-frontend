@@ -1,9 +1,11 @@
 const colors = {
   whiteColor: "#ffffff",
-  grayColor: "#e2e2e2",
+  lightGrayColor: "#cbcbcb",
+  mediumGrayColor: "#939393",
+  darkGrayColor: "#4a4a4a",
   darkColor: "#000000",
 
-  primaryColor: "#34d46d",
+  primaryColor: "#00c177",
   secondaryColor: "#76e39d",
 };
 
