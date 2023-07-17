@@ -17,7 +17,7 @@ const LoginContainer = () => {
       // await signin(formData);
       console.log("로그인 성공");
       // dispatch(loginSuccess());
-      navigate("/mainpage");
+      navigate("/");
     } catch (e) {
       console.log(e);
     }
