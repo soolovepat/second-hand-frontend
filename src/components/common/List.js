@@ -50,7 +50,7 @@ const ListBlock = styled.div`
     display: block;
     width: 100%;
     height: 170px;
-    background-color: #a6d3ff;
+    background-color: #4ae982;
   }
 
   strong {

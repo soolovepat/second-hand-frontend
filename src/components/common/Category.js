@@ -32,8 +32,14 @@ const CategoryBlock = styled.ul`
 
   margin-top: 100px;
 
-  .active {
-    background-color: #a6d3ff;
+  & li:hover {
+    background-color: #4ae982;
+    color: #ffffff;
+  }
+
+  & .active {
+    background-color: #4ae982;
+    color: #ffffff;
   }
 
   li {
