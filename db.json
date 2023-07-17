@@ -801,6 +801,17 @@
       "location": "",
       "isSold": false,
       "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
+    },
+    {
+      "id": "88f5da0e-b538-4c4e-a48f-54654930fdf7",
+      "username": "skdud3669@gmail.com",
+      "title": "r",
+      "content": "t",
+      "price": "44",
+      "category": "생활/주방",
+      "location": "r",
+      "isSold": false,
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/bunnies_.jpg"
     }
   ],
   "users": [

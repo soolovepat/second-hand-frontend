@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Details from "../../components/details/Details";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import CommentsContainer from "../comments/CommentsContainer";
 // import { carrot1, carrot0, carrot2, carrot3 } from "../../assets/exampleImages";
 
@@ -11,14 +11,12 @@ import { getPost } from "../../api/posts";
 const DetailContainer = () => {
   const { id } = useParams();
   const [post, setPost] = useState(null);
-  //mockup data
-
+  const navigate = useNavigate();
   const [currImgIndex, setCurrImgIndex] = useState(0);
 
   useEffect(() => {
     const fetchPost = async () => {
       const response = await getPost(id);
-      console.log(response);
       setPost(response[0]);
     };
     fetchPost();
@@ -39,9 +37,15 @@ const DetailContainer = () => {
     }
   };
 
+  const onEdit = () => {
+    navigate(`/write/${id}`);
+  };
+
+  const onDelete = () => {};
+
   if (!post) {
     //수정필요
-    return <div>로딩중...</div>;
+    return <DetailBlock>로딩중...</DetailBlock>;
   }
 
   return (
@@ -51,6 +55,8 @@ const DetailContainer = () => {
         currImgIndex={currImgIndex}
         onIncreaseIdx={onIncreaseIdx}
         onDecreaseIdx={onDecreaseIdx}
+        onEdit={onEdit}
+        onDelete={onDelete}
       />
       <CommentsContainer comments={post.commentList} />
       <ToastContainer position={toast.POSITION.TOP_CENTER} />
