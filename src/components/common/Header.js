@@ -35,7 +35,7 @@ const Header = () => {
   return (
     <HeaderBlock>
       <h3>
-        <Link to={"/mainpage"}>로고</Link>
+        <Link to={"/"}>로고</Link>
       </h3>
       {userLoggedIn ? (
         <Button size={"sm"} onClick={handleLogout}>
