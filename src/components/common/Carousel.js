@@ -68,7 +68,7 @@ const DotsBlock = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 350px;
+  top: 380px;
   padding: 10px;
 `;
 

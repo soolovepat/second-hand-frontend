@@ -49,7 +49,7 @@ const Header = () => {
         </Link>
       </h3>
       {userLoggedIn ? (
-        <>
+        <div className="button-wrapper">
           <Button size={"sm"} onClick={handleLogout}>
             로그아웃
           </Button>
@@ -59,16 +59,16 @@ const Header = () => {
           <Button size={"sm"} onClick={handleWrite}>
             글쓰기
           </Button>
-        </>
+        </div>
       ) : (
-        <>
+        <div className="button-wrapper">
           <Button size={"sm"} onClick={handleLogin}>
             로그인
           </Button>
           <Button size={"sm"} onClick={handleWrite}>
             글쓰기
           </Button>
-        </>
+        </div>
       )}
     </HeaderBlock>
   );
