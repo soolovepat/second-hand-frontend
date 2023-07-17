@@ -35,6 +35,7 @@ const ListBlock = styled.div`
   box-shadow: 4px 12px 30px 6px rgba(0, 0, 0, 0.09);
   overflow: hidden;
   transition: all 0.2s ease-in-out;
+  cursor: pointer;
 
   &:hover {
     box-shadow: 4px 12px 30px 6px rgba(0, 0, 0, 0.06);

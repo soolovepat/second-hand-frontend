@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import Input from "../../common/Input";
 import Select from "../../common/Select";
 import Button from "../../common/Button";
+import { GoogleLoginButton } from "./GoogleAuthForm";
 
 const AuthForm = ({
   type,
@@ -66,9 +67,14 @@ const AuthForm = ({
         </Button>
       )}
       {type === "login" && (
-        <p className="go-to-register" onClick={rest.goToRegister}>
-          {"회원가입 >"}
-        </p>
+        <>
+          <div className="google">
+            <GoogleLoginButton />
+          </div>
+          <p className="go-to-register" onClick={rest.goToRegister}>
+            {"회원가입 >"}
+          </p>
+        </>
       )}
     </AuthFormBlock>
   );
@@ -96,21 +102,26 @@ const AuthFormBlock = styled.div`
     margin-top: 10px;
   }
   button {
-    margin-top: 40px;
+    margin-top: 50px;
   }
 
   ${({ type }) =>
     type === "login" &&
     css`
       height: 400px;
-      margin-top: 100px;
+      margin-top: 50px;
     `}
 
   .go-to-register {
     position: absolute;
-    bottom: -18%;
+    bottom: -28%;
     right: 8%;
     color: #565656;
     cursor: pointer;
+  }
+  .google {
+    position: absolute;
+    bottom: -8%;
+    width: 80%;
   }
 `;
