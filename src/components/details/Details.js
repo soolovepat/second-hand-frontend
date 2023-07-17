@@ -25,14 +25,11 @@ const Details = ({ post, currImgIndex, onIncreaseIdx, onDecreaseIdx }) => {
         </div>
       </DetailHeaderBlock>
       <DetailDescBlock>
-        <div className="carousel">
+        {/* <div className="carousel">
           <div
             className="img-container"
-
-
             style={{ transform: `translateX(-${currImgIndex * 100}%)` }}>
             {img?.map((src, idx) => (
-
               <div key={idx} className="img-wrapper">
                 <img src={src} alt="product" />
               </div>
@@ -44,7 +41,8 @@ const Details = ({ post, currImgIndex, onIncreaseIdx, onDecreaseIdx }) => {
           <p className="icons right">
             <FaChevronRight onClick={onIncreaseIdx} />
           </p>
-        </div>
+        </div> */}
+        <img src={img} alt="product" />
         <div className="content">{content}</div>
         <CarouselDots currImgIndex={currImgIndex} imgLength={img?.length} />
       </DetailDescBlock>

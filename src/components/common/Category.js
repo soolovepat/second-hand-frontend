@@ -12,7 +12,8 @@ const Category = ({ selectList, setSelectList, CATENAME }) => {
         <li
           key={id}
           className={id === selectList.id ? "active" : ""}
-          onClick={() => onClickCate(cate)}>
+          onClick={() => onClickCate(cate)}
+        >
           {cate.name}
         </li>
       ))}
@@ -31,13 +32,13 @@ const CategoryBlock = styled.ul`
   margin-top: 100px;
 
   & li:hover {
-    background-color: #34d46d;
+    background-color: ${(props) => props.theme.primaryColor};
     color: #ffffff;
   }
 
   & .active {
-    background-color: #34d46d;
-    color: #ffffff;
+    background-color: ${(props) => props.theme.primaryColor};
+    color: ${(props) => props.theme.whiteColor};
   }
 
   li {

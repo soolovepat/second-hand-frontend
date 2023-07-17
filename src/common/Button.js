@@ -1,8 +1,14 @@
 import { css, styled } from "styled-components";
 
-const Button = ({ children, size, color, icon, onClick }) => {
+const Button = ({ children, size, color, bgcolor, icon, onClick }) => {
   return (
-    <ButtonStyle size={size} icon={icon} color={color} onClick={onClick}>
+    <ButtonStyle
+      size={size}
+      icon={icon}
+      color={color}
+      bgcolor={bgcolor}
+      onClick={onClick}
+    >
       {children}
     </ButtonStyle>
   );
@@ -13,7 +19,7 @@ export default Button;
 const ButtonStyle = styled.button`
   margin: 3px;
   border-radius: 25px;
-  border: 1px solid #ccc;
+  border: 0;
   cursor: pointer;
 
   &:active {
@@ -25,10 +31,10 @@ const ButtonStyle = styled.button`
       case "lg":
         return css`
           ${(props) =>
-            props.color &&
+            props.bgcolor &&
             css`
-              background-color: ${(props) => props.color};
-              color: white;
+              background-color: ${(props) => props.bgcolor};
+              color: ${(props) => props.color};
             `}
           height: 50px;
           width: 130px;
@@ -37,10 +43,10 @@ const ButtonStyle = styled.button`
       case "md":
         return css`
           ${(props) =>
-            props.color &&
+            props.bgcolor &&
             css`
-              background-color: ${(props) => props.color};
-              color: white;
+              background-color: ${(props) => props.bgcolor};
+              color: ${(props) => props.color};
             `}
           height: 50px;
           width: 80px;

@@ -1,22 +1,30 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import Input from "../../common/Input";
-import Header from "../../components/common/Header";
-import styled from "styled-components";
-import Select from "../../common/Select";
 import { writePost } from "../../api/posts";
 import { CATEGORIES } from "../auth/RegisterContainer";
 import { toast } from "react-toastify";
-import { Toast } from "../../components/common/Toast";
-import Button from "../../common/Button";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
+import Write from "../../components/write/Write";
+import AWS from "aws-sdk";
 
 const WriteContainer = () => {
   const navigate = useNavigate();
   const id = uuidv4();
+  const [progress, setProgress] = useState(0);
+  const [showAlert, setShowAlert] = useState(false);
   const userEmail = jwt_decode(localStorage.getItem("google_token")).email;
+
+  AWS.config.update({
+    accessKeyId: process.env.REACT_APP_ACCESS_KEY,
+    secretAccessKey: process.env.REACT_APP_SECREAT_ACCESS_KEY,
+  });
+
+  const myBucket = new AWS.S3({
+    params: { Bucket: process.env.REACT_APP_S3_BUCKET },
+    region: process.env.REACT_APP_RESION,
+  });
 
   const [formData, setFormData] = useState({
     id: id,
@@ -27,7 +35,7 @@ const WriteContainer = () => {
     category: "",
     location: "",
     isSold: false,
-    img: [],
+    img: null,
   });
   const [openSelect, setOpenSelect] = useState(false);
 
@@ -41,14 +49,14 @@ const WriteContainer = () => {
   };
 
   const onChangeFile = (e) => {
-    const { files } = e.target;
-    for (let i = 0; i < files.length; i++) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setFormData({ ...formData, img: [...formData.img, reader.result] });
-      };
-      reader.readAsDataURL(files[i]);
+    const file = e.target.files[0];
+    const fileExt = file.name.split(".").pop();
+    if (file.type !== "image/jpeg" || fileExt !== "jpg") {
+      alert("jpg 파일만 Upload 가능합니다.");
+      return;
     }
+    setProgress(0);
+    setFormData({ ...formData, img: e.target.files[0] });
   };
 
   const onToggleSelect = () => {
@@ -60,9 +68,10 @@ const WriteContainer = () => {
     setFormData({ ...formData, category: CATEGORIES[idx] });
   };
 
-  const handlePost = async () => {
+  const handlePost = async (imageUrl) => {
+    const updatedFormData = { ...formData, img: imageUrl };
     try {
-      const response = await writePost(formData);
+      const response = await writePost(updatedFormData);
       console.log(response);
       Swal.fire({
         position: "top",
@@ -72,6 +81,16 @@ const WriteContainer = () => {
         timer: 1500,
       });
       navigate(`/${formData.id}/detail`);
+      setFormData({
+        ...formData,
+        id: uuidv4(),
+        title: "",
+        content: "",
+        price: "",
+        category: "",
+        location: "",
+        img: "",
+      });
     } catch (e) {
       console.log(e);
     }
@@ -79,135 +98,56 @@ const WriteContainer = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+
     if (Number(formData.price) > 10000) {
       toast.error("만원 이하의 가격만 입력해주세요.");
       return;
     }
+
     if (!Object.values(formData).every((item) => item !== "")) {
       toast.error("정보를 모두 입력해주세요.");
       return;
     }
-    handlePost();
 
-    setFormData({
-      ...formData,
-      id: uuidv4(),
-      title: "",
-      content: "",
-      price: "",
-      category: "",
-      location: "",
-      img: [],
-    });
+    const params = {
+      ACL: "public-read",
+      Body: formData.img,
+      Bucket: process.env.REACT_APP_S3_BUCKET,
+      Key: "upload/" + formData.img.name + ".jpg",
+    };
+
+    myBucket
+      .putObject(params)
+      .on("httpUploadProgress", (evt) => {
+        setProgress(Math.round((evt.loaded / evt.total) * 100));
+        setShowAlert(true);
+        setTimeout(() => {
+          setShowAlert(false);
+        }, 3000);
+      })
+      .send((err, _) => {
+        if (err) {
+          console.log(err);
+          return;
+        }
+        const imageUrl = `https://${process.env.REACT_APP_S3_BUCKET}.s3.${process.env.REACT_APP_RESION}.amazonaws.com/${params.Key}`;
+        setFormData({ ...formData, img: imageUrl });
+        handlePost(imageUrl);
+      });
   };
 
   return (
-    <WriteContainerBlock>
-      <Header />
-      <div className="write-header">상품 등록하기</div>
-      <div className="form">
-        <input
-          className="file-input"
-          type="file"
-          placeholder="사진 추가하기 (최대 3장)"
-          name={"img"}
-          onChange={onChangeFile}
-        />
-        <Input
-          w={"300px"}
-          h={"80px"}
-          name="title"
-          value={formData.title}
-          ph={"상품 이름 (20자 이내)"}
-          onChange={onChangeForm}
-          maxLength={20}
-        />
-        <Select
-          w={"50%"}
-          h={"80px"}
-          value={formData.category}
-          options={CATEGORIES}
-          openSelect={openSelect}
-          placeholder={"상품 카테고리"}
-          onToggleHandler={onToggleSelect}
-          onClickHandler={onClickSelect}
-        />
-        {/* textarea? */}
-        <textarea
-          name="content"
-          value={formData.content}
-          onChange={onChangeForm}
-          placeholder="상품 설명 (500자 이내)"
-          maxLength={500}
-        />
-        <Input
-          w={"300px"}
-          h={"80px"}
-          name="price"
-          value={formData.price}
-          ph={"가격 (만원 이하)"}
-          onChange={onChangeForm}
-        />
-        <Input
-          w={"300px"}
-          h={"80px"}
-          name="location"
-          ph={"거래 희망 장소 (20자 이내)"}
-          onChange={onChangeForm}
-          maxLength={20}
-        />
-        <Button size="lg" color={"black"} onClick={onSubmit}>
-          작성완료
-        </Button>
-      </div>
-      <Toast />
-    </WriteContainerBlock>
+    <Write
+      formData={formData}
+      openSelect={openSelect}
+      CATEGORIES={CATEGORIES}
+      onToggleSelect={onToggleSelect}
+      onClickSelect={onClickSelect}
+      onChangeFile={onChangeFile}
+      onChangeForm={onChangeForm}
+      onSubmit={onSubmit}
+    />
   );
 };
 
 export default WriteContainer;
-
-const WriteContainerBlock = styled.div`
-  .form {
-    width: 70%;
-    min-width: 450px;
-    max-width: 1100px;
-    margin: auto;
-    height: 1100px;
-    border: 2px solid #ccc;
-    border-radius: 80px;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    padding: 80px;
-    position: relative;
-  }
-
-  .file-input {
-    font-size: 1.1rem;
-  }
-  .write-header {
-    height: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.4rem;
-  }
-  textarea {
-    height: 300px;
-    border: 1px solid #ccc;
-    border-radius: 25px;
-    padding: 15px;
-    font-size: 1.2rem;
-    margin: 50px 0px;
-  }
-
-  button {
-    font-size: 1.125rem;
-    position: absolute;
-    bottom: 5%;
-    right: 43%;
-  }
-`;
-
-//post-> header: multi function (endpoint: lamda function, api gateway) -> S3 (이미지 버킷에 저장)
