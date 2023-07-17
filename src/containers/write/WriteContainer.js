@@ -113,7 +113,7 @@ const WriteContainer = () => {
       ACL: "public-read",
       Body: formData.img,
       Bucket: process.env.REACT_APP_S3_BUCKET,
-      Key: "upload/" + formData.img.name + ".jpg",
+      Key: "upload/" + formData.img.name,
     };
 
     myBucket

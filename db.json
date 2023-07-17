@@ -46,7 +46,7 @@
       "category": "디지털기기",
       "location": "서울시 강남구",
       "isSold": false,
-      "img": [],
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg",
       "commentList": [
         {
           "commentId": 130,
@@ -83,7 +83,7 @@
       "location": "서울시 강남구",
       "category": "디지털기기",
       "isSold": false,
-      "img": [],
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg",
       "commentList": [
         {
           "commentId": 160,
@@ -120,7 +120,7 @@
       "location": "서울시 강남구",
       "category": "디지털기기",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 5,
@@ -131,7 +131,7 @@
       "location": "서울시 강남구",
       "category": "디지털기기",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 6,
@@ -142,7 +142,7 @@
       "location": "서울시 강남구",
       "category": "디지털기기",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 7,
@@ -153,7 +153,7 @@
       "location": "서울시 강남구",
       "category": "도서",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 8,
@@ -164,7 +164,7 @@
       "location": "서울시 강남구",
       "category": "도서",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 9,
@@ -175,7 +175,7 @@
       "location": "서울시 강남구",
       "category": "도서",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 10,
@@ -186,7 +186,7 @@
       "location": "서울시 강남구",
       "category": "도서",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 11,
@@ -197,7 +197,7 @@
       "location": "서울시 강남구",
       "category": "도서",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 12,
@@ -208,7 +208,7 @@
       "location": "서울시 강남구",
       "category": "도서",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 13,
@@ -219,7 +219,7 @@
       "location": "서울시 강남구",
       "category": "가구/인테리어",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 14,
@@ -230,7 +230,7 @@
       "location": "서울시 강남구",
       "category": "가구/인테리어",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 15,
@@ -241,7 +241,7 @@
       "location": "서울시 강남구",
       "category": "가구/인테리어",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 16,
@@ -252,7 +252,7 @@
       "location": "서울시 강남구",
       "category": "가구/인테리어",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 17,
@@ -263,7 +263,7 @@
       "location": "서울시 강남구",
       "category": "가구/인테리어",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 18,
@@ -274,7 +274,7 @@
       "location": "서울시 강남구",
       "category": "가구/인테리어",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 19,
@@ -285,7 +285,7 @@
       "location": "서울시 강남구",
       "category": "생활/주방",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 20,
@@ -296,7 +296,7 @@
       "location": "서울시 강남구",
       "category": "생활/주방",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 21,
@@ -307,7 +307,7 @@
       "location": "서울시 강남구",
       "category": "생활/주방",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 22,
@@ -318,7 +318,7 @@
       "location": "서울시 강남구",
       "category": "생활/주방",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 23,
@@ -329,7 +329,7 @@
       "location": "서울시 강남구",
       "category": "생활/주방",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 24,
@@ -340,7 +340,7 @@
       "location": "서울시 강남구",
       "category": "생활/주방",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 25,
@@ -351,7 +351,7 @@
       "location": "서울시 강남구",
       "category": "유아동",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 26,
@@ -362,7 +362,7 @@
       "location": "서울시 강남구",
       "category": "유아동",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 27,
@@ -373,7 +373,7 @@
       "location": "서울시 강남구",
       "category": "유아동",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 28,
@@ -384,7 +384,7 @@
       "location": "서울시 강남구",
       "category": "유아동",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 29,
@@ -395,7 +395,7 @@
       "location": "서울시 강남구",
       "category": "유아동",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 30,
@@ -406,7 +406,7 @@
       "location": "서울시 강남구",
       "category": "유아동",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 31,
@@ -417,7 +417,7 @@
       "location": "서울시 강남구",
       "category": "의류",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 32,
@@ -428,7 +428,7 @@
       "location": "서울시 강남구",
       "category": "의류",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 33,
@@ -439,7 +439,7 @@
       "location": "서울시 강남구",
       "category": "의류",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 34,
@@ -450,7 +450,7 @@
       "location": "서울시 강남구",
       "category": "의류",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 35,
@@ -461,7 +461,7 @@
       "location": "서울시 강남구",
       "category": "의류",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 36,
@@ -472,7 +472,7 @@
       "location": "서울시 강남구",
       "category": "의류",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 37,
@@ -483,7 +483,7 @@
       "location": "서울시 강남구",
       "category": "디지털기기",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 38,
@@ -494,7 +494,7 @@
       "location": "서울시 강남구",
       "category": "디지털기기",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 39,
@@ -505,7 +505,7 @@
       "location": "서울시 강남구",
       "category": "뷰티/미용",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 40,
@@ -516,7 +516,7 @@
       "location": "서울시 강남구",
       "category": "뷰티/미용",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 41,
@@ -527,7 +527,7 @@
       "location": "서울시 강남구",
       "category": "뷰티/미용",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 42,
@@ -538,7 +538,7 @@
       "location": "서울시 강남구",
       "category": "뷰티/미용",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 43,
@@ -549,7 +549,7 @@
       "location": "서울시 강남구",
       "category": "뷰티/미용",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 44,
@@ -560,7 +560,7 @@
       "location": "서울시 강남구",
       "category": "뷰티/미용",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 45,
@@ -571,7 +571,7 @@
       "location": "서울시 강남구",
       "category": "뷰티/미용",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 46,
@@ -582,7 +582,7 @@
       "location": "서울시 강남구",
       "category": "뷰티/미용",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 47,
@@ -593,7 +593,7 @@
       "location": "서울시 강남구",
       "category": "뷰티/미용",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": 48,
@@ -604,7 +604,7 @@
       "location": "서울시 강남구",
       "category": "뷰티/미용",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": "447879eb-fa74-4fb0-9f39-94b016117516",
@@ -614,7 +614,7 @@
       "category": "디지털기기",
       "location": "갱남구",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": "ba08add4-81f1-4ca7-830c-f815315824e7",
@@ -624,7 +624,7 @@
       "category": "All",
       "location": "dfd",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": "fcc636f5-68ff-423b-8eaf-1808b8916433",
@@ -635,7 +635,7 @@
       "category": "가구/인테리어",
       "location": "V5A 0B3",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": "b8eafd28-0015-4f8a-987c-118dde460646",
@@ -646,7 +646,7 @@
       "category": "가구/인테리어",
       "location": "sd",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": "d64fa40c-4649-42ea-9275-7b73b838ec03",
@@ -657,7 +657,7 @@
       "category": "디지털기기",
       "location": "4",
       "isSold": false,
-      "img": []
+      "img": "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
     },
     {
       "id": "5a97a603-5c0a-428b-ac83-bfce77ae9a37",
