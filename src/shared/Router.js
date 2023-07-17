@@ -56,7 +56,7 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/mainpage" element={<MainPage />} />
+        <Route path="/" element={<MainPage />} />
 
         <Route element={<AuthRoute userLoggedIn={userLoggedIn} />}>
           <Route path="/login" element={<LoginPage />} />
@@ -75,7 +75,7 @@ const Router = () => {
 export default Router;
 
 const AuthRoute = ({ userLoggedIn }) => {
-  return userLoggedIn ? <Navigate to={"/mainpage"} /> : <Outlet />;
+  return userLoggedIn ? <Navigate to={"/"} /> : <Outlet />;
 };
 
 const ProtectedRoute = ({ userLoggedIn }) => {
