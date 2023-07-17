@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-
 import { jobs_hero, nearby_stores } from "../../assets/bannerImages";
 import Carousel from "./Carousel";
 
@@ -117,6 +116,7 @@ const BannerBlock = styled.div`
         img {
           width: 100%;
           max-height: 200px;
+          object-fit: contain;
         }
       }
     }
