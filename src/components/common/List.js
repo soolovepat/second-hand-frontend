@@ -1,15 +1,18 @@
 import React from "react";
 import { css, styled } from "styled-components";
+import theme from "../../lib/styles/Theme";
 
 const List = ({ post }) => {
   if (!post) {
     return <ListBlock>Loading...</ListBlock>;
   }
 
+  console.log(post.isSold);
   return (
-    <ListBlock src={post.imgs[0]}>
+    <ListBlock src={post.imgs[0]} isSold={post.isSold}>
       <span className="wrap-thumb">
         <span className="thumb-img" />
+        {post.isSold && <div className="sold">거래 완료</div>}
       </span>
       <strong>{post.title}</strong>
       <span>{post.username?.split("@")[0]}</span>
@@ -47,6 +50,20 @@ const ListBlock = styled.div`
 
   .wrap-thumb {
     margin: 0 -24px 28px;
+    position: relative;
+
+    ${(props) =>
+      props.isSold &&
+      css`
+        .sold {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 1.3rem;
+          color: ${theme.mediumGrayColor};
+        }
+      `}
   }
 
   .thumb-img {
@@ -59,6 +76,13 @@ const ListBlock = styled.div`
         background-image: url(${props.src});
         background-repeat: no-repeat;
         background-size: cover;
+      `}
+
+    ${(props) =>
+      props.isSold &&
+      css`
+        background-image: url(${props.src});
+        opacity: 0.35;
       `}
   }
 

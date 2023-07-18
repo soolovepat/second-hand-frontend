@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <FooterBlock>
       <Link to={"/"}>
-        <img className="logo-img" src={logoGray} />
+        <img className="logo-img" alt="footer-logo" src={logoGray} />
       </Link>
       <Link
         to={"https://github.com/nayoung3669/second-hand-frontend"}
