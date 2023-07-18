@@ -1,11 +1,7 @@
 import WriteContainer from "../../containers/write/WriteContainer";
 
 const WritePage = () => {
-  return (
-    <div>
-      <WriteContainer />
-    </div>
-  );
+  return <WriteContainer />;
 };
 
 export default WritePage;

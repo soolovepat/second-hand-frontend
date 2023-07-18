@@ -22,7 +22,7 @@ const checkIsLoggedIn = () => {
 
 const Router = () => {
   const dispatch = useDispatch();
-  const { user, userLoggedIn, isLoading } = useSelector(({ user }) => ({
+  const { userLoggedIn, isLoading } = useSelector(({ user }) => ({
     user: user.user,
     userLoggedIn: user.isLoggedIn,
     isLoading: user.isLoading,
@@ -61,6 +61,7 @@ const Router = () => {
         <Route element={<ProtectedRoute userLoggedIn={userLoggedIn} />}>
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/write" element={<WritePage />} />
+          <Route path="/write/:id" element={<WritePage />} />
         </Route>
       </Routes>
     </BrowserRouter>

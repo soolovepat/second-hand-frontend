@@ -1,7 +1,9 @@
 import api from "./axios";
 
 export const writePost = async (formData) => {
+  console.log(formData);
   const res = await api.post("/posts", formData);
+  console.log(res);
   return res;
 };
 

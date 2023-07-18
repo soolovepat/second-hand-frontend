@@ -1,7 +1,15 @@
 import styled, { css } from "styled-components";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import Button from "../../common/Button";
+// import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-const Details = ({ post, currImgIndex, onIncreaseIdx, onDecreaseIdx }) => {
+const Details = ({
+  post,
+  currImgIndex,
+  onIncreaseIdx,
+  onDecreaseIdx,
+  onEdit,
+  onDelete,
+}) => {
   const { title, price, content, category, img } = post;
 
   if (!post) {
@@ -25,14 +33,11 @@ const Details = ({ post, currImgIndex, onIncreaseIdx, onDecreaseIdx }) => {
         </div>
       </DetailHeaderBlock>
       <DetailDescBlock>
-        <div className="carousel">
+        {/* <div className="carousel">
           <div
             className="img-container"
-
-
             style={{ transform: `translateX(-${currImgIndex * 100}%)` }}>
             {img?.map((src, idx) => (
-
               <div key={idx} className="img-wrapper">
                 <img src={src} alt="product" />
               </div>
@@ -44,9 +49,16 @@ const Details = ({ post, currImgIndex, onIncreaseIdx, onDecreaseIdx }) => {
           <p className="icons right">
             <FaChevronRight onClick={onIncreaseIdx} />
           </p>
-        </div>
+        </div> */}
+        <img src={img} alt="product" />
         <div className="content">{content}</div>
-        <CarouselDots currImgIndex={currImgIndex} imgLength={img?.length} />
+        <Button size="md" onClick={onEdit}>
+          수정
+        </Button>
+        <Button size="md" onClick={onDelete}>
+          삭제
+        </Button>
+        {/* <CarouselDots currImgIndex={currImgIndex} imgLength={img?.length} /> */}
       </DetailDescBlock>
     </>
   );
@@ -54,38 +66,38 @@ const Details = ({ post, currImgIndex, onIncreaseIdx, onDecreaseIdx }) => {
 
 export default Details;
 
-const CarouselDots = ({ currImgIndex, imgLength }) => {
-  return (
-    <DotsBlock>
-      {Array(imgLength)
-        .fill(null)
-        .map((_, idx) => (
-          <Dot key={idx} active={currImgIndex === idx} />
-        ))}
-    </DotsBlock>
-  );
-};
+// const CarouselDots = ({ currImgIndex, imgLength }) => {
+//   return (
+//     <DotsBlock>
+//       {Array(imgLength)
+//         .fill(null)
+//         .map((_, idx) => (
+//           <Dot key={idx} active={currImgIndex === idx} />
+//         ))}
+//     </DotsBlock>
+//   );
+// };
 
-const DotsBlock = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-`;
+// const DotsBlock = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   padding: 10px;
+// `;
 
-const Dot = styled.div`
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #ccc;
-  margin: 0 5px;
+// const Dot = styled.div`
+//   width: 10px;
+//   height: 10px;
+//   border-radius: 50%;
+//   background: #ccc;
+//   margin: 0 5px;
 
-  ${(props) =>
-    props.active &&
-    css`
-      background: #333;
-    `}
-`;
+//   ${(props) =>
+//     props.active &&
+//     css`
+//       background: #333;
+//     `}
+// `;
 
 const DetailHeaderBlock = styled.div`
   display: flex;
