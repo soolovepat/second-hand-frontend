@@ -39,10 +39,6 @@ const Header = () => {
     navigate("/write");
   };
 
-  const handleMypage = () => {
-    navigate("/mypage");
-  };
-
   return (
     <HeaderBlock>
       <div className="logo-wrapper">
@@ -50,36 +46,40 @@ const Header = () => {
           <img className="logo-img" src={logo} />
         </Link>
       </div>
-      <div className="search-bar">
-        <SearchContainer />
-      </div>
-      {userLoggedIn ? (
-        <div className="button-wrapper">
-          <span onClick={handleLogout}>로그아웃</span>
-          <Link to={"/mypage"}>마이페이지</Link>
+      <div className="button-wrapper">
+        <div className="search-bar">
+          <SearchContainer />
+        </div>
+        {userLoggedIn ? (
+          <>
+            <span onClick={handleLogout}>로그아웃</span>
+            <Link to={"/mypage"}>마이페이지</Link>
 
-          <Button
-            size={"md"}
-            bgcolor={theme.darkColor}
-            color={theme.whiteColor}
-            onClick={handleWrite}>
-            글쓰기
-          </Button>
-        </div>
-      ) : (
-        <div className="button-wrapper">
-          <Button size={"md"} bgcolor={theme.grayColor} onClick={handleLogin}>
-            로그인
-          </Button>
-          <Button
-            size={"md"}
-            bgcolor={theme.primaryColor}
-            color={theme.whiteColor}
-            onClick={handleWrite}>
-            글쓰기
-          </Button>
-        </div>
-      )}
+            <Button
+              size={"md"}
+              bgcolor={theme.darkColor}
+              color={theme.whiteColor}
+              onClick={handleWrite}
+            >
+              글쓰기
+            </Button>
+          </>
+        ) : (
+          <>
+            <Button size={"md"} bgcolor={theme.grayColor} onClick={handleLogin}>
+              로그인
+            </Button>
+            <Button
+              size={"md"}
+              bgcolor={theme.primaryColor}
+              color={theme.whiteColor}
+              onClick={handleWrite}
+            >
+              글쓰기
+            </Button>
+          </>
+        )}
+      </div>
     </HeaderBlock>
   );
 };
@@ -111,12 +111,13 @@ const HeaderBlock = styled.div`
     }
   }
 
-  .search-bar {
+  /* .search-bar {
     position: absolute;
     right: 310px;
     top: 15%;
     width: 260px;
   }
+
   input {
     border: 1px solid ${theme.grayColor};
   }
