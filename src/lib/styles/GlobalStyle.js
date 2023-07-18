@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
     ${reset}
     * {
         box-sizing: border-box;
+        font-family: "Noto Sans KR", sans-serif;
     }
 
     a{
@@ -36,8 +37,11 @@ const GlobalStyle = createGlobalStyle`
     }
 
     button {
-      font-family: "Noto Sans KR", sans-serif;
       font-size: 16px;
+      cursor: pointer;
+    }
+
+    textarea{
     }
     `;
 
