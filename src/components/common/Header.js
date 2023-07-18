@@ -43,7 +43,7 @@ const Header = () => {
     <HeaderBlock>
       <div className="logo-wrapper">
         <Link to={"/"}>
-          <img className="logo-img" src={logo} />
+          <img className="logo-img" src={logo} alt="logo" />
         </Link>
       </div>
       <div className="button-wrapper">
@@ -58,8 +58,7 @@ const Header = () => {
               size={"md"}
               bgcolor={theme.darkColor}
               color={theme.whiteColor}
-              onClick={handleWrite}
-            >
+              onClick={handleWrite}>
               글쓰기
             </Button>
           </>
@@ -72,8 +71,7 @@ const Header = () => {
               size={"md"}
               bgcolor={theme.primaryColor}
               color={theme.whiteColor}
-              onClick={handleWrite}
-            >
+              onClick={handleWrite}>
               글쓰기
             </Button>
           </>

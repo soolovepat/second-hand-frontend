@@ -66,7 +66,6 @@ export default Profile;
 
 const MypageBlock = styled.div`
   width: 950px;
-  height: 600px;
   margin: auto;
   position: relative;
 
