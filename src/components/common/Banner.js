@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { jobs_hero, nearby_stores } from "../../assets/bannerImages";
 import Carousel from "./Carousel";
+import theme from "../../lib/styles/Theme";
 
 const Banner = () => {
   const example = [
@@ -60,7 +61,8 @@ const BannerBlock = styled.div`
   flex-direction: column;
   align-items: center;
   border-bottom: 1px solid lightgray;
-  background-color: #d9d9d9;
+  background-color: ${(props) => props.theme.lightGrayColor};
+  margin-top: 88px;
 
   .carousel {
     position: relative;

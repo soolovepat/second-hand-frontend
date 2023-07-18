@@ -17,9 +17,10 @@ const Button = ({ children, size, color, bgcolor, icon, onClick }) => {
 export default Button;
 
 const ButtonStyle = styled.button`
-  margin: 3px;
+  padding: 0 20px;
   border-radius: 25px;
   border: 0;
+  font-weight: 500;
   cursor: pointer;
 
   &:active {
@@ -37,8 +38,6 @@ const ButtonStyle = styled.button`
               color: ${(props) => props.color};
             `}
           height: 50px;
-          width: 130px;
-          font-weight: 600;
         `;
       case "md":
         return css`
@@ -48,13 +47,11 @@ const ButtonStyle = styled.button`
               background-color: ${(props) => props.bgcolor};
               color: ${(props) => props.color};
             `}
-          height: 50px;
-          width: 80px;
+          height: 48px;
         `;
       case "sm":
         return css`
           height: 40px;
-          width: 100px;
         `;
       default:
         return;
