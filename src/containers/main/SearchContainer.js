@@ -140,6 +140,7 @@ const SearchBlock = styled.div`
     margin: 4px 10px;
     padding: 14px 18px;
     border-radius: 24px;
+    transition: all 0.1s ease-in-out;
 
     cursor: pointer;
     &:hover {

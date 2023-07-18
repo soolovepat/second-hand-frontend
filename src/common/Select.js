@@ -58,6 +58,7 @@ export const SelectStyle = styled.div`
     border-radius: 30px;
 
     height: 50px;
+    transition: all 0.1s ease-in-out;
     &:hover {
       background-color: ${theme.lightGrayColor};
     }

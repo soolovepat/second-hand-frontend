@@ -31,6 +31,7 @@ const Write = ({
               <span>{numberOfImage} / 3</span>
             </label>
           </div>
+          <div>사진</div>
           <span>
             <FaCircleExclamation />
             jpg 파일만 업로드 가능합니다
@@ -85,7 +86,12 @@ const Write = ({
           onChange={onChangeForm}
           maxLength={20}
         />
-        <Button size="lg" color={"black"} onClick={onSubmit}>
+        <Button
+          size="lg"
+          bgcolor={theme.primaryColor}
+          color={theme.whiteColor}
+          onClick={onSubmit}
+        >
           작성완료
         </Button>
       </div>
@@ -115,6 +121,11 @@ const WriteContainerBlock = styled.div`
 
     button {
       margin: 30px auto 0;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        background-color: ${theme.darkColor};
+      }
     }
   }
 
@@ -161,6 +172,13 @@ const WriteContainerBlock = styled.div`
     font-size: 24px;
     text-align: center;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: ${theme.secondaryColor};
+      border: 1px solid ${theme.secondaryColor};
+      color: ${theme.darkGrayColor};
+    }
   }
 
   .write-header {
