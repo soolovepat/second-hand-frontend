@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import Button from "../../common/Button";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import theme from "../../lib/styles/Theme";
 
 const Details = ({
   post,
@@ -52,12 +53,14 @@ const Details = ({
         </div>
         <CarouselDots currImgIndex={currImgIndex} imgLength={imgs?.length} />
         <div className="content">{content}</div>
-        <Button size="md" onClick={onEdit}>
-          수정
-        </Button>
-        <Button size="md" onClick={onDelete}>
-          삭제
-        </Button>
+        <div className="buttons">
+          <Button size="sm" onClick={onEdit} bgcolor={theme.lightGrayColor}>
+            수정
+          </Button>
+          <Button size="sm" onClick={onDelete} bgcolor={theme.lightGrayColor}>
+            삭제
+          </Button>
+        </div>
       </DetailDescBlock>
     </>
   );
@@ -199,5 +202,14 @@ const DetailDescBlock = styled.div`
     text-align: start;
     min-height: 250px;
     padding: 40px 20px;
+  }
+
+  .buttons {
+    width: 100%;
+    text-align: end;
+    margin-bottom: 5px;
+    button {
+      margin: 5px;
+    }
   }
 `;

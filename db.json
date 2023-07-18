@@ -93,7 +93,6 @@
       "isSold": false,
       "imgs": [
         "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/kids-me-germany-Zzgmde4_lYU-unsplash.jpg",
-
         "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 4.jpg",
         "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg"
       ],
@@ -166,7 +165,6 @@
       "imgs": [
         "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/bunnies_.jpg",
         "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/kids-me-germany-Zzgmde4_lYU-unsplash.jpg",
-
         "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg"
       ]
     },
@@ -181,7 +179,6 @@
       "isSold": false,
       "imgs": [
         "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/kids-me-germany-Zzgmde4_lYU-unsplash.jpg",
-
         "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 4.jpg",
         "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg"
       ]
@@ -212,7 +209,6 @@
       "isSold": false,
       "imgs": [
         "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/kids-me-germany-Zzgmde4_lYU-unsplash.jpg",
-
         "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 4.jpg",
         "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg"
       ]
@@ -887,6 +883,20 @@
       "imgs": [
         "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/insung-yoon-MI9Wm6Fgwb8-unsplash.jpg",
         "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/kids-me-germany-Zzgmde4_lYU-unsplash.jpg"
+      ]
+    },
+    {
+      "id": "0244b85a-b5d5-427f-bd8e-e168891da1a5",
+      "username": "skdud3669@gmail.com",
+      "title": "c",
+      "content": "c",
+      "price": "4",
+      "category": "가구/인테리어",
+      "location": "4",
+      "isSold": false,
+      "imgs": [
+        "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/kids-me-germany-Zzgmde4_lYU-unsplash.jpg",
+        "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
       ]
     }
   ],

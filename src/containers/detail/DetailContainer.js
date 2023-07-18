@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import Details from "../../components/details/Details";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import CommentsContainer from "../comments/CommentsContainer";
-// import { carrot1, carrot0, carrot2, carrot3 } from "../../assets/exampleImages";
 
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
@@ -23,14 +22,14 @@ const DetailContainer = () => {
   }, [id]);
 
   const onIncreaseIdx = () => {
-    if (post?.img && currImgIndex >= post.img.length - 1) {
+    if (post?.imgs && currImgIndex >= post.imgs.length - 1) {
       toast.warn("마지막 사진입니다.");
     } else {
       setCurrImgIndex(currImgIndex + 1);
     }
   };
   const onDecreaseIdx = () => {
-    if (post?.img && currImgIndex <= 0) {
+    if (post?.imgs && currImgIndex <= 0) {
       toast.warn("첫번째 사진입니다.");
     } else {
       setCurrImgIndex(currImgIndex - 1);
