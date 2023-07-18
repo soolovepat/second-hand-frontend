@@ -110,14 +110,8 @@ const HeaderBlock = styled.div`
     }
   }
 
-  /* .search-bar {
-    position: absolute;
-    right: 310px;
-    top: 15%;
-  } */
-
   input {
-    border: 1px solid ${theme.grayColor};
+    border: 1px solid ${theme.lightGrayColor};
   }
 
   .logo-wrapper {

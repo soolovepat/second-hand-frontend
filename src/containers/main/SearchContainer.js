@@ -111,7 +111,7 @@ const SearchBlock = styled.div`
     border-radius: 10px;
     overflow-y: scroll;
     overflow-x: hidden;
-    box-shadow: 4px 12px 30px 6px rgba(0, 0, 0, 0.09);
+    z-index: 100;
 
     &::-webkit-scrollbar {
       background: transparent;
