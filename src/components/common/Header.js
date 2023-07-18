@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { logoutuser } from "../../redux/modules/user";
 import { logo } from "../../assets/logo";
 import theme from "../../lib/styles/Theme";
+import SearchContainer from "../../containers/main/SearchContainer";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -49,6 +50,9 @@ const Header = () => {
           <img className="logo-img" src={logo} />
         </Link>
       </div>
+      <div className="search-bar">
+        <SearchContainer />
+      </div>
       {userLoggedIn ? (
         <div className="button-wrapper">
           <span onClick={handleLogout}>로그아웃</span>
@@ -58,8 +62,7 @@ const Header = () => {
             size={"md"}
             bgcolor={theme.darkColor}
             color={theme.whiteColor}
-            onClick={handleWrite}
-          >
+            onClick={handleWrite}>
             글쓰기
           </Button>
         </div>
@@ -72,8 +75,7 @@ const Header = () => {
             size={"md"}
             bgcolor={theme.primaryColor}
             color={theme.whiteColor}
-            onClick={handleWrite}
-          >
+            onClick={handleWrite}>
             글쓰기
           </Button>
         </div>
@@ -87,13 +89,13 @@ export default Header;
 const HeaderBlock = styled.div`
   display: flex;
   justify-content: space-between;
-
   position: fixed;
   top: 0;
-
   width: 100%;
   margin: 0 auto;
+  z-index: 100;
   padding: 20px 30px;
+  background-color: ${theme.whiteColor};
 
   .button-wrapper {
     display: flex;
@@ -107,6 +109,15 @@ const HeaderBlock = styled.div`
     a {
       margin-right: 6px;
     }
+  }
+
+  .search-bar {
+    position: absolute;
+    right: 210px;
+    top: 15%;
+  }
+  input {
+    border: 1px solid ${theme.grayColor};
   }
 
   .logo-wrapper {

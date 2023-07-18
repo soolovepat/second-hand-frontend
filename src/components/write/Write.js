@@ -23,6 +23,7 @@ const Write = ({
         <input
           className="file-input"
           type="file"
+          multiple
           placeholder="사진 추가하기 (최대 3장)"
           name={"img"}
           onChange={onChangeFile}
