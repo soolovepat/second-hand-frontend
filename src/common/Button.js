@@ -21,6 +21,7 @@ const ButtonStyle = styled.button`
   border-radius: 25px;
   border: 0;
   font-weight: 500;
+  width: fit-content;
   cursor: pointer;
 
   &:active {

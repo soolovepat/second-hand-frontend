@@ -56,7 +56,7 @@ const PaginationBlock = styled.div`
 
 const PageNumber = styled.button`
   padding: 4px 12px;
-  margin: 0 4px;
+  margin: 0 2px;
   border: none;
   border-radius: 20px;
   font-weight: 300px;
