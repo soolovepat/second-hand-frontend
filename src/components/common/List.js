@@ -1,12 +1,14 @@
 import React from "react";
-import { styled } from "styled-components";
+import { css, styled } from "styled-components";
 
 const List = ({ post }) => {
   if (!post) {
     return <ListBlock>Loading...</ListBlock>;
   }
+
+  console.log(post.imgs[0]);
   return (
-    <ListBlock>
+    <ListBlock src={post.imgs[0]}>
       <span className="wrap-thumb">
         <span className="thumb-img" />
       </span>
@@ -52,7 +54,13 @@ const ListBlock = styled.div`
     display: block;
     width: 100%;
     height: 170px;
-    background-color: #34d46d;
+    ${(props) =>
+      props.src &&
+      css`
+        background-image: url(${props.src});
+        background-repeat: no-repeat;
+        background-size: cover;
+      `}
   }
 
   .location {

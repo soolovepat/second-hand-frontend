@@ -36,7 +36,7 @@ const WriteContainer = () => {
     category: "",
     location: "",
     isSold: false,
-    img: null,
+    imgs: [],
   });
   const [openSelect, setOpenSelect] = useState(false);
 
@@ -50,15 +50,17 @@ const WriteContainer = () => {
   };
 
   const onChangeFile = (e) => {
-    const file = e.target.files[0];
-    const fileExt = file.name.split(".").pop();
-    if (file.type !== "image/jpeg" || fileExt !== "jpg") {
-      alert("jpg 파일만 Upload 가능합니다.");
+    const files = Array.from(e.target.files);
+    const fileExts = files.map((file) => file.name.split(".").pop());
+    if (!fileExts.every((ext) => ext === "jpg")) {
+      alert("jpg 파일만 업로드해주세요.");
       return;
     }
     setProgress(0);
-    setFormData({ ...formData, img: e.target.files[0] });
+
+    setFormData({ ...formData, imgs: files });
     setNumberOfImage(numberOfImage + 1);
+
   };
 
   const onToggleSelect = () => {
@@ -71,7 +73,7 @@ const WriteContainer = () => {
   };
 
   const handlePost = async (imageUrl) => {
-    const updatedFormData = { ...formData, img: imageUrl };
+    const updatedFormData = { ...formData, imgs: imageUrl };
     try {
       const response = await writePost(updatedFormData);
       console.log(response);
@@ -91,14 +93,14 @@ const WriteContainer = () => {
         price: "",
         category: "",
         location: "",
-        img: "",
+        imgs: [],
       });
     } catch (e) {
       console.log(e);
     }
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     if (Number(formData.price) > 10000) {
@@ -111,31 +113,39 @@ const WriteContainer = () => {
       return;
     }
 
-    const params = {
-      ACL: "public-read",
-      Body: formData.img,
-      Bucket: process.env.REACT_APP_S3_BUCKET,
-      Key: "upload/" + formData.img.name,
-    };
+    const uploadPromises = formData.imgs.map((img, index) => {
+      const params = {
+        ACL: "public-read",
+        Body: img,
+        Bucket: process.env.REACT_APP_S3_BUCKET,
+        Key: `upload/${img.name}`,
+      };
 
-    myBucket
-      .putObject(params)
-      .on("httpUploadProgress", (evt) => {
-        setProgress(Math.round((evt.loaded / evt.total) * 100));
-        setShowAlert(true);
-        setTimeout(() => {
-          setShowAlert(false);
-        }, 3000);
-      })
-      .send((err, _) => {
-        if (err) {
-          console.log(err);
-          return;
-        }
-        const imageUrl = `https://${process.env.REACT_APP_S3_BUCKET}.s3.${process.env.REACT_APP_RESION}.amazonaws.com/${params.Key}`;
-        setFormData({ ...formData, img: imageUrl });
-        handlePost(imageUrl);
+      return new Promise((resolve, reject) => {
+        myBucket
+          .putObject(params)
+          .on("httpUploadProgress", (evt) => {
+            // progress 처리...
+          })
+          .send((err, _) => {
+            if (err) {
+              console.log(err);
+              reject(err);
+              return;
+            }
+            const imageUrl = `https://${process.env.REACT_APP_S3_BUCKET}.s3.${process.env.REACT_APP_RESION}.amazonaws.com/${params.Key}`;
+            resolve(imageUrl);
+          });
       });
+    });
+
+    try {
+      // 모든 이미지가 업로드될 때까지 기다림
+      const imageUrls = await Promise.all(uploadPromises);
+      handlePost(imageUrls);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (

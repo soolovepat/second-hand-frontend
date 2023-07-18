@@ -4,6 +4,7 @@ import { getPosts } from "../../api/posts";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
+import theme from "../../lib/styles/Theme";
 
 const SearchContainer = () => {
   const [searchText, setSearchText] = useState("");
@@ -25,7 +26,7 @@ const SearchContainer = () => {
       response.data?.map((post) => ({
         title: post.title,
         id: post.id,
-      }))
+      })),
     );
   };
 
@@ -69,8 +70,7 @@ const SearchContainer = () => {
                   onClick={(e) => {
                     e.stopPropagation();
                     onClickItem(post.id);
-                  }}
-                >
+                  }}>
                   {post.title} {" →"}
                 </li>
               );
@@ -84,13 +84,9 @@ const SearchContainer = () => {
 export default SearchContainer;
 
 const SearchBlock = styled.div`
-  max-height: 500px;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  width: 300px;
-  margin: 40px auto 0px auto;
-  &::-webkit-scrollbar {
-    display: none;
+  input {
+    font-size: 1rem;
+    height: 30px;
   }
   .search {
     height: 100%;
@@ -104,17 +100,34 @@ const SearchBlock = styled.div`
   }
 
   .search-results {
+    max-height: 280px;
+    width: 350px;
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    margin-top: 10px;
+    background: white;
+    border-radius: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    &::-webkit-scrollbar {
+      background: transparent;
+      width: 7px;
+      padding-top: 20px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: ${theme.primaryColor};
+    }
   }
   li {
     list-style: none;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    margin: 10px;
+    margin: 5px;
     padding: 10px;
     height: 40px;
+    border-radius: 10px;
+
     cursor: pointer;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
   }
 `;
