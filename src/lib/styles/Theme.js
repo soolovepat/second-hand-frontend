@@ -12,9 +12,9 @@ const colors = {
 };
 
 const h1box = css`
-  margin: 280px 0 100px;
+  margin: 220px 0 100px;
   text-align: center;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
   color: ${colors.darkColor};
 `;

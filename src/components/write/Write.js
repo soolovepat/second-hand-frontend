@@ -28,8 +28,8 @@ const Write = ({
           <div className="button-wrapper">
             <label for="file" className="real-button">
               <RiImageAddFill />
+              <span>{numberOfImage} / 3</span>
             </label>
-            <span>{numberOfImage} / 3</span>
           </div>
           <span>
             <FaCircleExclamation />
@@ -64,7 +64,6 @@ const Write = ({
           onToggleHandler={onToggleSelect}
           onClickHandler={onClickSelect}
         />
-        {/* textarea? */}
         <textarea
           name="content"
           value={formData.content}
@@ -115,27 +114,32 @@ const WriteContainerBlock = styled.div`
     background: white;
 
     button {
-      margin: 0 auto;
+      margin: 30px auto 0;
     }
   }
 
   .button-wrapper {
-    display: flex;
-    align-items: center;
+    /* display: flex;
+    align-items: center; */
     margin-bottom: 10px;
 
-    > span {
-      margin-left: 20px;
+    span {
+      margin-left: 10px;
+      font-size: 18px;
     }
   }
 
-  .file-wrapper > span {
-    font-size: 14px;
-    color: ${(props) => props.theme.mediumGrayColor};
+  .file-wrapper {
+    margin-bottom: 10px;
 
-    svg {
-      margin-right: 6px;
-      vertical-align: middle;
+    > span {
+      font-size: 14px;
+      color: ${(props) => props.theme.mediumGrayColor};
+
+      svg {
+        margin-right: 6px;
+        vertical-align: middle;
+      }
     }
   }
 
@@ -145,11 +149,14 @@ const WriteContainerBlock = styled.div`
   }
 
   .real-button {
+    display: flex;
+    align-items: center;
+
     width: fit-content;
-    background-color: black;
+    border: 1px solid ${theme.lightGrayColor};
     border-radius: 28px;
-    color: white;
-    padding: 2px 14px 0;
+    color: ${theme.mediumGrayColor};
+    padding: 0 20px;
     line-height: 50px;
     font-size: 24px;
     text-align: center;
@@ -162,9 +169,17 @@ const WriteContainerBlock = styled.div`
 
   textarea {
     height: 300px;
-    border: 1px solid #ccc;
+    border: 1px solid ${theme.lightGrayColor};
     border-radius: 25px;
     padding: 15px;
     font-size: 1rem;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: ${theme.mediumGrayColor};
+    }
   }
 `;

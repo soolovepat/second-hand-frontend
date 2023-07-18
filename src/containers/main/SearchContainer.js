@@ -61,7 +61,7 @@ const SearchContainer = () => {
         </>
       </div>
 
-      <div className="search-results">
+      <div className={openSearchBar ? "search-results" : ""}>
         {openSearchBar &&
           titles.map((post) => {
             if (post.title.includes(searchText)) {
@@ -108,7 +108,8 @@ const SearchBlock = styled.div`
     flex-direction: column;
     margin: 14px 0 0 30px;
     background: white;
-    border-radius: 10px;
+    border: 1px solid ${theme.lightGrayColor};
+    border-radius: 20px;
     overflow-y: scroll;
     overflow-x: hidden;
     z-index: 100;
