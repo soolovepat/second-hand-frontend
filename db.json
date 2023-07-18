@@ -48,7 +48,7 @@
       "username": "skdud3669@gmail.com",
       "price": 9900,
       "category": "디지털기기",
-      "location": "서울시 강남구",
+      "location": "경기도 성남시",
       "isSold": false,
       "imgs": [
         "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/bunnies_.jpg",
@@ -144,7 +144,7 @@
       "content": "판매합니다.",
       "username": "skdud3669@gmail.com",
       "price": 9900,
-      "location": "서울시 강남구",
+      "location": "경기도 성남시",
       "category": "디지털기기",
       "isSold": false,
       "imgs": [
@@ -264,7 +264,7 @@
       "content": "판매합니다.",
       "username": "skdud3669@gmail.com",
       "price": 9900,
-      "location": "서울시 강남구",
+      "location": "경기도 성남시",
       "category": "가구/인테리어",
       "isSold": false,
       "imgs": [
@@ -897,6 +897,19 @@
       "imgs": [
         "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/kids-me-germany-Zzgmde4_lYU-unsplash.jpg",
         "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/Unknown 5.jpg.jpg"
+      ]
+    },
+    {
+      "id": "ba1e45a3-3ae0-42d7-8709-8a7e12c1f731",
+      "username": "skdud3669@gmail.com",
+      "title": "곰도리",
+      "content": "규ㅟ여워",
+      "price": "2000",
+      "category": "유아동",
+      "location": "제주도",
+      "isSold": false,
+      "imgs": [
+        "https://second-hand-images-hanghae15.s3.ap-northeast-2.amazonaws.com/upload/kids-me-germany-Zzgmde4_lYU-unsplash.jpg"
       ]
     }
   ],

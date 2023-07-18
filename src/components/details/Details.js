@@ -10,6 +10,7 @@ const Details = ({
   onDecreaseIdx,
   onEdit,
   onDelete,
+  isUsers,
 }) => {
   const { title, price, content, category, imgs } = post;
 
@@ -54,12 +55,19 @@ const Details = ({
         <CarouselDots currImgIndex={currImgIndex} imgLength={imgs?.length} />
         <div className="content">{content}</div>
         <div className="buttons">
-          <Button size="sm" onClick={onEdit} bgcolor={theme.lightGrayColor}>
-            수정
-          </Button>
-          <Button size="sm" onClick={onDelete} bgcolor={theme.lightGrayColor}>
-            삭제
-          </Button>
+          {isUsers && (
+            <>
+              <Button size="sm" onClick={onEdit} bgcolor={theme.lightGrayColor}>
+                수정
+              </Button>
+              <Button
+                size="sm"
+                onClick={onDelete}
+                bgcolor={theme.lightGrayColor}>
+                삭제
+              </Button>
+            </>
+          )}
         </div>
       </DetailDescBlock>
     </>

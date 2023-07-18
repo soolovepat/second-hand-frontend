@@ -37,8 +37,7 @@ const Pagenation = ({
         <PageNumber
           key={pageNumber}
           className={currentPage === pageNumber ? "active" : ""}
-          onClick={() => handlePageChange(pageNumber)}
-        >
+          onClick={() => handlePageChange(pageNumber)}>
           {pageNumber}
         </PageNumber>
       ))}
