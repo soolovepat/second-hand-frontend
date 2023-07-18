@@ -47,9 +47,8 @@ const Header = () => {
         </Link>
       </div>
       <div className="button-wrapper">
-        <div className="search-bar">
-          <SearchContainer />
-        </div>
+        <SearchContainer />
+
         {userLoggedIn ? (
           <>
             <span onClick={handleLogout}>로그아웃</span>
@@ -115,8 +114,7 @@ const HeaderBlock = styled.div`
     position: absolute;
     right: 310px;
     top: 15%;
-    width: 260px;
-  }*/
+  } */
 
   input {
     border: 1px solid ${theme.grayColor};

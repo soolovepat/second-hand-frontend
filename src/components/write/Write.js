@@ -6,6 +6,7 @@ import { Toast } from "../../components/common/Toast";
 import Button from "../../common/Button";
 import { RiImageAddFill } from "react-icons/ri";
 import { FaCircleExclamation } from "react-icons/fa6";
+import theme from "../../lib/styles/Theme";
 
 const Write = ({
   formData,
@@ -54,7 +55,7 @@ const Write = ({
           maxLength={20}
         />
         <Select
-          w={"50%"}
+          w={"100%"}
           h={"80px"}
           value={formData.category}
           options={CATEGORIES}
@@ -72,7 +73,6 @@ const Write = ({
           maxLength={500}
         />
         <Input
-          w={"300px"}
           h={"80px"}
           name="price"
           value={formData.price}
@@ -80,7 +80,6 @@ const Write = ({
           onChange={onChangeForm}
         />
         <Input
-          w={"300px"}
           h={"80px"}
           name="location"
           ph={"거래 희망 장소 (20자 이내)"}
@@ -105,14 +104,13 @@ const WriteContainerBlock = styled.div`
     width: 70%;
     min-width: 450px;
     max-width: 1100px;
-    margin: auto;
     height: 1100px;
-    border: 2px solid #ccc;
-    border-radius: 80px;
     display: flex;
     flex-direction: column;
-    gap: 40px;
-    padding: 80px;
+    gap: 26px;
+
+    margin: 0 auto;
+    padding: 0 80px;
     position: relative;
     background: white;
 
@@ -159,11 +157,7 @@ const WriteContainerBlock = styled.div`
   }
 
   .write-header {
-    height: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.4rem;
+    ${theme.h1box}
   }
 
   textarea {
@@ -171,7 +165,6 @@ const WriteContainerBlock = styled.div`
     border: 1px solid #ccc;
     border-radius: 25px;
     padding: 15px;
-    font-size: 1.1rem;
-    margin: 50px 0px;
+    font-size: 1rem;
   }
 `;

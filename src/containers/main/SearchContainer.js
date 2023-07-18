@@ -26,7 +26,7 @@ const SearchContainer = () => {
       response.data?.map((post) => ({
         title: post.title,
         id: post.id,
-      })),
+      }))
     );
   };
 
@@ -70,7 +70,8 @@ const SearchContainer = () => {
                   onClick={(e) => {
                     e.stopPropagation();
                     onClickItem(post.id);
-                  }}>
+                  }}
+                >
                   {post.title} {" →"}
                 </li>
               );
@@ -95,35 +96,49 @@ const SearchBlock = styled.div`
   }
 
   .icon {
-    margin: 20px 20px 20px 0px;
-    font-size: 1.5rem;
+    margin-right: 10px;
+    font-size: 1.4rem;
   }
 
   .search-results {
-    max-height: 280px;
-    width: 270px;
+    position: absolute;
+    max-height: 272px;
+    width: 260px;
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
+    margin: 14px 0 0 30px;
     background: white;
     border-radius: 10px;
     overflow-y: scroll;
     overflow-x: hidden;
+    box-shadow: 4px 12px 30px 6px rgba(0, 0, 0, 0.09);
+
     &::-webkit-scrollbar {
       background: transparent;
-      width: 7px;
-      padding-top: 20px;
+      width: 10px;
+      //padding: 20px;
     }
+
+    &::-webkit-scrollbar-track {
+      //padding: 10px;
+      margin: 10px;
+    }
+
     &::-webkit-scrollbar-thumb {
-      background: ${theme.primaryColor};
+      background: ${theme.lightGrayColor};
+      border-radius: 8px;
     }
   }
+
+  li:nth-child(1) {
+    margin-top: 10px;
+  }
+
   li {
     list-style: none;
-    margin: 5px;
-    padding: 10px;
-    height: 40px;
-    border-radius: 10px;
+    margin: 4px 10px;
+    padding: 14px 18px;
+    border-radius: 24px;
 
     cursor: pointer;
     &:hover {
