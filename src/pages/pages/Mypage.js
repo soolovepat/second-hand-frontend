@@ -1,13 +1,13 @@
 import React from "react";
 import Header from "../../components/common/Header";
-import Profile from "../../containers/profile/Profile";
 import Footer from "../../components/common/Footer";
+import ProfileContainer from "../../containers/profile/Profile";
 
 const Mypage = () => {
   return (
     <>
       <Header />
-      <Profile />
+      <ProfileContainer />
       <Footer />
     </>
   );
