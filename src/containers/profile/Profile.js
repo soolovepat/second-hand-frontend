@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import theme from "../../lib/styles/Theme";
 import { getUserPosts } from "../../api/posts";
-import ListContainer from "../ListContainer";
+import ListContainer from "../List/ListContainer";
 
 const Profile = () => {
   const { user } = useSelector(({ user }) => ({
