@@ -22,6 +22,7 @@ const ButtonStyle = styled.button`
   font-weight: 500;
   width: fit-content;
   cursor: pointer;
+  min-width: 85px;
 
   &:active {
     filter: brightness(80%);
