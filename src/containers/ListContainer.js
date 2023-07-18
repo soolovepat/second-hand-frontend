@@ -8,7 +8,7 @@ import Pagenation from "../components/common/Pagenation";
 import { getPosts } from "../api/posts";
 import { useNavigate } from "react-router-dom";
 
-const ListContainer = () => {
+const ListContainer = ({ type, myPosts }) => {
   const navigate = useNavigate();
   const [postList, setPostList] = useState([]);
   const [userInfo, setUserInfo] = useState([]);
@@ -27,6 +27,10 @@ const ListContainer = () => {
   const [selectList, setSelectList] = useState(CATENAME[0]);
 
   useEffect(() => {
+    if (type === "mypage") {
+      setPostList(myPosts);
+      return;
+    }
     const fetchPosts = async () => {
       try {
         //const response = await axios.get("http://localhost:4000/posts");
@@ -36,9 +40,8 @@ const ListContainer = () => {
         console.error(error);
       }
     };
-
     fetchPosts();
-  }, []);
+  }, [myPosts, type]);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -52,6 +55,10 @@ const ListContainer = () => {
 
     fetchPosts();
   }, []);
+
+  if (!postList) {
+    return null;
+  }
 
   // 현재 페이지의 리스트 항목을 반환하는 함수
   const getCurrentList = () => {
@@ -69,6 +76,29 @@ const ListContainer = () => {
     navigate(`/${id}/detail`);
   };
 
+  //마이페이지용
+  if (type === "mypage") {
+    return (
+      <div className="myPosts">
+        <ListContainerBlock>
+          {getCurrentList()?.map((post) => (
+            <div key={post.title} onClick={() => onClickHandler(post.id)}>
+              <List post={post} />
+            </div>
+          ))}
+        </ListContainerBlock>
+        <Pagenation
+          setCurrentPage={setCurrentPage}
+          selectList={selectList}
+          postList={postList}
+          itemsPerPage={itemsPerPage}
+          currentPage={currentPage}
+        />
+      </div>
+    );
+  }
+
+  //메인페이지용
   return (
     <>
       <LikeItemList postList={postList} userInfo={userInfo} />

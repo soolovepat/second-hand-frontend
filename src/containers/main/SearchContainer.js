@@ -101,7 +101,7 @@ const SearchBlock = styled.div`
 
   .search-results {
     max-height: 280px;
-    width: 350px;
+    width: 270px;
     display: flex;
     flex-direction: column;
     margin-top: 10px;

@@ -6,7 +6,6 @@ const List = ({ post }) => {
     return <ListBlock>Loading...</ListBlock>;
   }
 
-  console.log(post.imgs[0]);
   return (
     <ListBlock src={post.imgs[0]}>
       <span className="wrap-thumb">

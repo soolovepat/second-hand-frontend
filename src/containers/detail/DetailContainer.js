@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Details from "../../components/details/Details";
 import { useNavigate, useParams } from "react-router-dom";
 import CommentsContainer from "../comments/CommentsContainer";
-
+import jwt_decode from "jwt-decode";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { getPost } from "../../api/posts";
@@ -12,6 +12,7 @@ const DetailContainer = () => {
   const [post, setPost] = useState(null);
   const navigate = useNavigate();
   const [currImgIndex, setCurrImgIndex] = useState(0);
+  const userEmail = jwt_decode(localStorage.getItem("google_token")).email;
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -52,6 +53,7 @@ const DetailContainer = () => {
       <Details
         post={post}
         currImgIndex={currImgIndex}
+        isUsers={post.username === userEmail}
         onIncreaseIdx={onIncreaseIdx}
         onDecreaseIdx={onDecreaseIdx}
         onEdit={onEdit}

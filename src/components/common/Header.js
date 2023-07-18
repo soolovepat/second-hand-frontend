@@ -113,8 +113,9 @@ const HeaderBlock = styled.div`
 
   .search-bar {
     position: absolute;
-    right: 210px;
+    right: 310px;
     top: 15%;
+    width: 260px;
   }
   input {
     border: 1px solid ${theme.grayColor};
