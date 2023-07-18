@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import theme from "../../lib/styles/Theme";
-import ListContainer from "../../containers/ListContainer";
+import ListContainer from "../../containers/list/ListContainer";
 
 const Profile = ({ user, myPosts }) => {
   return (

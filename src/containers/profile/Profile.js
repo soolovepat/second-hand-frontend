@@ -6,6 +6,7 @@ import CalendarProfile from "../../components/profile/Calendar";
 import theme from "../../lib/styles/Theme";
 import "react-calendar/dist/Calendar.css";
 import styled from "styled-components";
+import ListContainer from "../list/ListContainer";
 
 const ProfileContainer = () => {
   const { user } = useSelector(({ user }) => ({
@@ -40,6 +41,26 @@ const ProfileContainer = () => {
   }
   return (
     <MypageBlock>
+      <h1 className="mypage-title">마이페이지</h1>
+      <div className="mypage-container">
+        <section>
+          <div className="user-info">
+            <strong>내 프로필</strong>
+            <img className="picture" src={user.picture} alt="" />
+            <div className="name">
+              <span>{user.family_name} </span>
+              <span>{user.given_name}</span>
+            </div>
+            <span className="email">{user.email}</span>
+          </div>
+        </section>
+        <section>
+          <div className="my-posts">
+            <strong>내 게시물</strong>
+            <ListContainer type={"mypage"} myPosts={myPosts} />
+          </div>
+        </section>
+      </div>
       <Profile user={user} myPosts={myPosts} />
       <div className="cal">
         <CalendarProfile />
@@ -55,9 +76,8 @@ const MypageBlock = styled.div`
   margin: auto;
   position: relative;
 
-  h1 {
-    margin-top: 140px;
-    text-align: center;
+  .mypage-title {
+    ${theme.h1box}
   }
 
   strong {
