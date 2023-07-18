@@ -6,7 +6,7 @@ import CalendarProfile from "../../components/profile/Calendar";
 import theme from "../../lib/styles/Theme";
 import "react-calendar/dist/Calendar.css";
 import styled from "styled-components";
-import ListContainer from "../lista/ListContainer";
+import ListContainer from "../list/ListContainer";
 
 const ProfileContainer = () => {
   const { user } = useSelector(({ user }) => ({
