@@ -43,7 +43,7 @@ const Header = () => {
     <HeaderBlock>
       <div className="logo-wrapper">
         <Link to={"/"}>
-          <img className="logo-img" src={logo} />
+          <img className="logo-img" src={logo} alt="logo" />
         </Link>
       </div>
       <div className="button-wrapper">
@@ -58,8 +58,7 @@ const Header = () => {
               size={"md"}
               bgcolor={theme.darkColor}
               color={theme.whiteColor}
-              onClick={handleWrite}
-            >
+              onClick={handleWrite}>
               글쓰기
             </Button>
           </>
@@ -72,8 +71,7 @@ const Header = () => {
               size={"md"}
               bgcolor={theme.primaryColor}
               color={theme.whiteColor}
-              onClick={handleWrite}
-            >
+              onClick={handleWrite}>
               글쓰기
             </Button>
           </>
@@ -94,7 +92,7 @@ const HeaderBlock = styled.div`
   margin: 0 auto;
   padding: 20px 30px;
   background-color: ${theme.whiteColor};
-  z-index: 10;
+  z-index: 100;
 
   .button-wrapper {
     display: flex;
@@ -110,14 +108,8 @@ const HeaderBlock = styled.div`
     }
   }
 
-  /* .search-bar {
-    position: absolute;
-    right: 310px;
-    top: 15%;
-  } */
-
   input {
-    border: 1px solid ${theme.grayColor};
+    //border: 1px solid ${theme.lightGrayColor};
   }
 
   .logo-wrapper {

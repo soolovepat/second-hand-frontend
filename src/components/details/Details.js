@@ -21,7 +21,7 @@ const Details = ({
   return (
     <>
       <DetailHeaderBlock className="detailHeader">
-        <div className="detail-title">상품 상세 보기</div>
+        <h1 className="detail-title">상품 상세 보기</h1>
         <div className="header-detail">
           <div>
             <p className="title">{title}</p>
@@ -38,7 +38,8 @@ const Details = ({
         <div className="carousel">
           <div
             className="img-container"
-            style={{ transform: `translateX(-${currImgIndex * 100}%)` }}>
+            style={{ transform: `translateX(-${currImgIndex * 100}%)` }}
+          >
             {imgs?.map((src, idx) => (
               <div key={idx} className="img-wrapper">
                 <img src={src} alt="product" />
@@ -55,7 +56,7 @@ const Details = ({
         <CarouselDots currImgIndex={currImgIndex} imgLength={imgs?.length} />
         <div className="content">{content}</div>
         <div className="buttons">
-          {isUsers && (
+          {isUsers ? (
             <>
               <Button size="sm" onClick={onEdit} bgcolor={theme.lightGrayColor}>
                 수정
@@ -63,10 +64,13 @@ const Details = ({
               <Button
                 size="sm"
                 onClick={onDelete}
-                bgcolor={theme.lightGrayColor}>
+                bgcolor={theme.lightGrayColor}
+              >
                 삭제
               </Button>
             </>
+          ) : (
+            <></>
           )}
         </div>
       </DetailDescBlock>
@@ -115,20 +119,16 @@ const DetailHeaderBlock = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 350px;
-  padding-top: 60px;
 
   .detail-title {
-    font-size: 1.4rem;
+    ${theme.h1box}
   }
 
   .header-detail {
     width: 60%;
-    margin-top: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #ccc;
     padding-bottom: 10px;
 
     .title {
@@ -156,6 +156,7 @@ const DetailDescBlock = styled.div`
   flex-direction: column;
   align-items: center;
   border-bottom: 1px solid lightgray;
+  margin-top: 30px;
 
   .carousel {
     position: relative;

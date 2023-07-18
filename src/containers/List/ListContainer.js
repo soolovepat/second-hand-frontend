@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import List from "../components/common/List";
+import List from "../../components/common/List";
 import { styled } from "styled-components";
-import Category from "../components/common/Category";
-import LikeItemList from "../components/common/LikeItemList";
-import Pagenation from "../components/common/Pagenation";
-import { getPosts } from "../api/posts";
+import Category from "../../components/common/Category";
+import LikeItemList from "../../components/common/LikeItemList";
+import Pagenation from "../../components/common/Pagenation";
+import { getPosts } from "../../api/posts";
 import { useNavigate } from "react-router-dom";
 
 const ListContainer = ({ type, myPosts }) => {

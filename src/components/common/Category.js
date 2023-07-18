@@ -27,7 +27,7 @@ const CategoryBlock = styled.ul`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 1.6%;
   margin-top: 100px;
 
   & li:hover {
