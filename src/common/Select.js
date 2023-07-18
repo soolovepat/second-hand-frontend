@@ -1,5 +1,6 @@
 import { css, styled } from "styled-components";
 import { FaChevronDown } from "react-icons/fa";
+import theme from "../lib/styles/Theme";
 
 const Select = ({
   w,
@@ -45,7 +46,7 @@ export const SelectStyle = styled.div`
   .selected {
     border: 1px solid lightgray;
     border-radius: 30px;
-    color: #676767;
+    color: ${(props) => (props.value ? "#676767" : "000")};
   }
   .unselected {
     border-radius: 20px;
@@ -62,7 +63,7 @@ export const SelectStyle = styled.div`
   }
 
   .optionBox {
-    border: 1px solid lightgray;
+    border: 1px solid ${theme.lightGrayColor};
     border-radius: 25px;
     margin-top: 10px;
     width: 350px;

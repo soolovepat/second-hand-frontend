@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import Write from "../../components/write/Write";
+import Footer from "../../components/common/Footer";
 import AWS from "aws-sdk";
 
 const WriteContainer = () => {
@@ -153,17 +154,20 @@ const WriteContainer = () => {
   };
 
   return (
-    <Write
-      formData={formData}
-      openSelect={openSelect}
-      CATEGORIES={CATEGORIES}
-      numberOfImage={numberOfImage}
-      onToggleSelect={onToggleSelect}
-      onClickSelect={onClickSelect}
-      onChangeFile={onChangeFile}
-      onChangeForm={onChangeForm}
-      onSubmit={onSubmit}
-    />
+    <>
+      <Write
+        formData={formData}
+        openSelect={openSelect}
+        CATEGORIES={CATEGORIES}
+        numberOfImage={numberOfImage}
+        onToggleSelect={onToggleSelect}
+        onClickSelect={onClickSelect}
+        onChangeFile={onChangeFile}
+        onChangeForm={onChangeForm}
+        onSubmit={onSubmit}
+      />
+      <Footer />
+    </>
   );
 };
 
