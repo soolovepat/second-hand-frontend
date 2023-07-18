@@ -37,8 +37,7 @@ const Pagenation = ({
         <PageNumber
           key={pageNumber}
           className={currentPage === pageNumber ? "active" : ""}
-          onClick={() => handlePageChange(pageNumber)}
-        >
+          onClick={() => handlePageChange(pageNumber)}>
           {pageNumber}
         </PageNumber>
       ))}
@@ -51,16 +50,19 @@ export default Pagenation;
 const PaginationBlock = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 50px;
 `;
 
 const PageNumber = styled.button`
-  padding: 5px 10px;
+  padding: 4px 12px;
   margin: 0 2px;
   border: none;
   border-radius: 20px;
+  font-weight: 300px;
   background-color: ${(props) => props.theme.whiteColor};
+  color: ${(props) => props.theme.lightGrayColor};
   cursor: pointer;
+  transition: all 0.1s ease-in-out;
 
   &:hover {
     background-color: ${(props) => props.theme.primaryColor};

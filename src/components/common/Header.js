@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { logoutuser } from "../../redux/modules/user";
 import { logo } from "../../assets/logo";
 import theme from "../../lib/styles/Theme";
+import SearchContainer from "../../containers/main/SearchContainer";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -38,43 +39,47 @@ const Header = () => {
     navigate("/write");
   };
 
-  const handleMypage = () => {
-    navigate("/mypage");
-  };
-
   return (
     <HeaderBlock>
-      <h3>
+      <div className="logo-wrapper">
         <Link to={"/"}>
           <img className="logo-img" src={logo} />
         </Link>
-      </h3>
-      {userLoggedIn ? (
-        <div className="button-wrapper">
-          <Button size={"sm"} onClick={handleLogout}>
-            로그아웃
-          </Button>
-          <Button size={"sm"} onClick={handleMypage}>
-            마이페이지
-          </Button>
-          <Button size={"sm"} onClick={handleWrite}>
-            글쓰기
-          </Button>
+      </div>
+      <div className="button-wrapper">
+        <div className="search-bar">
+          <SearchContainer />
         </div>
-      ) : (
-        <div className="button-wrapper">
-          <Button size={"md"} bgcolor={theme.grayColor} onClick={handleLogin}>
-            로그인
-          </Button>
-          <Button
-            size={"md"}
-            bgcolor={theme.primaryColor}
-            onClick={handleWrite}
-          >
-            글쓰기
-          </Button>
-        </div>
-      )}
+        {userLoggedIn ? (
+          <>
+            <span onClick={handleLogout}>로그아웃</span>
+            <Link to={"/mypage"}>마이페이지</Link>
+
+            <Button
+              size={"md"}
+              bgcolor={theme.darkColor}
+              color={theme.whiteColor}
+              onClick={handleWrite}
+            >
+              글쓰기
+            </Button>
+          </>
+        ) : (
+          <>
+            <Button size={"md"} bgcolor={theme.grayColor} onClick={handleLogin}>
+              로그인
+            </Button>
+            <Button
+              size={"md"}
+              bgcolor={theme.primaryColor}
+              color={theme.whiteColor}
+              onClick={handleWrite}
+            >
+              글쓰기
+            </Button>
+          </>
+        )}
+      </div>
     </HeaderBlock>
   );
 };
@@ -84,10 +89,43 @@ export default Header;
 const HeaderBlock = styled.div`
   display: flex;
   justify-content: space-between;
-
-  max-width: 1020px;
+  position: fixed;
+  top: 0;
+  width: 100%;
   margin: 0 auto;
-  padding: 30px;
+  padding: 20px 30px;
+  background-color: ${theme.whiteColor};
+  z-index: 10;
+
+  .button-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    span {
+      cursor: pointer;
+    }
+
+    a {
+      margin-right: 6px;
+    }
+  }
+
+  /* .search-bar {
+    position: absolute;
+    right: 310px;
+    top: 15%;
+    width: 260px;
+  }
+
+  input {
+    border: 1px solid ${theme.grayColor};
+  }
+
+  .logo-wrapper {
+    display: flex;
+    align-items: center;
+  }
 
   .logo-img {
     width: 200px;

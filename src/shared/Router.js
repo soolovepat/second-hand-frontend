@@ -61,6 +61,7 @@ const Router = () => {
         <Route element={<ProtectedRoute userLoggedIn={userLoggedIn} />}>
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/write" element={<WritePage />} />
+          <Route path="/write/:id" element={<WritePage />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import Details from "../../components/details/Details";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import CommentsContainer from "../comments/CommentsContainer";
-// import { carrot1, carrot0, carrot2, carrot3 } from "../../assets/exampleImages";
-
+import jwt_decode from "jwt-decode";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { getPost } from "../../api/posts";
@@ -11,37 +10,42 @@ import { getPost } from "../../api/posts";
 const DetailContainer = () => {
   const { id } = useParams();
   const [post, setPost] = useState(null);
-  //mockup data
-
+  const navigate = useNavigate();
   const [currImgIndex, setCurrImgIndex] = useState(0);
+  const userEmail = jwt_decode(localStorage.getItem("google_token")).email;
 
   useEffect(() => {
     const fetchPost = async () => {
       const response = await getPost(id);
-      console.log(response);
       setPost(response[0]);
     };
     fetchPost();
   }, [id]);
 
   const onIncreaseIdx = () => {
-    if (post?.img && currImgIndex >= post.img.length - 1) {
+    if (post?.imgs && currImgIndex >= post.imgs.length - 1) {
       toast.warn("마지막 사진입니다.");
     } else {
       setCurrImgIndex(currImgIndex + 1);
     }
   };
   const onDecreaseIdx = () => {
-    if (post?.img && currImgIndex <= 0) {
+    if (post?.imgs && currImgIndex <= 0) {
       toast.warn("첫번째 사진입니다.");
     } else {
       setCurrImgIndex(currImgIndex - 1);
     }
   };
 
+  const onEdit = () => {
+    navigate(`/write/${id}`);
+  };
+
+  const onDelete = () => {};
+
   if (!post) {
     //수정필요
-    return <div>로딩중...</div>;
+    return <DetailBlock>로딩중...</DetailBlock>;
   }
 
   return (
@@ -49,8 +53,11 @@ const DetailContainer = () => {
       <Details
         post={post}
         currImgIndex={currImgIndex}
+        isUsers={post.username === userEmail}
         onIncreaseIdx={onIncreaseIdx}
         onDecreaseIdx={onDecreaseIdx}
+        onEdit={onEdit}
+        onDelete={onDelete}
       />
       <CommentsContainer comments={post.commentList} />
       <ToastContainer position={toast.POSITION.TOP_CENTER} />

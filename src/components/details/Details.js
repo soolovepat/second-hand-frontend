@@ -1,8 +1,18 @@
 import styled, { css } from "styled-components";
+import Button from "../../common/Button";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import theme from "../../lib/styles/Theme";
 
-const Details = ({ post, currImgIndex, onIncreaseIdx, onDecreaseIdx }) => {
-  const { title, price, content, category, img } = post;
+const Details = ({
+  post,
+  currImgIndex,
+  onIncreaseIdx,
+  onDecreaseIdx,
+  onEdit,
+  onDelete,
+  isUsers,
+}) => {
+  const { title, price, content, category, imgs } = post;
 
   if (!post) {
     return <div>...로딩</div>;
@@ -25,11 +35,11 @@ const Details = ({ post, currImgIndex, onIncreaseIdx, onDecreaseIdx }) => {
         </div>
       </DetailHeaderBlock>
       <DetailDescBlock>
-        {/* <div className="carousel">
+        <div className="carousel">
           <div
             className="img-container"
             style={{ transform: `translateX(-${currImgIndex * 100}%)` }}>
-            {img?.map((src, idx) => (
+            {imgs?.map((src, idx) => (
               <div key={idx} className="img-wrapper">
                 <img src={src} alt="product" />
               </div>
@@ -41,10 +51,24 @@ const Details = ({ post, currImgIndex, onIncreaseIdx, onDecreaseIdx }) => {
           <p className="icons right">
             <FaChevronRight onClick={onIncreaseIdx} />
           </p>
-        </div> */}
-        <img src={img} alt="product" />
+        </div>
+        <CarouselDots currImgIndex={currImgIndex} imgLength={imgs?.length} />
         <div className="content">{content}</div>
-        <CarouselDots currImgIndex={currImgIndex} imgLength={img?.length} />
+        <div className="buttons">
+          {isUsers && (
+            <>
+              <Button size="sm" onClick={onEdit} bgcolor={theme.lightGrayColor}>
+                수정
+              </Button>
+              <Button
+                size="sm"
+                onClick={onDelete}
+                bgcolor={theme.lightGrayColor}>
+                삭제
+              </Button>
+            </>
+          )}
+        </div>
       </DetailDescBlock>
     </>
   );
@@ -170,8 +194,8 @@ const DetailDescBlock = styled.div`
       justify-content: center;
 
       img {
-        max-width: 80%;
-        max-height: 300px;
+        max-width: 100%;
+        max-height: 500px;
         object-fit: contain;
       }
     }
@@ -184,7 +208,16 @@ const DetailDescBlock = styled.div`
   .content {
     width: 100%;
     text-align: start;
-    min-height: 200px;
+    min-height: 250px;
     padding: 40px 20px;
+  }
+
+  .buttons {
+    width: 100%;
+    text-align: end;
+    margin-bottom: 5px;
+    button {
+      margin: 5px;
+    }
   }
 `;
