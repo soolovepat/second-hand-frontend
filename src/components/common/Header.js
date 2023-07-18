@@ -93,9 +93,9 @@ const HeaderBlock = styled.div`
   top: 0;
   width: 100%;
   margin: 0 auto;
-  z-index: 100;
   padding: 20px 30px;
   background-color: ${theme.whiteColor};
+  z-index: 10;
 
   .button-wrapper {
     display: flex;

@@ -1,4 +1,5 @@
 import { css, styled } from "styled-components";
+import { FaChevronDown } from "react-icons/fa";
 
 const Select = ({
   w,
@@ -13,7 +14,9 @@ const Select = ({
     <SelectStyle openSelect={openSelect} w={w}>
       <li className="selected" onClick={onToggleHandler}>
         {value || placeholder}
-        <span>{"˅"}</span>
+        <span>
+          <FaChevronDown />
+        </span>
       </li>
       <div className="optionBox">
         {openSelect &&
@@ -21,7 +24,8 @@ const Select = ({
             <li
               className="unselected"
               key={idx}
-              onClick={() => onClickHandler(idx)}>
+              onClick={() => onClickHandler(idx)}
+            >
               {option}
             </li>
           ))}
@@ -53,8 +57,8 @@ export const SelectStyle = styled.div`
   }
 
   span {
-    padding-top: 8px;
-    font-size: 2.5rem;
+    padding-top: 4px;
+    font-size: 1rem;
   }
 
   .optionBox {
