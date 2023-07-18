@@ -60,7 +60,6 @@ const WriteContainer = () => {
       toast.error("3장까지만 업로드 가능합니다.");
       return;
     }
-    setProgress(0);
 
     setFormData({ ...formData, imgs: files });
     setNumberOfImage(numberOfImage + 1);
