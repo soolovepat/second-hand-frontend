@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import styled from "styled-components";
-import theme from "../../lib/styles/Theme";
+import Profile from "../../components/profile/Profile";
 import { getUserPosts } from "../../api/posts";
 import ListContainer from "../List/ListContainer";
+import CalendarProfile from "../../components/profile/Calendar";
+import theme from "../../lib/styles/Theme";
+import "react-calendar/dist/Calendar.css";
+import styled from "styled-components";
 
-const Profile = () => {
+const ProfileContainer = () => {
   const { user } = useSelector(({ user }) => ({
     user: user.user,
   }));
@@ -58,15 +61,18 @@ const Profile = () => {
           </div>
         </section>
       </div>
+      <Profile user={user} myPosts={myPosts} />
+      <div className="cal">
+        <CalendarProfile />
+      </div>
     </MypageBlock>
   );
 };
 
-export default Profile;
+export default ProfileContainer;
 
 const MypageBlock = styled.div`
   width: 950px;
-  height: 600px;
   margin: auto;
   position: relative;
 
@@ -93,10 +99,9 @@ const MypageBlock = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 30px;
-    min-width: 200px;
     position: absolute;
     top: 140px;
-    left: -240px;
+    left: -160px;
 
     .picture {
       width: 130px;
@@ -117,9 +122,31 @@ const MypageBlock = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-left: 150px;
     border-left: 2px dashed ${theme.primaryColor};
     .myPosts {
       width: 1030px;
+    }
+  }
+  .cal {
+    position: absolute;
+    top: 530px;
+    left: -220px;
+  }
+
+  .react-calendar {
+    width: 355px;
+    max-width: 100%;
+    background-color: ${theme.lightGrayColor};
+    padding: 20px 10px;
+    color: ${theme.darkGrayColor};
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 8px 14px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.015);
     }
   }
 `;
