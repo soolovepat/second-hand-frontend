@@ -12,7 +12,13 @@ const DetailContainer = () => {
   const [post, setPost] = useState(null);
   const navigate = useNavigate();
   const [currImgIndex, setCurrImgIndex] = useState(0);
-  const userEmail = jwt_decode(localStorage.getItem("google_token")).email;
+  const [userEmail, setUserEmail] = useState(null);
+
+  useEffect(() => {
+    if (localStorage.getItem("google_token")) {
+      setUserEmail(jwt_decode(localStorage.getItem("google_token")).email);
+    }
+  }, []);
 
   useEffect(() => {
     const fetchPost = async () => {

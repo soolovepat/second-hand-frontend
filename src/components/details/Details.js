@@ -55,7 +55,7 @@ const Details = ({
         <CarouselDots currImgIndex={currImgIndex} imgLength={imgs?.length} />
         <div className="content">{content}</div>
         <div className="buttons">
-          {isUsers && (
+          {isUsers ? (
             <>
               <Button size="sm" onClick={onEdit} bgcolor={theme.lightGrayColor}>
                 수정
@@ -67,6 +67,8 @@ const Details = ({
                 삭제
               </Button>
             </>
+          ) : (
+            <></>
           )}
         </div>
       </DetailDescBlock>
