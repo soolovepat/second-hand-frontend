@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Select from "../../common/Select";
 import { Toast } from "../../components/common/Toast";
 import Button from "../../common/Button";
-import { RiImageAddFill } from "react-icons/ri";
+import { RiImageAddFill, RiImageFill } from "react-icons/ri";
 import { FaCircleExclamation } from "react-icons/fa6";
 import theme from "../../lib/styles/Theme";
 
@@ -30,8 +30,13 @@ const Write = ({
               <RiImageAddFill />
               <span>{numberOfImage} / 3</span>
             </label>
+            {Array.from({ length: numberOfImage }, (_, index) => (
+              <div key={index} className="image-file">
+                <RiImageFill />
+              </div>
+            ))}
           </div>
-          <div>사진</div>
+
           <span>
             <FaCircleExclamation />
             jpg 파일만 업로드 가능합니다
@@ -130,9 +135,12 @@ const WriteContainerBlock = styled.div`
   }
 
   .button-wrapper {
-    /* display: flex;
-    align-items: center; */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
     margin-bottom: 10px;
+    line-height: 50px;
 
     span {
       margin-left: 10px;
@@ -179,6 +187,17 @@ const WriteContainerBlock = styled.div`
       border: 1px solid ${theme.secondaryColor};
       color: ${theme.darkGrayColor};
     }
+  }
+
+  .image-file {
+    display: flex;
+    align-items: center;
+    border: 1px solid ${theme.lightGrayColor};
+    border-radius: 28px;
+    font-size: 24px;
+    color: ${theme.darkGrayColor};
+    background-color: ${theme.lightGrayColor};
+    padding: 12px 20px;
   }
 
   .write-header {
