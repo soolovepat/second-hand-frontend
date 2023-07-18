@@ -116,7 +116,7 @@ const HeaderBlock = styled.div`
     right: 310px;
     top: 15%;
     width: 260px;
-  }
+  }*/
 
   input {
     border: 1px solid ${theme.grayColor};
