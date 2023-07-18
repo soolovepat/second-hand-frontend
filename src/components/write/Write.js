@@ -22,7 +22,7 @@ const Write = ({
   return (
     <WriteContainerBlock>
       <Header />
-      <div className="write-header">상품 등록하기</div>
+      <h1 className="write-title">상품 등록하기</h1>
       <div className="form">
         <div className="file-wrapper">
           <div className="button-wrapper">
@@ -109,6 +109,10 @@ export default Write;
 
 const WriteContainerBlock = styled.div`
   position: relative;
+
+  .write-title {
+    ${theme.h1box}
+  }
 
   .form {
     width: 70%;
@@ -198,10 +202,6 @@ const WriteContainerBlock = styled.div`
     color: ${theme.darkGrayColor};
     background-color: ${theme.lightGrayColor};
     padding: 12px 20px;
-  }
-
-  .write-header {
-    ${theme.h1box}
   }
 
   textarea {

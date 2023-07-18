@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import Header from "../../components/common/Header";
 
 const AuthTemplate = ({ children }) => {
   return (
     <Wrapper>
-      <div>로고</div>
+      <Header />
       <AuthTemplateBlock>{children}</AuthTemplateBlock>
     </Wrapper>
   );

@@ -38,7 +38,7 @@ const Profile = () => {
   }
   return (
     <MypageBlock>
-      <h1>마이페이지</h1>
+      <h1 className="mypage-title">마이페이지</h1>
       <div className="mypage-container">
         <section>
           <div className="user-info">
@@ -70,9 +70,8 @@ const MypageBlock = styled.div`
   margin: auto;
   position: relative;
 
-  h1 {
-    margin-top: 140px;
-    text-align: center;
+  .mypage-title {
+    ${theme.h1box}
   }
 
   strong {
