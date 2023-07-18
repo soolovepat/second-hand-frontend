@@ -12,7 +12,17 @@ export const getPosts = (req) => {
   return res;
 };
 
-export const getUserPosts = (req) => {};
+export const getUserPosts = async (username) => {
+  try {
+    console.log(username);
+    const res = await api.get("/posts");
+    const result = res.data.filter((post) => post.username == username);
+    return result;
+  } catch (error) {
+    console.error("Error in getUserPosts:", error);
+    throw error;
+  }
+};
 
 export const getPost = async (id) => {
   const res = await api.get("/posts");

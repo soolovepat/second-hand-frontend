@@ -22,7 +22,7 @@ const checkIsLoggedIn = () => {
 
 const Router = () => {
   const dispatch = useDispatch();
-  const { userLoggedIn, isLoading } = useSelector(({ user }) => ({
+  const { user, userLoggedIn, isLoading } = useSelector(({ user }) => ({
     user: user.user,
     userLoggedIn: user.isLoggedIn,
     isLoading: user.isLoading,

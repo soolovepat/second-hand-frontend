@@ -13,8 +13,6 @@ import AWS from "aws-sdk";
 const WriteContainer = () => {
   const navigate = useNavigate();
   const id = uuidv4();
-  const [progress, setProgress] = useState(0);
-  const [showAlert, setShowAlert] = useState(false);
   const userEmail = jwt_decode(localStorage.getItem("google_token")).email;
   const [numberOfImage, setNumberOfImage] = useState(0);
 
@@ -57,6 +55,7 @@ const WriteContainer = () => {
       alert("jpg 파일만 업로드해주세요.");
       return;
     }
+
     if (numberOfImage >= 3) {
       toast.error("3장까지만 업로드 가능합니다.");
       return;
@@ -65,7 +64,6 @@ const WriteContainer = () => {
 
     setFormData({ ...formData, imgs: files });
     setNumberOfImage(numberOfImage + 1);
-    console.log(numberOfImage);
   };
 
   const onToggleSelect = () => {

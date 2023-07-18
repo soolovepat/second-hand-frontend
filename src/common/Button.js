@@ -7,8 +7,7 @@ const Button = ({ children, size, color, bgcolor, icon, onClick }) => {
       icon={icon}
       color={color}
       bgcolor={bgcolor}
-      onClick={onClick}
-    >
+      onClick={onClick}>
       {children}
     </ButtonStyle>
   );
@@ -52,7 +51,13 @@ const ButtonStyle = styled.button`
         `;
       case "sm":
         return css`
-          height: 40px;
+          ${(props) =>
+            props.bgcolor &&
+            css`
+              background-color: ${(props) => props.bgcolor};
+              color: ${(props) => props.color};
+            `}
+          height: 35px;
         `;
       default:
         return;
