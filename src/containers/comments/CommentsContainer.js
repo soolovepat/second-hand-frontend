@@ -28,7 +28,6 @@ const CommentsContainer = ({ comments: initialComments, post, setPost }) => {
     const fetchUser = async () => {
       if (localStorage.getItem("google_token")) {
         setUserEmail(jwt_decode(localStorage.getItem("google_token")).email);
-        console.log(userEmail);
       } else {
         alert("로그인 후 이용해주세요 :)");
         navigate("/login");

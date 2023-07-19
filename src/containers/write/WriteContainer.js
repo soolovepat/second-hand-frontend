@@ -7,12 +7,11 @@ import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import Write from "../../components/write/Write";
 import Footer from "../../components/common/Footer";
-import AWS from "aws-sdk";
+import uploadToS3 from "../../utils/awsS3";
 
 const WriteContainer = ({ editPost, editTitle, editComplete }) => {
   const navigate = useNavigate();
   const userEmail = jwt_decode(localStorage.getItem("google_token")).email;
-  const [numberOfImage, setNumberOfImage] = useState(0);
   const [formData, setFormData] = useState({
     username: userEmail,
     title: "",
@@ -25,24 +24,11 @@ const WriteContainer = ({ editPost, editTitle, editComplete }) => {
   });
   const [openSelect, setOpenSelect] = useState(false);
 
-  //거래 희망 장소 안됨
   useEffect(() => {
     if (editPost) {
       setFormData(editPost);
     }
   }, [editPost]);
-
-  console.log(editPost);
-
-  AWS.config.update({
-    accessKeyId: process.env.REACT_APP_ACCESS_KEY,
-    secretAccessKey: process.env.REACT_APP_SECREAT_ACCESS_KEY,
-  });
-
-  const myBucket = new AWS.S3({
-    params: { Bucket: process.env.REACT_APP_S3_BUCKET },
-    region: process.env.REACT_APP_RESION,
-  });
 
   const onChangeForm = (e) => {
     const { name, value } = e.target;
@@ -61,12 +47,11 @@ const WriteContainer = ({ editPost, editTitle, editComplete }) => {
       return;
     }
 
-    if (numberOfImage >= 3) {
+    if (formData.images.length >= 3) {
       toast.error("3장까지만 업로드 가능합니다.");
       return;
     }
-    setFormData({ ...formData, images: files });
-    setNumberOfImage(numberOfImage + 1);
+    setFormData({ ...formData, images: [...formData.images, ...files] });
   };
 
   const onToggleSelect = () => {
@@ -78,11 +63,10 @@ const WriteContainer = ({ editPost, editTitle, editComplete }) => {
     setFormData({ ...formData, category: CATEGORIES[idx] });
   };
 
-  const handlePost = async (imageUrl) => {
-    const updatedFormData = { ...formData, images: imageUrl };
+  const handlePost = async (imageUrls) => {
+    const updatedFormData = { ...formData, images: imageUrls };
     try {
       if (editPost) {
-        console.log("ddd");
         const response = await editmyPost(editPost.postId, formData);
         Swal.fire({
           position: "top",
@@ -92,7 +76,6 @@ const WriteContainer = ({ editPost, editTitle, editComplete }) => {
           timer: 1500,
         });
         navigate(`/${response.data.postId}/detail`);
-        console.log(response);
       } else {
         const response = await writePost(updatedFormData);
         Swal.fire({
@@ -132,34 +115,9 @@ const WriteContainer = ({ editPost, editTitle, editComplete }) => {
       return;
     }
 
-    const uploadPromises = formData.images.map((img, _) => {
-      const params = {
-        ACL: "public-read",
-        Body: img,
-        Bucket: process.env.REACT_APP_S3_BUCKET,
-        Key: `upload/${img.name}`,
-      };
-
-      return new Promise((resolve, reject) => {
-        myBucket
-          .putObject(params)
-          .on("httpUploadProgress", (evt) => {
-            // progress 처리...
-          })
-          .send((err, _) => {
-            if (err) {
-              console.log(err);
-              reject(err);
-              return;
-            }
-            const imageUrl = `https://${process.env.REACT_APP_S3_BUCKET}.s3.${process.env.REACT_APP_RESION}.amazonaws.com/${params.Key}`;
-            resolve(imageUrl);
-          });
-      });
-    });
+    const uploadPromises = formData.images.map(uploadToS3);
 
     try {
-      // 모든 이미지가 업로드될 때까지 기다림
       const imageUrls = await Promise.all(uploadPromises);
       handlePost(imageUrls);
       console.log(imageUrls);
@@ -174,7 +132,6 @@ const WriteContainer = ({ editPost, editTitle, editComplete }) => {
         formData={formData}
         openSelect={openSelect}
         CATEGORIES={CATEGORIES}
-        numberOfImage={numberOfImage}
         editTitle={editTitle}
         editComplete={editComplete}
         onToggleSelect={onToggleSelect}
@@ -183,7 +140,6 @@ const WriteContainer = ({ editPost, editTitle, editComplete }) => {
         onChangeForm={onChangeForm}
         onSubmit={onSubmit}
       />
-      <Footer />
     </>
   );
 };

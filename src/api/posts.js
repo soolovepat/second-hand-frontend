@@ -21,12 +21,17 @@ export const getPost = async (postId) => {
 };
 
 export const editmyPost = async (postId, editedData) => {
-  console.log(postId, editedData);
   const res = await api.put(`/post/${postId}`, editedData);
-  console.log(res);
   return res;
 };
+
+export const toggleSold = async (postId) => {
+  console.log(postId);
+  const res = await api.put(`/${postId}`);
+  return res;
+};
+
 export const deletePost = async (postId) => {
-  const res = await api.post(`/posts/${postId}`);
+  const res = await api.delete(`/post/${postId}`);
   return res;
 };

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { styled } from "styled-components";
 
 const Category = ({ selectList, setSelectList, CATENAME }) => {
@@ -12,8 +11,7 @@ const Category = ({ selectList, setSelectList, CATENAME }) => {
         <li
           key={id}
           className={id === selectList.id ? "active" : ""}
-          onClick={() => onClickCate(cate)}
-        >
+          onClick={() => onClickCate(cate)}>
           {cate.name}
         </li>
       ))}

@@ -8,11 +8,12 @@ const Details = ({
   currImgIndex,
   onIncreaseIdx,
   onDecreaseIdx,
+  onToggleSold,
   onEdit,
   onDelete,
   isUsers,
 }) => {
-  const { title, price, content, category, images } = post;
+  const { title, price, content, category, images, location, isSold } = post;
 
   if (!post) {
     return <div>...로딩</div>;
@@ -34,7 +35,8 @@ const Details = ({
           </div>
         </div>
       </DetailHeaderBlock>
-      <DetailDescBlock>
+      <p className="location">📍 {location}</p>
+      <DetailDescBlock isSold={isSold}>
         <div className="carousel">
           <div
             className="img-container"
@@ -42,6 +44,7 @@ const Details = ({
             {images?.map((src, idx) => (
               <div key={idx} className="img-wrapper">
                 <img src={src} alt="product" />
+                {isSold && <div className="sold">판매 완료</div>}
               </div>
             ))}
           </div>
@@ -53,10 +56,26 @@ const Details = ({
           </p>
         </div>
         <CarouselDots currImgIndex={currImgIndex} imgLength={images?.length} />
+
         <div className="content">{content}</div>
         <div className="buttons">
           {isUsers ? (
             <>
+              {!isSold ? (
+                <Button
+                  size="sm"
+                  onClick={onToggleSold}
+                  bgcolor={theme.lightGrayColor}>
+                  판매 완료
+                </Button>
+              ) : (
+                <Button
+                  size="sm"
+                  onClick={onToggleSold}
+                  bgcolor={theme.lightGrayColor}>
+                  판매중
+                </Button>
+              )}
               <Button size="sm" onClick={onEdit} bgcolor={theme.lightGrayColor}>
                 수정
               </Button>
@@ -143,7 +162,11 @@ const DetailHeaderBlock = styled.div`
       font-weight: bold;
     }
     .category {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
+    }
+    .location {
+      margin: 10px 0px 0px 10px;
+      font-weight: bold;
     }
   }
 `;
@@ -168,7 +191,7 @@ const DetailDescBlock = styled.div`
       position: relative;
     }
     .icons {
-      position: absolute; // 아이콘들을 절대 위치로 배치해 주세요.
+      position: absolute;
       top: 50%;
       transform: translateY(-50%);
       font-size: 2rem;
@@ -190,11 +213,25 @@ const DetailDescBlock = styled.div`
       max-width: 100%;
       display: flex;
       justify-content: center;
+      position: relative;
 
       img {
+        ${(props) =>
+          props.isSold &&
+          css`
+            opacity: 0.25;
+          `}
         max-width: 100%;
         max-height: 500px;
         object-fit: contain;
+      }
+
+      .sold {
+        position: absolute;
+        top: 50%;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: ${theme.mediumGrayColor};
       }
     }
   }

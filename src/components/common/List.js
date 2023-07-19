@@ -10,7 +10,7 @@ const List = ({ post }) => {
     <ListBlock src={post.images[0]} isSold={post.isSold}>
       <span className="wrap-thumb">
         <span className="thumb-img" />
-        {post?.isSold && <div className="sold">거래 완료</div>}
+        {post?.isSold && <div className="isSold">거래 완료</div>}
       </span>
       <strong>{post.title}</strong>
       <span>{post.username?.split("@")[0]}</span>
@@ -21,7 +21,6 @@ const List = ({ post }) => {
         </span>
         <strong> ₩ {post.price?.toLocaleString()}</strong>
       </span>
-
       <span></span>
     </ListBlock>
   );
@@ -53,7 +52,7 @@ const ListBlock = styled.div`
     ${(props) =>
       props.isSold &&
       css`
-        .sold {
+        .isSold {
           position: absolute;
           top: 50%;
           left: 50%;
