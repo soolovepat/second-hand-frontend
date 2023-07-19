@@ -65,7 +65,11 @@ const DetailContainer = () => {
         onEdit={onEdit}
         onDelete={onDelete}
       />
-      <CommentsContainer comments={post.commentList} />
+      <CommentsContainer
+        comments={post.commentList}
+        post={post}
+        setPost={setPost}
+      />
       <ToastContainer position={toast.POSITION.TOP_CENTER} />
     </DetailBlock>
   );

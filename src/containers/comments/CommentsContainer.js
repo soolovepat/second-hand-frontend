@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import CommentInput from "../../components/comments/CommentInput";
 import Comments from "../../components/comments/Comments";
 import jwt_decode from "jwt-decode";
@@ -7,11 +6,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Toast } from "../../components/common/Toast";
 import Swal from "sweetalert2";
-import { writeComment } from "../../api/comments";
+import { writeComment, deleteComment, editComment } from "../../api/comments";
 import styled from "styled-components";
 import theme from "../../lib/styles/Theme";
+import { getPost } from "../../api/posts";
 
-const CommentsContainer = ({ comments: initialComments }) => {
+const CommentsContainer = ({ comments: initialComments, post, setPost }) => {
   const { postId } = useParams();
   const [userEmail, setUserEmail] = useState("");
   const [formData, setFormData] = useState({
@@ -20,6 +20,8 @@ const CommentsContainer = ({ comments: initialComments }) => {
     username: userEmail,
   });
   const [comments, setComments] = useState(initialComments);
+  const [editingCommentId, setEditingCommentId] = useState(null);
+  const [isEdit, setIsEdit] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,10 +37,21 @@ const CommentsContainer = ({ comments: initialComments }) => {
     fetchUser();
   }, []);
 
-  const onChange = (e) => {
+  const onChangeWrite = (e) => {
     setFormData({ ...formData, content: e.target.value });
   };
 
+  const onChangeEdit = (commentId, value) => {
+    setComments((prevComments) =>
+      prevComments.map((comment) =>
+        comment.commentId === commentId
+          ? { ...comment, content: value }
+          : comment
+      )
+    );
+  };
+
+  // 댓글 추가
   const handleWrite = async () => {
     try {
       const dataWithUsername = {
@@ -47,13 +60,15 @@ const CommentsContainer = ({ comments: initialComments }) => {
       };
       const response = await writeComment(dataWithUsername);
       console.log(response);
+
       const newComment = {
-        id: postId,
-        postId: formData.postId,
+        commentId: response.data.commentId,
+        postId,
         content: formData.content,
         username: userEmail,
       };
       setComments([...comments, newComment]);
+
       Swal.fire({
         position: "top",
         icon: "success",
@@ -81,14 +96,73 @@ const CommentsContainer = ({ comments: initialComments }) => {
     });
   };
 
+  // 댓글 수정
+  const handleEdit = async (commentId, content) => {
+    try {
+      const editedComment = {
+        content,
+      };
+      const response = await editComment(commentId, editedComment);
+      console.log(response);
+      // setComments((prevComments) =>
+      //   prevComments.map((comment) =>
+      //     comment.commentId === id ? editedComment : comment
+      //   )
+      // );
+      setIsEdit(false);
+
+      Swal.fire({
+        position: "top",
+        icon: "success",
+        title: "댓글 수정 되었습니다 :)",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // 댓글 삭제
+  const handleDelete = async (id) => {
+    try {
+      const response = await deleteComment(id);
+
+      if (response.data.statusCode === 200) {
+        const response = await getPost(postId);
+        setPost(response.data);
+      }
+
+      Swal.fire({
+        position: "top",
+        icon: "success",
+        title: "댓글 삭제 되었습니다 :)",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <DetailBlock>
       <CommentInput
         comment={formData.content}
-        onChange={onChange}
+        onChange={onChangeWrite}
         onSubmit={onSubmit}
       />
-      <Comments comments={comments} />
+      <Comments
+        comments={comments}
+        setComments={setComments}
+        onChange={onChangeEdit}
+        editingCommentId={editingCommentId}
+        setEditingCommentId={setEditingCommentId}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
+        isEdit={isEdit}
+        setIsEdit={setIsEdit}
+      />
       <Toast />
     </DetailBlock>
   );

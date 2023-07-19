@@ -6,10 +6,10 @@ export const writeComment = async (formData) => {
   return res;
 };
 export const editComment = async (id, content) => {
-  const res = await api.post(`/comment${id}`, content);
+  const res = await api.put(`/comment/${id}`, content);
   return res;
 };
 export const deleteComment = async (id) => {
-  const res = await api.post(`/comment${id}`);
+  const res = await api.delete(`/comment/${id}`);
   return res;
 };
