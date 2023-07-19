@@ -120,6 +120,7 @@ const WriteContainer = ({ editPost, editTitle, editComplete }) => {
     try {
       const imageUrls = await Promise.all(uploadPromises);
       handlePost(imageUrls);
+      console.log(imageUrls);
     } catch (err) {
       console.error(err);
     }
