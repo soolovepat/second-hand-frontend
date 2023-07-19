@@ -35,7 +35,8 @@ const ListContainer = ({ type, myPosts }) => {
       try {
         //const response = await axios.get("http://localhost:4000/posts");
         const response = await getPosts();
-        setPostList(response.data);
+        setPostList(response.data.postList);
+        console.log(response.data);
       } catch (error) {
         console.error(error);
       }
@@ -43,22 +44,22 @@ const ListContainer = ({ type, myPosts }) => {
     fetchPosts();
   }, [myPosts, type]);
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await axios.get("http://localhost:4000/users");
-        setUserInfo(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchPosts = async () => {
+  //     try {
+  //       const response = await axios.get("http://localhost:4000/users");
+  //       setUserInfo(response.data);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
 
-    fetchPosts();
-  }, []);
+  //   fetchPosts();
+  // }, []);
 
-  if (!postList) {
-    return null;
-  }
+  // if (!postList) {
+  //   return null;
+  // }
 
   // 현재 페이지의 리스트 항목을 반환하는 함수
   const getCurrentList = () => {
@@ -75,6 +76,10 @@ const ListContainer = ({ type, myPosts }) => {
     console.log(id);
     navigate(`/${id}/detail`);
   };
+
+  if (!postList) {
+    return null;
+  }
 
   //마이페이지용
   if (type === "mypage") {
