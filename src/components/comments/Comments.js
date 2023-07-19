@@ -40,7 +40,7 @@ const comments = ({
               </>
             ) : (
               <>
-                {userEmail.split("@")[0]}
+                {comment.username.split("@")[0]}
                 <span> {comment.content}</span>
                 {comment.username === userEmail && (
                   <Button onClick={() => onEditComment(comment.commentId)}>
