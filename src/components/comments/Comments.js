@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import Button from "../../common/Button";
 import Input from "../../common/Input";
+import theme from "../../lib/styles/Theme";
+import { FaTrash, FaCheck } from "react-icons/fa";
+import { FaPenToSquare } from "react-icons/fa6";
 
 const comments = ({
   comments,
@@ -25,34 +28,82 @@ const comments = ({
           <li key={comment.commentId}>
             {isEdit && editingCommentId === comment.commentId ? ( // editingCommentId와 현재 댓글의 id 비교
               <>
-                <Input
-                  w={"200px"}
-                  ph={"수정하실 댓글을 작성해주세요"}
-                  value={comment.content} // ???
-                  onChange={(e) => onChange(comment.commentId, e.target.value)}
-                />
-                <Button
-                  onClick={() =>
-                    handleEdit(comment.commentId, comment.content)
-                  }>
-                  완료
-                </Button>
+                <ContentWrapper>
+                  {userEmail.split("@")[0]}
+                  <Input
+                    w={"696px"}
+                    h={"35px"}
+                    ph={"수정하실 댓글을 작성해주세요"}
+                    value={comment.content} // 기존 댓글
+                    onChange={(e) =>
+                      onChange(comment.commentId, e.target.value)
+                    }
+                  />
+                </ContentWrapper>
+                <ButtonWrapper>
+                  <Button
+                    size={"sm"}
+                    bgcolor={theme.whiteColor}
+                    bordercolor={theme.lightGrayColor}
+                    color={theme.mediumGrayColor}
+                    hbgcolor={theme.secondaryColor}
+                    hbordercolor={theme.secondaryColor}
+                    hcolor={theme.darkGrayColor}
+                    onClick={() =>
+                      handleEdit(comment.commentId, comment.content)
+                    }
+                  >
+                    <FaCheck />
+                  </Button>
+                  <Button
+                    size={"sm"}
+                    bgcolor={theme.whiteColor}
+                    bordercolor={theme.lightGrayColor}
+                    color={theme.mediumGrayColor}
+                    hbgcolor={theme.secondaryColor}
+                    hbordercolor={theme.secondaryColor}
+                    hcolor={theme.darkGrayColor}
+                    onClick={() => handleDelete(comment.commentId)}
+                  >
+                    <FaTrash />
+                  </Button>
+                </ButtonWrapper>
               </>
             ) : (
               <>
-                {userEmail.split("@")[0]}
-                <span> {comment.content}</span>
+                <ContentWrapper>
+                  {userEmail.split("@")[0]}
+                  <span> {comment.content}</span>
+                </ContentWrapper>
                 {comment.username === userEmail && (
-                  <Button onClick={() => onEditComment(comment.commentId)}>
-                    수정
-                  </Button>
+                  <ButtonWrapper>
+                    <Button
+                      size={"sm"}
+                      bgcolor={theme.whiteColor}
+                      bordercolor={theme.lightGrayColor}
+                      color={theme.mediumGrayColor}
+                      hbgcolor={theme.secondaryColor}
+                      hbordercolor={theme.secondaryColor}
+                      hcolor={theme.darkGrayColor}
+                      onClick={() => onEditComment(comment.commentId)}
+                    >
+                      <FaPenToSquare />
+                    </Button>
+                    <Button
+                      size={"sm"}
+                      bgcolor={theme.whiteColor}
+                      bordercolor={theme.lightGrayColor}
+                      color={theme.mediumGrayColor}
+                      hbgcolor={theme.secondaryColor}
+                      hbordercolor={theme.secondaryColor}
+                      hcolor={theme.darkGrayColor}
+                      onClick={() => handleDelete(comment.commentId)}
+                    >
+                      <FaTrash />
+                    </Button>
+                  </ButtonWrapper>
                 )}
               </>
-            )}
-            {comment.username === userEmail && (
-              <Button onClick={() => handleDelete(comment.commentId)}>
-                삭제
-              </Button>
             )}
           </li>
         );
@@ -64,12 +115,29 @@ const comments = ({
 export default comments;
 
 const CommentsBlock = styled.div`
-  min-height: 500px;
+  min-height: 200px;
   li {
-    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     list-style: none;
-    border-bottom: 0.7px solid #ccc;
-    margin-top: 30px;
-    padding-left: 5px;
+    border-bottom: 1px solid ${theme.lightGrayColor};
+    padding: 10px 0;
   }
+`;
+
+const ContentWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  gap: 10px;
+
+  /* > button:hover {
+    color: ${theme.darkGrayColor};
+    background-color: ${theme.secondaryColor};
+  } */
 `;

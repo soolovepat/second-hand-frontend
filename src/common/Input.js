@@ -9,12 +9,12 @@ export default Input;
 
 const StyledInput = styled.input`
   border: 1px solid ${theme.lightGrayColor};
-  border-radius: 25px;
+  border-radius: 32px;
   outline: none;
   width: ${(props) => `${props.w}`};
   height: ${(props) => `${props.h}`};
   font-size: 1rem;
-  padding: 20px;
+  padding: 0 20px;
 
   &::placeholder {
     color: ${theme.mediumGrayColor};

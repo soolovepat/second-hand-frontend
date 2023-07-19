@@ -4,17 +4,25 @@ import Button from "../../common/Button";
 import { FaRegComments } from "react-icons/fa";
 import theme from "../../lib/styles/Theme";
 
-const CommentInput = ({ comment, onChange, onSubmit }) => {
+const CommentInput = ({ userEmail, comment, onChange, onSubmit }) => {
   return (
     <CommentInputBlock>
       <FaRegComments />
       <Input
-        w={"400px"}
-        ph={"댓글을 남겨 판매자와 소통해보세요."}
+        h={"48px"}
+        ph={`${userEmail.split("@")[0]}(으)로 판매자에게 댓글 남기기...`}
         value={comment}
         onChange={onChange}
       />
-      <Button size="sm" bgcolor={theme.lightGrayColor} onClick={onSubmit}>
+      <Button
+        size={"md"}
+        bgcolor={theme.darkGrayColor}
+        color={theme.whiteColor}
+        hbgcolor={theme.primaryColor}
+        hbordercolor={theme.primaryColor}
+        hcolor={theme.whiteColor}
+        onClick={onSubmit}
+      >
         게시
       </Button>
     </CommentInputBlock>
