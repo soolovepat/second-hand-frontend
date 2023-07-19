@@ -22,8 +22,7 @@ const Carousel = ({ example, currItemIndex, setCurrItemIndex }) => {
       <div className="carousel">
         <div
           className="banner-container"
-          style={{ transform: `translateX(-${currItemIndex * 100}%)` }}
-        >
+          style={{ transform: `translateX(-${currItemIndex * 100}%)` }}>
           {example.map((banner, idx) => (
             <div key={idx} className="banner-wrapper">
               <span className="banner-text">

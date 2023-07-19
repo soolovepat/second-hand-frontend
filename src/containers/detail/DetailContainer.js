@@ -8,7 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { getPost } from "../../api/posts";
 
 const DetailContainer = () => {
-  const { id } = useParams();
+  const { postId } = useParams();
   const [post, setPost] = useState(null);
   const navigate = useNavigate();
   const [currImgIndex, setCurrImgIndex] = useState(0);
@@ -22,21 +22,21 @@ const DetailContainer = () => {
 
   useEffect(() => {
     const fetchPost = async () => {
-      const response = await getPost(id);
-      setPost(response[0]);
+      const response = await getPost(postId);
+      setPost(response.data);
     };
     fetchPost();
-  }, [id]);
+  }, [postId]);
 
   const onIncreaseIdx = () => {
-    if (post?.imgs && currImgIndex >= post.imgs.length - 1) {
+    if (post?.imgs && currImgIndex >= post.images.length - 1) {
       toast.warn("마지막 사진입니다.");
     } else {
       setCurrImgIndex(currImgIndex + 1);
     }
   };
   const onDecreaseIdx = () => {
-    if (post?.imgs && currImgIndex <= 0) {
+    if (post?.images && currImgIndex <= 0) {
       toast.warn("첫번째 사진입니다.");
     } else {
       setCurrImgIndex(currImgIndex - 1);
@@ -44,7 +44,7 @@ const DetailContainer = () => {
   };
 
   const onEdit = () => {
-    navigate(`/write/${id}`);
+    navigate(`/edit/${postId}`);
   };
 
   const onDelete = () => {};

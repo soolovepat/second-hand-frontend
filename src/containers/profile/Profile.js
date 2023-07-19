@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import Profile from "../../components/profile/Profile";
 import { getUserPosts } from "../../api/posts";
 import CalendarProfile from "../../components/profile/Calendar";
 import theme from "../../lib/styles/Theme";
@@ -18,12 +17,10 @@ const ProfileContainer = () => {
     if (!user) {
       return null;
     } else {
-      console.log("sdf");
-
       const fetchMyPosts = async () => {
         try {
           const res = await getUserPosts(user.email);
-          setMyPosts(res);
+          setMyPosts(res.data.postList);
           console.log(res);
         } catch (err) {
           console.log(err);
@@ -32,9 +29,6 @@ const ProfileContainer = () => {
       fetchMyPosts();
     }
   }, [user]);
-
-  console.log(user);
-  console.log(myPosts);
 
   if (!user) {
     return null;
@@ -61,7 +55,6 @@ const ProfileContainer = () => {
           </div>
         </section>
       </div>
-      <Profile user={user} myPosts={myPosts} />
       <div className="cal">
         <CalendarProfile />
       </div>
