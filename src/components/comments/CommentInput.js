@@ -8,7 +8,7 @@ const CommentInput = () => {
   return (
     <CommentInputBlock>
       <FaRegComments />
-      <Input w={"400px"} ph={"댓글을 남겨 판매자와 소통해보세요."} />
+      <Input ph={"판매자에게 댓글 남기기..."} />
       <Button size="sm" bgcolor={theme.lightGrayColor}>
         게시
       </Button>
@@ -20,17 +20,15 @@ export default CommentInput;
 
 const CommentInputBlock = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin: 50px 0px;
+  margin: 30px 0px;
 
   input {
-    margin-left: 20px;
-    font-size: 1.1rem;
+    flex: 0.95;
   }
 
   button {
-    margin-left: 20px;
     font-size: 1rem;
-    font-weight: bold;
   }
 `;

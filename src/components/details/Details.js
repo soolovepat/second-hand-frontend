@@ -155,7 +155,6 @@ const DetailDescBlock = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-bottom: 1px solid lightgray;
   margin-top: 30px;
 
   .carousel {
