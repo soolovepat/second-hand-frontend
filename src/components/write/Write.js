@@ -52,57 +52,72 @@ const Write = ({
           onChange={onChangeFile}
           id="file"
         />
-        <p>제목</p>
-
-        <Input
-          h={"80px"}
-          name="title"
-          value={formData.title}
-          ph={"상품 이름 (20자 이내)"}
-          onChange={onChangeForm}
-          maxLength={20}
-        />
-        <p>카테고리</p>
-        <Select
-          w={"100%"}
-          h={"80px"}
-          value={formData.category}
-          options={CATEGORIES}
-          openSelect={openSelect}
-          placeholder={"상품 카테고리"}
-          onToggleHandler={onToggleSelect}
-          onClickHandler={onClickSelect}
-        />
-        <p>상품 설명</p>
-        <textarea
-          name="content"
-          value={formData.content}
-          onChange={onChangeForm}
-          placeholder="상품 설명 (500자 이내)"
-          maxLength={500}
-        />
-        <p>가격</p>
-        <Input
-          h={"80px"}
-          name="price"
-          value={formData.price}
-          ph={"가격 (만원 이하)"}
-          onChange={onChangeForm}
-        />
-        <p>거래 희망 장소</p>
-        <Input
-          h={"80px"}
-          name="location"
-          ph={"거래 희망 장소 (20자 이내)"}
-          value={formData.location}
-          onChange={onChangeForm}
-          maxLength={20}
-        />
+        <WriteListWrapper>
+          <strong>제목</strong>
+          <Input
+            w={"100%"}
+            h={"50px"}
+            name="title"
+            value={formData.title}
+            ph={"상품 이름 (20자 이내)"}
+            onChange={onChangeForm}
+            maxLength={20}
+          />
+        </WriteListWrapper>
+        <WriteListWrapper>
+          <strong>카테고리</strong>
+          <Select
+            w={"100%"}
+            h={"50px"}
+            value={formData.category}
+            options={CATEGORIES}
+            openSelect={openSelect}
+            placeholder={"상품 카테고리"}
+            onToggleHandler={onToggleSelect}
+            onClickHandler={onClickSelect}
+          />
+        </WriteListWrapper>
+        <WriteListWrapper>
+          <strong>상품 설명</strong>
+          <textarea
+            name="content"
+            value={formData.content}
+            onChange={onChangeForm}
+            placeholder="상품 설명 (500자 이내)"
+            maxLength={500}
+          />
+        </WriteListWrapper>
+        <WriteListWrapper>
+          <strong>가격</strong>
+          <Input
+            h={"50px"}
+            name="price"
+            value={formData.price}
+            ph={"가격 (만원 이하)"}
+            onChange={onChangeForm}
+          />
+        </WriteListWrapper>
+        <WriteListWrapper>
+          <strong>거래 희망 장소</strong>
+          <Input
+            h={"50px"}
+            name="location"
+            ph={"거래 희망 장소 (20자 이내)"}
+            value={formData.location}
+            onChange={onChangeForm}
+            maxLength={20}
+          />
+        </WriteListWrapper>
         <Button
           size="lg"
           bgcolor={theme.primaryColor}
+          bordercolor={theme.primaryColor}
           color={theme.whiteColor}
-          onClick={onSubmit}>
+          hbgcolor={theme.secondaryColor}
+          hbordercolor={theme.secondaryColor}
+          hcolor={theme.darkGrayColor}
+          onClick={onSubmit}
+        >
           {editComplete || "작성완료"}
         </Button>
       </div>
@@ -136,18 +151,7 @@ const WriteContainerBlock = styled.div`
 
     button {
       margin: 30px auto 0;
-      transition: all 0.2s ease-in-out;
-
-      &:hover {
-        background-color: ${theme.darkColor};
-      }
     }
-  }
-
-  p {
-    font-size: 14px;
-    color: ${(props) => props.theme.mediumGrayColor};
-    margin: 20px 0px 0px 15px;
   }
 
   .button-wrapper {
@@ -157,11 +161,6 @@ const WriteContainerBlock = styled.div`
 
     margin-bottom: 10px;
     line-height: 50px;
-
-    span {
-      margin-left: 10px;
-      font-size: 18px;
-    }
   }
 
   .file-wrapper {
@@ -203,6 +202,11 @@ const WriteContainerBlock = styled.div`
       border: 1px solid ${theme.secondaryColor};
       color: ${theme.darkGrayColor};
     }
+
+    > span {
+      margin-left: 10px;
+      font-size: 18px;
+    }
   }
 
   .image-file {
@@ -220,7 +224,7 @@ const WriteContainerBlock = styled.div`
     height: 300px;
     border: 1px solid ${theme.lightGrayColor};
     border-radius: 25px;
-    padding: 15px;
+    padding: 14px 20px;
     font-size: 1rem;
 
     &:focus {
@@ -230,5 +234,17 @@ const WriteContainerBlock = styled.div`
     &::placeholder {
       color: ${theme.mediumGrayColor};
     }
+  }
+`;
+
+const WriteListWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  strong {
+    font-size: 16px;
+    color: ${(props) => props.theme.mediumGrayColor};
+    margin-left: 22px;
   }
 `;

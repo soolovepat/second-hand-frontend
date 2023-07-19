@@ -27,7 +27,7 @@ const SearchContainer = () => {
       response.data.postList.map((post) => ({
         title: post.title,
         id: post.id,
-      })),
+      }))
     );
   };
 
@@ -62,7 +62,7 @@ const SearchContainer = () => {
         </>
       </div>
 
-      <div className={openSearchBar ? "search-results" : ""}>
+      <ul className={openSearchBar ? "search-results" : ""}>
         {openSearchBar &&
           titles.map((post) => {
             if (post.title.includes(searchText)) {
@@ -71,13 +71,14 @@ const SearchContainer = () => {
                   onClick={(e) => {
                     e.stopPropagation();
                     onClickItem(post.id);
-                  }}>
+                  }}
+                >
                   {post.title} {" →"}
                 </li>
               );
             }
           })}
-      </div>
+      </ul>
     </SearchBlock>
   );
 };
@@ -97,7 +98,8 @@ const SearchBlock = styled.div`
 
   .icon {
     margin-right: 10px;
-    font-size: 1.4rem;
+    font-size: 1rem;
+    color: ${theme.mediumGrayColor};
   }
 
   .search-results {
@@ -107,9 +109,10 @@ const SearchBlock = styled.div`
     display: flex;
     flex-direction: column;
     margin: 14px 0 0 30px;
+    padding: 8px 0;
     background: white;
     border: 1px solid ${theme.lightGrayColor};
-    border-radius: 20px;
+    border-radius: 22px;
     overflow-y: scroll;
     overflow-x: hidden;
     z-index: 100;
@@ -130,14 +133,11 @@ const SearchBlock = styled.div`
       border-radius: 8px;
     }
 
-    li:nth-child(1) {
-      margin-top: 10px;
-    }
-
-    li {
+    & li {
       list-style: none;
-      margin: 4px 10px;
-      padding: 0 20px;
+      line-height: 24px;
+      margin: 2px 10px;
+      padding: 10px 20px;
       border-radius: 24px;
       transition: all 0.1s ease-in-out;
 

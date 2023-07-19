@@ -39,13 +39,15 @@ const ProfileContainer = () => {
       <div className="mypage-container">
         <section>
           <div className="user-info">
-            <strong>내 프로필</strong>
             <img className="picture" src={user.picture} alt="" />
             <div className="name">
               <span>{user.family_name} </span>
               <span>{user.given_name}</span>
             </div>
             <span className="email">{user.email}</span>
+          </div>
+          <div className="cal">
+            <CalendarProfile />
           </div>
         </section>
         <section>
@@ -55,9 +57,6 @@ const ProfileContainer = () => {
           </div>
         </section>
       </div>
-      <div className="cal">
-        <CalendarProfile />
-      </div>
     </MypageBlock>
   );
 };
@@ -65,75 +64,80 @@ const ProfileContainer = () => {
 export default ProfileContainer;
 
 const MypageBlock = styled.div`
-  width: 950px;
   margin: auto;
-  position: relative;
 
   .mypage-title {
     ${theme.h1box}
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  section:nth-child(1) {
+    padding-right: 30px;
+    align-items: center;
+  }
+
+  section:nth-child(2) {
+    width: 60%;
+    padding-left: 50px;
+    align-items: left;
   }
 
   strong {
     font-size: 20px;
   }
 
-  .mypage-container {
-    margin: 150px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .my-posts > strong {
+    margin-left: 30px;
   }
-  strong {
-    margin-bottom: 30px;
+
+  .mypage-container {
+    margin-left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
   }
 
   .user-info {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px;
-    position: absolute;
+    padding: 0 30px 80px;
     top: 140px;
     left: -160px;
 
     .picture {
-      width: 130px;
+      width: 80px;
       border-radius: 50%;
-      padding: 5px;
-      border: 2px dashed ${theme.primaryColor};
-    }
-    .name {
-      font-size: 1.2rem;
       margin-top: 30px;
     }
-    .email {
-      margin-top: 20px;
+    .name {
+      font-size: 1rem;
+      margin-top: 10px;
+      line-height: 40px;
     }
   }
   .my-posts {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    margin-left: 150px;
-    border-left: 2px dashed ${theme.primaryColor};
+    align-items: start;
+
     .myPosts {
-      width: 1030px;
+      transform: translateY(-20px);
     }
-  }
-  .cal {
-    position: absolute;
-    top: 530px;
-    left: -220px;
   }
 
   .react-calendar {
     width: 355px;
     max-width: 100%;
-    background-color: ${theme.lightGrayColor};
+    background-color: #f0f0f0;
     padding: 20px 10px;
     color: ${theme.darkGrayColor};
-    border-radius: 8px;
+    border-radius: 24px;
     border: none;
     box-shadow: 0 8px 14px rgba(0, 0, 0, 0.15);
     transition: all 0.2s ease-in-out;
