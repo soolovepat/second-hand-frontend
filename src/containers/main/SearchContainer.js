@@ -22,11 +22,12 @@ const SearchContainer = () => {
 
   const fetchTitles = async () => {
     const response = await getPosts();
+
     setTitles(
-      response.data?.map((post) => ({
+      response.data.postList.map((post) => ({
         title: post.title,
         id: post.id,
-      }))
+      })),
     );
   };
 
@@ -70,8 +71,7 @@ const SearchContainer = () => {
                   onClick={(e) => {
                     e.stopPropagation();
                     onClickItem(post.id);
-                  }}
-                >
+                  }}>
                   {post.title} {" →"}
                 </li>
               );

@@ -76,6 +76,7 @@ const WriteContainer = () => {
   const handlePost = async (imageUrl) => {
     const updatedFormData = { ...formData, imgs: imageUrl };
     try {
+      console.log(updatedFormData);
       const response = await writePost(updatedFormData);
       console.log(response);
       Swal.fire({
@@ -114,7 +115,7 @@ const WriteContainer = () => {
       return;
     }
 
-    const uploadPromises = formData.imgs.map((img, index) => {
+    const uploadPromises = formData.imgs.map((img, _) => {
       const params = {
         ACL: "public-read",
         Body: img,
