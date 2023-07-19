@@ -149,6 +149,7 @@ const CommentsContainer = ({ comments: initialComments, post, setPost }) => {
       />
       <Comments
         comments={comments}
+        userEmail={userEmail}
         setComments={setComments}
         onChange={onChangeEdit}
         editingCommentId={editingCommentId}

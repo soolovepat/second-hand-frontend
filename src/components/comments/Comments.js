@@ -4,6 +4,7 @@ import Input from "../../common/Input";
 
 const comments = ({
   comments,
+  userEmail,
   onChange,
   editingCommentId,
   setEditingCommentId,
@@ -19,34 +20,36 @@ const comments = ({
 
   return (
     <CommentsBlock>
-      {comments?.map((comment) => (
-        <li key={comment.commentId}>
-          {isEdit && editingCommentId === comment.commentId ? ( // editingCommentId와 현재 댓글의 id 비교
-            <>
-              <Input
-                w={"200px"}
-                ph={"수정하실 댓글을 작성해주세요"}
-                value={comment.content}
-                onChange={(e) => onChange(comment.commentId, e.target.value)}
-              />
-
-              <Button
-                onClick={() => handleEdit(comment.commentId, comment.content)}
-              >
-                완료
-              </Button>
-            </>
-          ) : (
-            <>
-              {comment.content}
-              <Button onClick={() => onEditComment(comment.commentId)}>
-                수정
-              </Button>
-            </>
-          )}
-          <Button onClick={() => handleDelete(comment.commentId)}>삭제</Button>
-        </li>
-      ))}
+      {comments?.map((comment) => {
+        const { commentId, content, username } = comment;
+        return (
+          <li key={comment.commentId}>
+            {isEdit && editingCommentId === commentId ? ( // editingCommentId와 현재 댓글의 id 비교
+              <>
+                <Input
+                  w={"200px"}
+                  ph={"수정하실 댓글을 작성해주세요"}
+                  value={comment.content}
+                  onChange={(e) => onChange(commentId, e.target.value)}
+                />
+                <Button onClick={() => handleEdit(commentId, comment.content)}>
+                  완료
+                </Button>
+              </>
+            ) : (
+              <>
+                {content}
+                {username === userEmail && (
+                  <Button onClick={() => onEditComment(commentId)}>수정</Button>
+                )}
+              </>
+            )}
+            {username === userEmail && (
+              <Button onClick={() => handleDelete(commentId)}>삭제</Button>
+            )}
+          </li>
+        );
+      })}
     </CommentsBlock>
   );
 };
