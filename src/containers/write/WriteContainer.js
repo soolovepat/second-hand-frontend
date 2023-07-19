@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import Write from "../../components/write/Write";
-import Footer from "../../components/common/Footer";
 import uploadToS3 from "../../utils/awsS3";
 
 const WriteContainer = ({ editPost, editTitle, editComplete }) => {
@@ -63,6 +62,29 @@ const WriteContainer = ({ editPost, editTitle, editComplete }) => {
     setFormData({ ...formData, category: CATEGORIES[idx] });
   };
 
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    if (Number(formData.price) > 10000) {
+      toast.error("만원 이하의 가격만 입력해주세요.");
+      return;
+    }
+
+    if (!Object.values(formData).every((item) => item !== "")) {
+      toast.error("정보를 모두 입력해주세요.");
+      return;
+    }
+
+    const uploadPromises = formData.images.map(uploadToS3);
+
+    try {
+      const imageUrls = await Promise.all(uploadPromises);
+      handlePost(imageUrls);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   const handlePost = async (imageUrls) => {
     const updatedFormData = { ...formData, images: imageUrls };
     try {
@@ -99,30 +121,6 @@ const WriteContainer = ({ editPost, editTitle, editComplete }) => {
       });
     } catch (e) {
       console.log(e);
-    }
-  };
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-
-    if (Number(formData.price) > 10000) {
-      toast.error("만원 이하의 가격만 입력해주세요.");
-      return;
-    }
-
-    if (!Object.values(formData).every((item) => item !== "")) {
-      toast.error("정보를 모두 입력해주세요.");
-      return;
-    }
-
-    const uploadPromises = formData.images.map(uploadToS3);
-
-    try {
-      const imageUrls = await Promise.all(uploadPromises);
-      handlePost(imageUrls);
-      console.log(imageUrls);
-    } catch (err) {
-      console.error(err);
     }
   };
 

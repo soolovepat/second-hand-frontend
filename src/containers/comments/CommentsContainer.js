@@ -45,8 +45,8 @@ const CommentsContainer = ({ comments: initialComments, post, setPost }) => {
       prevComments.map((comment) =>
         comment.commentId === commentId
           ? { ...comment, content: value }
-          : comment
-      )
+          : comment,
+      ),
     );
   };
 
@@ -99,15 +99,11 @@ const CommentsContainer = ({ comments: initialComments, post, setPost }) => {
   const handleEdit = async (commentId, content) => {
     try {
       const editedComment = {
+        postId,
         content,
+        username: userEmail,
       };
       const response = await editComment(commentId, editedComment);
-      console.log(response);
-      // setComments((prevComments) =>
-      //   prevComments.map((comment) =>
-      //     comment.commentId === id ? editedComment : comment
-      //   )
-      // );
       setIsEdit(false);
 
       Swal.fire({
