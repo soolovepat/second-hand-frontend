@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Select from "../../common/Select";
 import { Toast } from "../../components/common/Toast";
 import Button from "../../common/Button";
-import { RiImageAddFill } from "react-icons/ri";
+import { RiImageAddFill, RiImageFill } from "react-icons/ri";
 import { FaCircleExclamation } from "react-icons/fa6";
 import theme from "../../lib/styles/Theme";
 
@@ -22,15 +22,21 @@ const Write = ({
   return (
     <WriteContainerBlock>
       <Header />
-      <div className="write-header">상품 등록하기</div>
+      <h1 className="write-title">상품 등록하기</h1>
       <div className="form">
         <div className="file-wrapper">
           <div className="button-wrapper">
             <label for="file" className="real-button">
               <RiImageAddFill />
+              <span>{numberOfImage} / 3</span>
             </label>
-            <span>{numberOfImage} / 3</span>
+            {Array.from({ length: numberOfImage }, (_, index) => (
+              <div key={index} className="image-file">
+                <RiImageFill />
+              </div>
+            ))}
           </div>
+
           <span>
             <FaCircleExclamation />
             jpg 파일만 업로드 가능합니다
@@ -64,7 +70,6 @@ const Write = ({
           onToggleHandler={onToggleSelect}
           onClickHandler={onClickSelect}
         />
-        {/* textarea? */}
         <textarea
           name="content"
           value={formData.content}
@@ -86,7 +91,12 @@ const Write = ({
           onChange={onChangeForm}
           maxLength={20}
         />
-        <Button size="lg" color={"black"} onClick={onSubmit}>
+        <Button
+          size="lg"
+          bgcolor={theme.primaryColor}
+          color={theme.whiteColor}
+          onClick={onSubmit}
+        >
           작성완료
         </Button>
       </div>
@@ -99,6 +109,10 @@ export default Write;
 
 const WriteContainerBlock = styled.div`
   position: relative;
+
+  .write-title {
+    ${theme.h1box}
+  }
 
   .form {
     width: 70%;
@@ -115,27 +129,40 @@ const WriteContainerBlock = styled.div`
     background: white;
 
     button {
-      margin: 0 auto;
+      margin: 30px auto 0;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        background-color: ${theme.darkColor};
+      }
     }
   }
 
   .button-wrapper {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    gap: 10px;
 
-    > span {
-      margin-left: 20px;
+    margin-bottom: 10px;
+    line-height: 50px;
+
+    span {
+      margin-left: 10px;
+      font-size: 18px;
     }
   }
 
-  .file-wrapper > span {
-    font-size: 14px;
-    color: ${(props) => props.theme.mediumGrayColor};
+  .file-wrapper {
+    margin-bottom: 10px;
 
-    svg {
-      margin-right: 6px;
-      vertical-align: middle;
+    > span {
+      font-size: 14px;
+      color: ${(props) => props.theme.mediumGrayColor};
+
+      svg {
+        margin-right: 6px;
+        vertical-align: middle;
+      }
     }
   }
 
@@ -145,26 +172,51 @@ const WriteContainerBlock = styled.div`
   }
 
   .real-button {
+    display: flex;
+    align-items: center;
+
     width: fit-content;
-    background-color: black;
+    border: 1px solid ${theme.lightGrayColor};
     border-radius: 28px;
-    color: white;
-    padding: 2px 14px 0;
+    color: ${theme.mediumGrayColor};
+    padding: 0 20px;
     line-height: 50px;
     font-size: 24px;
     text-align: center;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: ${theme.secondaryColor};
+      border: 1px solid ${theme.secondaryColor};
+      color: ${theme.darkGrayColor};
+    }
   }
 
-  .write-header {
-    ${theme.h1box}
+  .image-file {
+    display: flex;
+    align-items: center;
+    border: 1px solid ${theme.lightGrayColor};
+    border-radius: 28px;
+    font-size: 24px;
+    color: ${theme.darkGrayColor};
+    background-color: ${theme.lightGrayColor};
+    padding: 12px 20px;
   }
 
   textarea {
     height: 300px;
-    border: 1px solid #ccc;
+    border: 1px solid ${theme.lightGrayColor};
     border-radius: 25px;
     padding: 15px;
     font-size: 1rem;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: ${theme.mediumGrayColor};
+    }
   }
 `;

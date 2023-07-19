@@ -8,6 +8,8 @@ import { toast } from "react-toastify";
 import { Toast } from "../../components/common/Toast";
 import Swal from "sweetalert2";
 import { writeComment } from "../../api/comments";
+import styled from "styled-components";
+import theme from "../../lib/styles/Theme";
 
 const CommentsContainer = ({ comments }) => {
   const id = uuidv4();
@@ -72,12 +74,17 @@ const CommentsContainer = ({ comments }) => {
   };
 
   return (
-    <div>
+    <DetailBlock>
       <CommentInput onChange={onChange} onSubmit={onSubmit} />
       <Comments comments={comments} />
       <Toast />
-    </div>
+    </DetailBlock>
   );
 };
 
 export default CommentsContainer;
+
+const DetailBlock = styled.div`
+  border-top: 1px solid ${theme.lightGrayColor};
+  width: 60%;
+`;

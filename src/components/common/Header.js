@@ -92,7 +92,7 @@ const HeaderBlock = styled.div`
   margin: 0 auto;
   padding: 20px 30px;
   background-color: ${theme.whiteColor};
-  z-index: 10;
+  z-index: 100;
 
   .button-wrapper {
     display: flex;
@@ -109,7 +109,7 @@ const HeaderBlock = styled.div`
   }
 
   input {
-    border: 1px solid ${theme.lightGrayColor};
+    //border: 1px solid ${theme.lightGrayColor};
   }
 
   .logo-wrapper {
