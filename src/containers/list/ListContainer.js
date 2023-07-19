@@ -72,9 +72,8 @@ const ListContainer = ({ type, myPosts }) => {
           .slice(indexOfFirstItem, indexOfLastItem);
   };
 
-  const onClickHandler = (id) => {
-    console.log(id);
-    navigate(`/${id}/detail`);
+  const onClickHandler = (postId) => {
+    navigate(`/${postId}/detail`);
   };
 
   if (!postList) {
@@ -87,7 +86,7 @@ const ListContainer = ({ type, myPosts }) => {
       <div className="myPosts">
         <ListContainerBlock>
           {getCurrentList()?.map((post) => (
-            <div key={post.title} onClick={() => onClickHandler(post.id)}>
+            <div key={post.title} onClick={() => onClickHandler(post.postId)}>
               <List post={post} />
             </div>
           ))}
@@ -114,7 +113,7 @@ const ListContainer = ({ type, myPosts }) => {
       />
       <ListContainerBlock>
         {getCurrentList()?.map((post) => (
-          <div key={post.title} onClick={() => onClickHandler(post.id)}>
+          <div key={post.title} onClick={() => onClickHandler(post.postId)}>
             <List post={post} />
           </div>
         ))}

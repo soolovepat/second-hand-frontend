@@ -12,6 +12,7 @@ import {
   setUser,
 } from "../redux/modules/user";
 import { Navigate, Outlet } from "react-router-dom";
+import EditPage from "../pages/pages/EditPage";
 
 const checkIsLoggedIn = () => {
   if (localStorage.getItem("google_token")) {
@@ -53,7 +54,7 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/:id/detail" element={<DetailPage />} />
+        <Route path="/:postId/detail" element={<DetailPage />} />
         <Route element={<AuthRoute userLoggedIn={userLoggedIn} />}>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
@@ -61,7 +62,8 @@ const Router = () => {
         <Route element={<ProtectedRoute userLoggedIn={userLoggedIn} />}>
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/write" element={<WritePage />} />
-          <Route path="/write/:id" element={<WritePage />} />
+          <Route path="/write/:postId" element={<WritePage />} />
+          <Route path="/edit/:postId/" element={<EditPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

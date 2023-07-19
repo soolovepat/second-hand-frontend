@@ -12,7 +12,7 @@ const Details = ({
   onDelete,
   isUsers,
 }) => {
-  const { title, price, content, category, imgs } = post;
+  const { title, price, content, category, images } = post;
 
   if (!post) {
     return <div>...로딩</div>;
@@ -38,9 +38,8 @@ const Details = ({
         <div className="carousel">
           <div
             className="img-container"
-            style={{ transform: `translateX(-${currImgIndex * 100}%)` }}
-          >
-            {imgs?.map((src, idx) => (
+            style={{ transform: `translateX(-${currImgIndex * 100}%)` }}>
+            {images?.map((src, idx) => (
               <div key={idx} className="img-wrapper">
                 <img src={src} alt="product" />
               </div>
@@ -53,7 +52,7 @@ const Details = ({
             <FaChevronRight onClick={onIncreaseIdx} />
           </p>
         </div>
-        <CarouselDots currImgIndex={currImgIndex} imgLength={imgs?.length} />
+        <CarouselDots currImgIndex={currImgIndex} imgLength={images?.length} />
         <div className="content">{content}</div>
         <div className="buttons">
           {isUsers ? (
@@ -64,8 +63,7 @@ const Details = ({
               <Button
                 size="sm"
                 onClick={onDelete}
-                bgcolor={theme.lightGrayColor}
-              >
+                bgcolor={theme.lightGrayColor}>
                 삭제
               </Button>
             </>
