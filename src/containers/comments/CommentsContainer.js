@@ -2,11 +2,17 @@ import CommentInput from "../../components/comments/CommentInput";
 import Comments from "../../components/comments/Comments";
 import styled from "styled-components";
 import theme from "../../lib/styles/Theme";
+import { useState } from "react";
 
 const CommentsContainer = ({ comments }) => {
+  const [comment, setComment] = useState("");
   return (
     <DetailBlock>
-      <CommentInput />
+      <CommentInput
+        comment={comment}
+        setComment={setComment}
+        comments={comments}
+      />
       <Comments comments={comments} />
     </DetailBlock>
   );

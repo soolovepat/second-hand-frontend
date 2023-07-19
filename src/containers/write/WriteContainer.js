@@ -144,6 +144,7 @@ const WriteContainer = () => {
       // 모든 이미지가 업로드될 때까지 기다림
       const imageUrls = await Promise.all(uploadPromises);
       handlePost(imageUrls);
+      console.log(imageUrls);
     } catch (err) {
       console.error(err);
     }
