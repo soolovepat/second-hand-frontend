@@ -33,33 +33,14 @@ const ListContainer = ({ type, myPosts }) => {
     }
     const fetchPosts = async () => {
       try {
-        //const response = await axios.get("http://localhost:4000/posts");
         const response = await getPosts();
         setPostList(response.data.postList);
-        console.log(response.data);
       } catch (error) {
         console.error(error);
       }
     };
     fetchPosts();
   }, [myPosts, type]);
-
-  // useEffect(() => {
-  //   const fetchPosts = async () => {
-  //     try {
-  //       const response = await axios.get("http://localhost:4000/users");
-  //       setUserInfo(response.data);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-
-  //   fetchPosts();
-  // }, []);
-
-  // if (!postList) {
-  //   return null;
-  // }
 
   // 현재 페이지의 리스트 항목을 반환하는 함수
   const getCurrentList = () => {

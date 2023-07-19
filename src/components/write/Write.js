@@ -12,7 +12,6 @@ const Write = ({
   formData,
   openSelect,
   CATEGORIES,
-  numberOfImage,
   onToggleSelect,
   onClickSelect,
   onChangeFile,
@@ -30,15 +29,14 @@ const Write = ({
           <div className="button-wrapper">
             <label for="file" className="real-button">
               <RiImageAddFill />
-              <span>{numberOfImage} / 3</span>
+              <span>{formData.images.length} / 3</span>
             </label>
-            {Array.from({ length: numberOfImage }, (_, index) => (
+            {Array.from({ length: formData.images.length }, (_, index) => (
               <div key={index} className="image-file">
                 <RiImageFill />
               </div>
             ))}
           </div>
-
           <span>
             <FaCircleExclamation />
             jpg 파일만 업로드 가능합니다
@@ -54,6 +52,8 @@ const Write = ({
           onChange={onChangeFile}
           id="file"
         />
+        <p>제목</p>
+
         <Input
           h={"80px"}
           name="title"
@@ -62,6 +62,7 @@ const Write = ({
           onChange={onChangeForm}
           maxLength={20}
         />
+        <p>카테고리</p>
         <Select
           w={"100%"}
           h={"80px"}
@@ -72,6 +73,7 @@ const Write = ({
           onToggleHandler={onToggleSelect}
           onClickHandler={onClickSelect}
         />
+        <p>상품 설명</p>
         <textarea
           name="content"
           value={formData.content}
@@ -79,6 +81,7 @@ const Write = ({
           placeholder="상품 설명 (500자 이내)"
           maxLength={500}
         />
+        <p>가격</p>
         <Input
           h={"80px"}
           name="price"
@@ -86,10 +89,12 @@ const Write = ({
           ph={"가격 (만원 이하)"}
           onChange={onChangeForm}
         />
+        <p>거래 희망 장소</p>
         <Input
           h={"80px"}
           name="location"
           ph={"거래 희망 장소 (20자 이내)"}
+          value={formData.location}
           onChange={onChangeForm}
           maxLength={20}
         />
@@ -137,6 +142,12 @@ const WriteContainerBlock = styled.div`
         background-color: ${theme.darkColor};
       }
     }
+  }
+
+  p {
+    font-size: 14px;
+    color: ${(props) => props.theme.mediumGrayColor};
+    margin: 20px 0px 0px 15px;
   }
 
   .button-wrapper {
