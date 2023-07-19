@@ -18,11 +18,13 @@ const Write = ({
   onChangeFile,
   onChangeForm,
   onSubmit,
+  editTitle,
+  editComplete,
 }) => {
   return (
     <WriteContainerBlock>
       <Header />
-      <h1 className="write-title">상품 등록하기</h1>
+      <h1 className="write-title">{editTitle || "상품 등록하기"}</h1>
       <div className="form">
         <div className="file-wrapper">
           <div className="button-wrapper">
@@ -95,9 +97,8 @@ const Write = ({
           size="lg"
           bgcolor={theme.primaryColor}
           color={theme.whiteColor}
-          onClick={onSubmit}
-        >
-          작성완료
+          onClick={onSubmit}>
+          {editComplete || "작성완료"}
         </Button>
       </div>
       <Toast />

@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import { writePost } from "../../api/posts";
+import { useEffect, useState } from "react";
+import { editmyPost, writePost } from "../../api/posts";
 import { CATEGORIES } from "../auth/RegisterContainer";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
@@ -10,11 +9,30 @@ import Write from "../../components/write/Write";
 import Footer from "../../components/common/Footer";
 import AWS from "aws-sdk";
 
-const WriteContainer = () => {
+const WriteContainer = ({ editPost, editTitle, editComplete }) => {
   const navigate = useNavigate();
-  const id = uuidv4();
   const userEmail = jwt_decode(localStorage.getItem("google_token")).email;
   const [numberOfImage, setNumberOfImage] = useState(0);
+  const [formData, setFormData] = useState({
+    username: userEmail,
+    title: "",
+    content: "",
+    price: "",
+    category: "",
+    location: "",
+    isSold: false,
+    images: [],
+  });
+  const [openSelect, setOpenSelect] = useState(false);
+
+  //거래 희망 장소 안됨
+  useEffect(() => {
+    if (editPost) {
+      setFormData(editPost);
+    }
+  }, [editPost]);
+
+  console.log(editPost);
 
   AWS.config.update({
     accessKeyId: process.env.REACT_APP_ACCESS_KEY,
@@ -25,19 +43,6 @@ const WriteContainer = () => {
     params: { Bucket: process.env.REACT_APP_S3_BUCKET },
     region: process.env.REACT_APP_RESION,
   });
-
-  const [formData, setFormData] = useState({
-    id: id,
-    username: userEmail,
-    title: "",
-    content: "",
-    price: "",
-    category: "",
-    location: "",
-    isSold: false,
-    imgs: [],
-  });
-  const [openSelect, setOpenSelect] = useState(false);
 
   const onChangeForm = (e) => {
     const { name, value } = e.target;
@@ -60,7 +65,7 @@ const WriteContainer = () => {
       toast.error("3장까지만 업로드 가능합니다.");
       return;
     }
-    setFormData({ ...formData, imgs: files });
+    setFormData({ ...formData, images: files });
     setNumberOfImage(numberOfImage + 1);
   };
 
@@ -74,27 +79,40 @@ const WriteContainer = () => {
   };
 
   const handlePost = async (imageUrl) => {
-    const updatedFormData = { ...formData, imgs: imageUrl };
+    const updatedFormData = { ...formData, images: imageUrl };
     try {
-      const response = await writePost(updatedFormData);
-      console.log(response);
-      Swal.fire({
-        position: "top",
-        icon: "success",
-        title: "작성 완료 되었습니다 :)",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      navigate(`/${formData.id}/detail`);
+      if (editPost) {
+        console.log("ddd");
+        const response = await editmyPost(editPost.postId, formData);
+        Swal.fire({
+          position: "top",
+          icon: "success",
+          title: "수정 완료 되었습니다 :)",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate(`/${response.data.postId}/detail`);
+        console.log(response);
+      } else {
+        const response = await writePost(updatedFormData);
+        Swal.fire({
+          position: "top",
+          icon: "success",
+          title: "작성 완료 되었습니다 :)",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate(`/${response.data.postId}/detail`);
+      }
+
       setFormData({
         ...formData,
-        id: uuidv4(),
         title: "",
         content: "",
         price: "",
         category: "",
         location: "",
-        imgs: [],
+        images: [],
       });
     } catch (e) {
       console.log(e);
@@ -114,7 +132,7 @@ const WriteContainer = () => {
       return;
     }
 
-    const uploadPromises = formData.imgs.map((img, index) => {
+    const uploadPromises = formData.images.map((img, _) => {
       const params = {
         ACL: "public-read",
         Body: img,
@@ -157,6 +175,8 @@ const WriteContainer = () => {
         openSelect={openSelect}
         CATEGORIES={CATEGORIES}
         numberOfImage={numberOfImage}
+        editTitle={editTitle}
+        editComplete={editComplete}
         onToggleSelect={onToggleSelect}
         onClickSelect={onClickSelect}
         onChangeFile={onChangeFile}

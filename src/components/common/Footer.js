@@ -29,8 +29,6 @@ const FooterBlock = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
-  width: 100%;
-  line-height: 30px;
   height: 200px;
   background-color: ${theme.mediumGrayColor};
 

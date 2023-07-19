@@ -35,7 +35,8 @@ const ListContainer = ({ type, myPosts }) => {
       try {
         //const response = await axios.get("http://localhost:4000/posts");
         const response = await getPosts();
-        setPostList(response.data);
+        setPostList(response.data.postList);
+        console.log(response.data);
       } catch (error) {
         console.error(error);
       }
@@ -43,22 +44,22 @@ const ListContainer = ({ type, myPosts }) => {
     fetchPosts();
   }, [myPosts, type]);
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await axios.get("http://localhost:4000/users");
-        setUserInfo(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchPosts = async () => {
+  //     try {
+  //       const response = await axios.get("http://localhost:4000/users");
+  //       setUserInfo(response.data);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
 
-    fetchPosts();
-  }, []);
+  //   fetchPosts();
+  // }, []);
 
-  if (!postList) {
-    return null;
-  }
+  // if (!postList) {
+  //   return null;
+  // }
 
   // 현재 페이지의 리스트 항목을 반환하는 함수
   const getCurrentList = () => {
@@ -71,10 +72,13 @@ const ListContainer = ({ type, myPosts }) => {
           .slice(indexOfFirstItem, indexOfLastItem);
   };
 
-  const onClickHandler = (id) => {
-    console.log(id);
-    navigate(`/${id}/detail`);
+  const onClickHandler = (postId) => {
+    navigate(`/${postId}/detail`);
   };
+
+  if (!postList) {
+    return null;
+  }
 
   //마이페이지용
   if (type === "mypage") {
@@ -82,7 +86,7 @@ const ListContainer = ({ type, myPosts }) => {
       <div className="myPosts">
         <ListContainerBlock>
           {getCurrentList()?.map((post) => (
-            <div key={post.title} onClick={() => onClickHandler(post.id)}>
+            <div key={post.title} onClick={() => onClickHandler(post.postId)}>
               <List post={post} />
             </div>
           ))}
@@ -109,7 +113,7 @@ const ListContainer = ({ type, myPosts }) => {
       />
       <ListContainerBlock>
         {getCurrentList()?.map((post) => (
-          <div key={post.title} onClick={() => onClickHandler(post.id)}>
+          <div key={post.title} onClick={() => onClickHandler(post.postId)}>
             <List post={post} />
           </div>
         ))}
