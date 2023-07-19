@@ -27,7 +27,6 @@ const RegisterContainer = () => {
 
   const [openSelect, setOpenSelect] = useState(false);
 
-  // id, pw 영문 숫자 조합 8자리 이상
   const usernameValidation = /^[a-z0-9]{4,10}$/;
   const passwordValidation =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,15}$/;

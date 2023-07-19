@@ -1,20 +1,20 @@
-import { css, styled } from "styled-components";
+import { styled } from "styled-components";
 
-const Button = ({ children, size, color, bgcolor, icon, onClick }) => {
+const Button = ({ children, size, color, bgcolor, onClick }) => {
   return (
-    <ButtonStyle
-      size={size}
-      icon={icon}
-      color={color}
-      bgcolor={bgcolor}
-      onClick={onClick}
-    >
+    <ButtonStyle size={size} color={color} bgcolor={bgcolor} onClick={onClick}>
       {children}
     </ButtonStyle>
   );
 };
 
 export default Button;
+
+const sizes = {
+  lg: "50px",
+  md: "48px",
+  sm: "35px",
+};
 
 const ButtonStyle = styled.button`
   padding: 0 20px;
@@ -24,45 +24,11 @@ const ButtonStyle = styled.button`
   width: fit-content;
   cursor: pointer;
   min-width: 85px;
+  background-color: ${(props) => props.bgcolor};
+  color: ${(props) => props.color};
+  height: ${(props) => sizes[props.size]};
 
   &:active {
     filter: brightness(80%);
   }
-
-  ${(props) => {
-    switch (props.size) {
-      case "lg":
-        return css`
-          ${(props) =>
-            props.bgcolor &&
-            css`
-              background-color: ${(props) => props.bgcolor};
-              color: ${(props) => props.color};
-            `}
-          height: 50px;
-        `;
-      case "md":
-        return css`
-          ${(props) =>
-            props.bgcolor &&
-            css`
-              background-color: ${(props) => props.bgcolor};
-              color: ${(props) => props.color};
-            `}
-          height: 48px;
-        `;
-      case "sm":
-        return css`
-          ${(props) =>
-            props.bgcolor &&
-            css`
-              background-color: ${(props) => props.bgcolor};
-              color: ${(props) => props.color};
-            `}
-          height: 35px;
-        `;
-      default:
-        return;
-    }
-  }}
 `;

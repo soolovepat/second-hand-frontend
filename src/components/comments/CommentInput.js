@@ -4,13 +4,14 @@ import Button from "../../common/Button";
 import { FaRegComments } from "react-icons/fa";
 import theme from "../../lib/styles/Theme";
 
-const CommentInput = ({ onChange, onSubmit }) => {
+const CommentInput = ({ comment, onChange, onSubmit }) => {
   return (
     <CommentInputBlock>
       <FaRegComments />
       <Input
         w={"400px"}
         ph={"댓글을 남겨 판매자와 소통해보세요."}
+        value={comment}
         onChange={onChange}
       />
       <Button size="sm" bgcolor={theme.lightGrayColor} onClick={onSubmit}>
@@ -24,17 +25,15 @@ export default CommentInput;
 
 const CommentInputBlock = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin: 50px 0px;
+  margin: 30px 0px;
 
   input {
-    margin-left: 20px;
-    font-size: 1.1rem;
+    flex: 0.95;
   }
 
   button {
-    margin-left: 20px;
     font-size: 1rem;
-    font-weight: bold;
   }
 `;

@@ -1,11 +1,55 @@
 import styled from "styled-components";
+import Button from "../../common/Button";
+import Input from "../../common/Input";
 
-const comments = ({ comments }) => {
+const comments = ({
+  comments,
+  userEmail,
+  onChange,
+  editingCommentId,
+  setEditingCommentId,
+  handleEdit,
+  handleDelete,
+  isEdit,
+  setIsEdit,
+}) => {
+  const onEditComment = (id) => {
+    setEditingCommentId(id); // 수정 버튼을 누르면 editingCommentId 변경
+    setIsEdit(true);
+  };
+
   return (
     <CommentsBlock>
-      {comments?.map((comment) => (
-        <li key={comment.postId}>{comment.content}</li>
-      ))}
+      {comments?.map((comment) => {
+        const { commentId, content, username } = comment;
+        return (
+          <li key={comment.commentId}>
+            {isEdit && editingCommentId === commentId ? ( // editingCommentId와 현재 댓글의 id 비교
+              <>
+                <Input
+                  w={"200px"}
+                  ph={"수정하실 댓글을 작성해주세요"}
+                  value={comment.content}
+                  onChange={(e) => onChange(commentId, e.target.value)}
+                />
+                <Button onClick={() => handleEdit(commentId, comment.content)}>
+                  완료
+                </Button>
+              </>
+            ) : (
+              <>
+                {content}
+                {username === userEmail && (
+                  <Button onClick={() => onEditComment(commentId)}>수정</Button>
+                )}
+              </>
+            )}
+            {username === userEmail && (
+              <Button onClick={() => handleDelete(commentId)}>삭제</Button>
+            )}
+          </li>
+        );
+      })}
     </CommentsBlock>
   );
 };

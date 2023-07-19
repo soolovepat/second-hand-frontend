@@ -129,22 +129,22 @@ const SearchBlock = styled.div`
       background: ${theme.lightGrayColor};
       border-radius: 8px;
     }
-  }
 
-  li:nth-child(1) {
-    margin-top: 10px;
-  }
+    li:nth-child(1) {
+      margin-top: 10px;
+    }
 
-  li {
-    list-style: none;
-    margin: 4px 10px;
-    padding: 14px 18px;
-    border-radius: 24px;
-    transition: all 0.1s ease-in-out;
+    li {
+      list-style: none;
+      margin: 4px 10px;
+      padding: 0 20px;
+      border-radius: 24px;
+      transition: all 0.1s ease-in-out;
 
-    cursor: pointer;
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
     }
   }
 `;

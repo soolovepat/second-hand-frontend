@@ -1,32 +1,8 @@
 import { styled } from "styled-components";
 import theme from "../lib/styles/Theme";
 
-const Input = ({
-  w,
-  h,
-  ph,
-  type,
-  name,
-  value,
-  maxLength,
-  onChange,
-  onClick,
-  onBlur,
-}) => {
-  return (
-    <StyledInput
-      w={w}
-      h={h}
-      placeholder={`${ph}`}
-      type={type}
-      name={name}
-      value={value}
-      onChange={onChange}
-      onClick={onClick}
-      maxLength={maxLength}
-      onBlur={onBlur}
-    />
-  );
+const Input = ({ w, h, ph, ...rest }) => {
+  return <StyledInput w={w} h={h} placeholder={ph} {...rest} />;
 };
 
 export default Input;
@@ -37,7 +13,6 @@ const StyledInput = styled.input`
   outline: none;
   width: ${(props) => `${props.w}`};
   height: ${(props) => `${props.h}`};
-  height: 50px;
   font-size: 1rem;
   padding: 20px;
 
