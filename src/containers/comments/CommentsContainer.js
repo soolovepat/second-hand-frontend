@@ -3,23 +3,23 @@ import { v4 as uuidv4 } from "uuid";
 import CommentInput from "../../components/comments/CommentInput";
 import Comments from "../../components/comments/Comments";
 import jwt_decode from "jwt-decode";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Toast } from "../../components/common/Toast";
 import Swal from "sweetalert2";
 import { writeComment } from "../../api/comments";
 import styled from "styled-components";
 import theme from "../../lib/styles/Theme";
-import { useState } from "react";
 
-const CommentsContainer = ({ comments }) => {
-  const id = uuidv4();
+const CommentsContainer = ({ comments: initialComments }) => {
+  const { postId } = useParams();
   const [userEmail, setUserEmail] = useState("");
   const [formData, setFormData] = useState({
-    postId: id,
+    postId: postId,
     content: "",
     username: userEmail,
   });
+  const [comments, setComments] = useState(initialComments);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -47,6 +47,13 @@ const CommentsContainer = ({ comments }) => {
       };
       const response = await writeComment(dataWithUsername);
       console.log(response);
+      const newComment = {
+        id: postId,
+        postId: formData.postId,
+        content: formData.content,
+        username: userEmail,
+      };
+      setComments([...comments, newComment]);
       Swal.fire({
         position: "top",
         icon: "success",
@@ -68,7 +75,7 @@ const CommentsContainer = ({ comments }) => {
     handleWrite();
     setFormData({
       ...formData,
-      id: uuidv4(),
+      id: postId,
       content: "",
       username: "",
     });
@@ -76,7 +83,11 @@ const CommentsContainer = ({ comments }) => {
 
   return (
     <DetailBlock>
-      <CommentInput onChange={onChange} onSubmit={onSubmit} />
+      <CommentInput
+        comment={formData.content}
+        onChange={onChange}
+        onSubmit={onSubmit}
+      />
       <Comments comments={comments} />
       <Toast />
     </DetailBlock>
