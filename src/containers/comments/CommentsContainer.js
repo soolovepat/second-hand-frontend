@@ -127,7 +127,6 @@ const CommentsContainer = ({ comments: initialComments, post, setPost }) => {
         const response = await getPost(postId);
         setPost(response.data);
       }
-
       Swal.fire({
         position: "top",
         icon: "success",
@@ -135,6 +134,7 @@ const CommentsContainer = ({ comments: initialComments, post, setPost }) => {
         showConfirmButton: false,
         timer: 1500,
       });
+      navigate(`/${postId}/detail`);
     } catch (error) {
       console.log(error);
     }
