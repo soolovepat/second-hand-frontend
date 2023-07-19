@@ -16,6 +16,9 @@ const AuthForm = ({
   return (
     <AuthFormBlock type={type}>
       <p className="title">{type === "login" ? "로그인" : "회원가입"}</p>
+      {type === "register" && (
+        <p className="label">아이디 {" (영문 소문자, 숫자 조합 4-10자리)"}</p>
+      )}
       <Input
         w={"80%"}
         h={"45px"}
@@ -24,6 +27,11 @@ const AuthForm = ({
         value={formData.username}
         onChange={rest.onChangeform}
       />
+      {type === "register" && (
+        <p className="label">
+          비밀번호 {" (영문, 숫자, 특수문자 조합 8-15자리)"}
+        </p>
+      )}
       <Input
         w={"80%"}
         h={"45px"}
@@ -35,6 +43,7 @@ const AuthForm = ({
       />
       {type === "register" && (
         <>
+          <p className="label">비밀번호 확인</p>
           <Input
             w={"80%"}
             h={"45px"}
@@ -43,6 +52,7 @@ const AuthForm = ({
             value={rest.checkPW}
             onChange={rest.onCheckPW}
           />
+          <p className="label">닉네임</p>
           <Input
             w={"80%"}
             h={"45px"}
@@ -51,8 +61,10 @@ const AuthForm = ({
             value={formData.nickname}
             onChange={rest.onChangeform}
           />
+          <p className="label">카테고리</p>
           <Select
             w={"80%"}
+            a
             value={category}
             options={categories}
             openSelect={openSelect}
@@ -67,8 +79,7 @@ const AuthForm = ({
           size="lg"
           bgcolor={theme.primaryColor}
           color={theme.whiteColor}
-          onClick={rest.onSubmit}
-        >
+          onClick={rest.onSubmit}>
           {type === "register" ? "회원가입" : "로그인"}
         </Button>
       )}
@@ -92,42 +103,48 @@ const AuthFormBlock = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 50px 20px;
+  padding: 35px 25px;
   height: 100%;
   position: relative;
   .title {
     font-size: 1.5rem;
-    margin-bottom: 35px;
+    margin-bottom: 30px;
   }
   input {
     margin: 10px;
     padding-left: 20px;
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
   li {
-    margin-top: 10px;
+    margin-top: 15px;
   }
   button {
-    margin-top: 50px;
+    margin-top: 40px;
   }
 
   ${({ type }) =>
     type === "login" &&
     css`
       height: 550px;
-      margin-top: 40px;
+      margin-top: 60px;
     `}
 
   .go-to-register {
     position: absolute;
-    bottom: 5%;
+    bottom: 8%;
     right: 8%;
     color: #565656;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     cursor: pointer;
   }
   .google {
-    margin-top: 60px;
-    transform: scale(1.3);
+    margin-top: 70px;
+    transform: scale(1.5);
+  }
+  .label {
+    text-align: left;
+    width: 75%;
+    font-size: 0.8rem;
+    color: ${theme.mediumGrayColor};
   }
 `;
