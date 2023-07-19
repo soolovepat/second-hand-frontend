@@ -21,32 +21,38 @@ const comments = ({
   return (
     <CommentsBlock>
       {comments?.map((comment) => {
-        const { commentId, content, username } = comment;
         return (
           <li key={comment.commentId}>
-            {isEdit && editingCommentId === commentId ? ( // editingCommentId와 현재 댓글의 id 비교
+            {isEdit && editingCommentId === comment.commentId ? ( // editingCommentId와 현재 댓글의 id 비교
               <>
                 <Input
                   w={"200px"}
                   ph={"수정하실 댓글을 작성해주세요"}
-                  value={comment.content}
-                  onChange={(e) => onChange(commentId, e.target.value)}
+                  value={comment.content} // ???
+                  onChange={(e) => onChange(comment.commentId, e.target.value)}
                 />
-                <Button onClick={() => handleEdit(commentId, comment.content)}>
+                <Button
+                  onClick={() =>
+                    handleEdit(comment.commentId, comment.content)
+                  }>
                   완료
                 </Button>
               </>
             ) : (
               <>
                 {userEmail.split("@")[0]}
-                <span> {content}</span>
-                {username === userEmail && (
-                  <Button onClick={() => onEditComment(commentId)}>수정</Button>
+                <span> {comment.content}</span>
+                {comment.username === userEmail && (
+                  <Button onClick={() => onEditComment(comment.commentId)}>
+                    수정
+                  </Button>
                 )}
               </>
             )}
-            {username === userEmail && (
-              <Button onClick={() => handleDelete(commentId)}>삭제</Button>
+            {comment.username === userEmail && (
+              <Button onClick={() => handleDelete(comment.commentId)}>
+                삭제
+              </Button>
             )}
           </li>
         );

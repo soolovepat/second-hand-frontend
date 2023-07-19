@@ -105,7 +105,13 @@ const CommentsContainer = ({ comments: initialComments, post, setPost }) => {
       };
       const response = await editComment(commentId, editedComment);
       setIsEdit(false);
-
+      setComments((prevComments) =>
+        prevComments.map((comment) =>
+          comment.commentId === commentId
+            ? { ...comment, content: content }
+            : comment,
+        ),
+      );
       Swal.fire({
         position: "top",
         icon: "success",
@@ -122,7 +128,6 @@ const CommentsContainer = ({ comments: initialComments, post, setPost }) => {
   const handleDelete = async (id) => {
     try {
       const response = await deleteComment(id);
-
       if (response.data.statusCode === 200) {
         const response = await getPost(postId);
         setPost(response.data);
@@ -134,7 +139,9 @@ const CommentsContainer = ({ comments: initialComments, post, setPost }) => {
         showConfirmButton: false,
         timer: 1500,
       });
-      navigate(`/${postId}/detail`);
+      setComments((prevComments) =>
+        prevComments.filter((comment) => comment.commentId !== id),
+      );
     } catch (error) {
       console.log(error);
     }
