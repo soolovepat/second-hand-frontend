@@ -14,10 +14,6 @@ const Header = () => {
   const navigate = useNavigate();
   const userLoggedIn = useSelector(({ user }) => user.isLoggedIn);
 
-  const handleLogin = () => {
-    navigate("/login");
-  };
-
   const handleLogout = () => {
     Swal.fire({
       title: "로그아웃 하시겠습니까?",
@@ -69,13 +65,15 @@ const Header = () => {
           </>
         ) : (
           <>
-            <Button size={"md"} bgcolor={theme.grayColor} onClick={handleLogin}>
-              로그인
-            </Button>
+            <Link to={"/login"}>로그인</Link>
             <Button
               size={"md"}
-              bgcolor={theme.primaryColor}
-              color={theme.whiteColor}
+              bgcolor={theme.whiteColor}
+              color={theme.primaryColor}
+              bordercolor={theme.primaryColor}
+              hbgcolor={theme.primaryColor}
+              hbordercolor={theme.primaryColor}
+              hcolor={theme.whiteColor}
               onClick={handleWrite}
             >
               글쓰기
