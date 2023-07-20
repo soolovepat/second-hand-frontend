@@ -7,19 +7,19 @@ import theme from "../../lib/styles/Theme";
 const Banner = () => {
   const example = [
     {
-      title: ["남에게 더 가치있게.", <br />, "만원의 행복  🛍️"],
-      content: "사용하지 않는 물건을 등록해보세요!",
+      title: ["이웃에게 더 가치있게.", <br />, "만원의 행복  🛍️"],
+      content: "나에겐 필요하지 않지만 이웃에게는 소중할 수 있어요",
       img: jobs_hero,
     },
     {
-      title: `두번째 배너 :)`,
-      content: "설명입니다!",
+      title: ["저렴한 가격으로", <br />, " 부담없이 거래해요 :)"],
+      content: "만원 이하의 금액으로 부담을 줄였어요",
       img: nearby_stores,
     },
     {
-      title: `3번째 배너 :)`,
-      content: "설명입니다!",
-      img: jobs_hero,
+      title: ["필요한 물건이 있다면", <br />, " 댓글을 남겨보세요 !"],
+      content: "댓글을 통해 이웃과 거래할 수 있어요",
+      img: nearby_stores,
     },
   ];
 
