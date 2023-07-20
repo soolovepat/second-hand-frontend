@@ -12,7 +12,7 @@ const colors = {
 };
 
 const h1box = css`
-  margin: 220px 0 100px;
+  margin: 200px 0 80px;
   text-align: center;
   font-size: 20px;
   font-weight: 500;

@@ -45,8 +45,8 @@ const CommentsContainer = ({ comments: initialComments, post, setPost }) => {
       prevComments.map((comment) =>
         comment.commentId === commentId
           ? { ...comment, content: value }
-          : comment,
-      ),
+          : comment
+      )
     );
   };
 
@@ -109,8 +109,8 @@ const CommentsContainer = ({ comments: initialComments, post, setPost }) => {
         prevComments.map((comment) =>
           comment.commentId === commentId
             ? { ...comment, content: content }
-            : comment,
-        ),
+            : comment
+        )
       );
       Swal.fire({
         position: "top",
@@ -140,7 +140,7 @@ const CommentsContainer = ({ comments: initialComments, post, setPost }) => {
         timer: 1500,
       });
       setComments((prevComments) =>
-        prevComments.filter((comment) => comment.commentId !== id),
+        prevComments.filter((comment) => comment.commentId !== id)
       );
     } catch (error) {
       console.log(error);
@@ -150,6 +150,7 @@ const CommentsContainer = ({ comments: initialComments, post, setPost }) => {
   return (
     <DetailBlock>
       <CommentInput
+        userEmail={userEmail}
         comment={formData.content}
         onChange={onChangeWrite}
         onSubmit={onSubmit}
@@ -175,5 +176,5 @@ export default CommentsContainer;
 
 const DetailBlock = styled.div`
   border-top: 1px solid ${theme.lightGrayColor};
-  width: 60%;
+  width: 1020px;
 `;

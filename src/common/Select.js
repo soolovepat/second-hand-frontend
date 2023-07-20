@@ -52,7 +52,8 @@ export const SelectStyle = styled.div`
   .selected {
     border: 1px solid ${theme.lightGrayColor};
     border-radius: 30px;
-    color: ${(props) => (props.value ? "#676767" : "000")};
+    color: ${(props) =>
+      props.value ? `${theme.lightGrayColor}` : `${theme.darkColor}`};
   }
   .unselected {
     border-radius: 30px;
@@ -65,7 +66,6 @@ export const SelectStyle = styled.div`
   }
 
   span {
-    padding-top: 4px;
     font-size: 1rem;
   }
 

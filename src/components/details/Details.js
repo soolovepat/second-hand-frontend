@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import Button from "../../common/Button";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight, FaTrash } from "react-icons/fa";
+import { FaLocationDot, FaPenToSquare } from "react-icons/fa6";
 import theme from "../../lib/styles/Theme";
 
 const Details = ({
@@ -24,23 +25,26 @@ const Details = ({
       <DetailHeaderBlock className="detailHeader">
         <h1 className="detail-title">상품 상세 보기</h1>
         <div className="header-detail">
-          <div>
-            <p className="title">{title}</p>
-            <p className="username">{post.username?.split("@")[0]}</p>
+          <div className="header-left">
+            <strong className="title">{title}</strong>
+            <span className="username">{post.username?.split("@")[0]}</span>
           </div>
-          <div>
-            <p className="category">{category}</p>
-
-            <p className="price">₩ {price?.toLocaleString()}</p>
+          <div className="header-right">
+            <span className="category">{category}</span>
+            <span className="price">₩ {price?.toLocaleString()}</span>
           </div>
         </div>
       </DetailHeaderBlock>
-      <p className="location">📍 {location}</p>
+
       <DetailDescBlock isSold={isSold}>
+        <p className="location">
+          <FaLocationDot /> {location}
+        </p>
         <div className="carousel">
           <div
             className="img-container"
-            style={{ transform: `translateX(-${currImgIndex * 100}%)` }}>
+            style={{ transform: `translateX(-${currImgIndex * 100}%)` }}
+          >
             {images?.map((src, idx) => (
               <div key={idx} className="img-wrapper">
                 <img src={src} alt="product" />
@@ -48,14 +52,21 @@ const Details = ({
               </div>
             ))}
           </div>
-          <p className="icons left">
-            <FaChevronLeft onClick={onDecreaseIdx} />
-          </p>
-          <p className="icons right">
-            <FaChevronRight onClick={onIncreaseIdx} />
-          </p>
+          {images.length > 1 ? (
+            <>
+              <p className="icons left">
+                <FaChevronLeft onClick={onDecreaseIdx} />
+              </p>
+              <p className="icons right">
+                <FaChevronRight onClick={onIncreaseIdx} />
+              </p>
+              <CarouselDots
+                currImgIndex={currImgIndex}
+                imgLength={images?.length}
+              />
+            </>
+          ) : null}
         </div>
-        <CarouselDots currImgIndex={currImgIndex} imgLength={images?.length} />
 
         <div className="content">{content}</div>
         <div className="buttons">
@@ -63,27 +74,54 @@ const Details = ({
             <>
               {!isSold ? (
                 <Button
-                  size="sm"
+                  size="md"
                   onClick={onToggleSold}
-                  bgcolor={theme.lightGrayColor}>
+                  bgcolor={theme.primaryColor}
+                  bordercolor={theme.primaryColor}
+                  color={theme.whiteColor}
+                  hbgcolor={theme.secondaryColor}
+                  hbordercolor={theme.secondaryColor}
+                  hcolor={theme.darkGrayColor}
+                >
                   판매 완료
                 </Button>
               ) : (
                 <Button
-                  size="sm"
+                  size="md"
                   onClick={onToggleSold}
-                  bgcolor={theme.lightGrayColor}>
+                  bgcolor={theme.secondaryColor}
+                  bordercolor={theme.secondaryColor}
+                  color={theme.darkGrayColor}
+                  hbgcolor={theme.primaryColor}
+                  hbordercolor={theme.primaryColor}
+                  hcolor={theme.whiteColor}
+                >
                   판매중
                 </Button>
               )}
-              <Button size="sm" onClick={onEdit} bgcolor={theme.lightGrayColor}>
-                수정
+              <Button
+                size="md"
+                onClick={onEdit}
+                bgcolor={theme.whiteColor}
+                bordercolor={theme.lightGrayColor}
+                color={theme.mediumGrayColor}
+                hbgcolor={theme.secondaryColor}
+                hbordercolor={theme.secondaryColor}
+                hcolor={theme.darkGrayColor}
+              >
+                <FaPenToSquare />
               </Button>
               <Button
-                size="sm"
+                size="md"
                 onClick={onDelete}
-                bgcolor={theme.lightGrayColor}>
-                삭제
+                bgcolor={theme.whiteColor}
+                bordercolor={theme.lightGrayColor}
+                color={theme.mediumGrayColor}
+                hbgcolor={theme.secondaryColor}
+                hbordercolor={theme.secondaryColor}
+                hcolor={theme.darkGrayColor}
+              >
+                <FaTrash />
               </Button>
             </>
           ) : (
@@ -110,6 +148,10 @@ const CarouselDots = ({ currImgIndex, imgLength }) => {
 };
 
 const DotsBlock = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -135,54 +177,74 @@ const DetailHeaderBlock = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 1020px;
+  border-bottom: 1px solid ${theme.lightGrayColor};
+
+  .header-left {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header-right {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+  }
 
   .detail-title {
     ${theme.h1box}
   }
 
   .header-detail {
-    width: 60%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 10px;
+    padding-bottom: 16px;
 
     .title {
       font-size: 1.3rem;
       font-weight: bold;
     }
     .username {
-      margin-top: 20px;
+      margin-top: 16px;
       font-size: 1rem;
     }
     .price {
-      margin-left: 13px;
-      font-size: 1.1rem;
+      margin-top: 16px;
+      font-size: 1.3rem;
       font-weight: bold;
     }
     .category {
-      margin-bottom: 10px;
-    }
-    .location {
-      margin: 10px 0px 0px 10px;
-      font-weight: bold;
+      font-size: 1rem;
     }
   }
 `;
 
 const DetailDescBlock = styled.div`
-  width: 50%;
+  width: 1020px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  //align-items: center;
   margin-top: 30px;
+
+  .location {
+    font-weight: 400;
+    color: ${theme.mediumGrayColor};
+
+    > svg {
+      position: relative;
+      top: 2px;
+      color: ${theme.lightGrayColor};
+    }
+  }
 
   .carousel {
     position: relative;
     display: flex;
     overflow: hidden;
     width: 100%;
+    margin-top: 20px;
 
     .img-container {
       display: flex;

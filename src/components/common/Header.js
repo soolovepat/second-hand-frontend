@@ -46,7 +46,7 @@ const Header = () => {
           <img className="logo-img" src={logo} alt="logo" />
         </Link>
       </div>
-      <div className="button-wrapper">
+      <div className="header-button-wrapper">
         <SearchContainer />
 
         {userLoggedIn ? (
@@ -56,8 +56,12 @@ const Header = () => {
 
             <Button
               size={"md"}
-              bgcolor={theme.darkColor}
-              color={theme.whiteColor}
+              bgcolor={theme.whiteColor}
+              color={theme.primaryColor}
+              bordercolor={theme.primaryColor}
+              hbgcolor={theme.primaryColor}
+              hbordercolor={theme.primaryColor}
+              hcolor={theme.whiteColor}
               onClick={handleWrite}
             >
               글쓰기
@@ -96,7 +100,7 @@ const HeaderBlock = styled.div`
   background-color: ${theme.whiteColor};
   z-index: 100;
 
-  .button-wrapper {
+  .header-button-wrapper {
     display: flex;
     align-items: center;
     gap: 16px;
