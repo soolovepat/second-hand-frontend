@@ -26,13 +26,14 @@ const SearchContainer = () => {
     setTitles(
       response.data.postList.map((post) => ({
         title: post.title,
-        id: post.id,
-      }))
+        postId: post.postId,
+      })),
     );
   };
 
-  const onClickItem = (id) => {
-    navigate(`/${id}/detail`);
+  const onClickItem = (postId) => {
+    console.log(postId);
+    navigate(`/${postId}/detail`);
   };
 
   const onClickSearchBar = () => {
@@ -64,15 +65,16 @@ const SearchContainer = () => {
 
       <ul className={openSearchBar ? "search-results" : ""}>
         {openSearchBar &&
+          // eslint-disable-next-line array-callback-return
           titles.map((post) => {
             if (post.title.includes(searchText)) {
               return (
                 <li
                   onClick={(e) => {
+                    console.log(post);
                     e.stopPropagation();
-                    onClickItem(post.id);
-                  }}
-                >
+                    onClickItem(post.postId);
+                  }}>
                   {post.title} {" →"}
                 </li>
               );
