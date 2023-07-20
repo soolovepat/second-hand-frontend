@@ -132,6 +132,8 @@ const DetailBlock = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 1350px;
+
   img {
     max-width: 550px;
     height: 350px;
