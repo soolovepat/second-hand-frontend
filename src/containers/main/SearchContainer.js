@@ -123,11 +123,9 @@ const SearchBlock = styled.div`
     &::-webkit-scrollbar {
       background: transparent;
       width: 10px;
-      //padding: 20px;
     }
 
     &::-webkit-scrollbar-track {
-      //padding: 10px;
       margin: 10px;
     }
 
