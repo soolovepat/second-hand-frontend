@@ -26,6 +26,7 @@ const AuthForm = ({
         name={"username"}
         value={formData.username}
         onChange={rest.onChangeform}
+        onFocus={() => alert("구글 로그인을 이용해주세요.")}
       />
       {type === "register" && (
         <p className="label">
@@ -40,6 +41,7 @@ const AuthForm = ({
         type={"password"}
         value={formData.password}
         onChange={rest.onChangeform}
+        onFocus={() => alert("구글 로그인을 이용해주세요.")}
       />
       {type === "register" && (
         <>
@@ -51,6 +53,7 @@ const AuthForm = ({
             type={"password"}
             value={rest.checkPW}
             onChange={rest.onCheckPW}
+            onFocus={() => alert("구글 로그인을 이용해주세요.")}
           />
           <p className="label">닉네임</p>
           <Input
@@ -60,6 +63,7 @@ const AuthForm = ({
             name={"nickname"}
             value={formData.nickname}
             onChange={rest.onChangeform}
+            onFocus={() => alert("구글 로그인을 이용해주세요.")}
           />
           <p className="label">카테고리</p>
           <Select
@@ -71,6 +75,7 @@ const AuthForm = ({
             placeholder={"관심있는 카테고리"}
             onToggleHandler={rest.onToggleSelect}
             onClickHandler={rest.onClickSelect}
+            onFocus={() => alert("구글 로그인을 이용해주세요.")}
           />
         </>
       )}
@@ -88,7 +93,10 @@ const AuthForm = ({
           <div className="google">
             <GoogleLoginButton />
           </div>
-          <p className="go-to-register" onClick={rest.goToRegister}>
+          <p
+            className="go-to-register"
+            onClick={rest.goToRegister}
+            onFocus={() => alert("구글 로그인을 이용해주세요.")}>
             {"회원가입 >"}
           </p>
         </>
