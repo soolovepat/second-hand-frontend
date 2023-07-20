@@ -52,12 +52,12 @@ const Header = () => {
 
             <Button
               size={"md"}
-              bgcolor={theme.whiteColor}
-              color={theme.primaryColor}
+              bgcolor={theme.primaryColor}
+              color={theme.whiteColor}
               bordercolor={theme.primaryColor}
-              hbgcolor={theme.primaryColor}
+              hbgcolor={theme.whiteColor}
               hbordercolor={theme.primaryColor}
-              hcolor={theme.whiteColor}
+              hcolor={theme.primaryColor}
               onClick={handleWrite}
             >
               글쓰기
@@ -68,12 +68,12 @@ const Header = () => {
             <Link to={"/login"}>로그인</Link>
             <Button
               size={"md"}
-              bgcolor={theme.whiteColor}
-              color={theme.primaryColor}
+              bgcolor={theme.primaryColor}
+              color={theme.whiteColor}
               bordercolor={theme.primaryColor}
-              hbgcolor={theme.primaryColor}
+              hbgcolor={theme.whiteColor}
               hbordercolor={theme.primaryColor}
-              hcolor={theme.whiteColor}
+              hcolor={theme.primaryColor}
               onClick={handleWrite}
             >
               글쓰기

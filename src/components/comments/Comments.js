@@ -51,7 +51,8 @@ const comments = ({
                     hcolor={theme.darkGrayColor}
                     onClick={() =>
                       handleEdit(comment.commentId, comment.content)
-                    }>
+                    }
+                  >
                     <FaCheck />
                   </Button>
                   <Button
@@ -62,7 +63,8 @@ const comments = ({
                     hbgcolor={theme.secondaryColor}
                     hbordercolor={theme.secondaryColor}
                     hcolor={theme.darkGrayColor}
-                    onClick={() => handleDelete(comment.commentId)}>
+                    onClick={() => handleDelete(comment.commentId)}
+                  >
                     <FaTrash />
                   </Button>
                 </ButtonWrapper>
@@ -83,7 +85,8 @@ const comments = ({
                       hbgcolor={theme.secondaryColor}
                       hbordercolor={theme.secondaryColor}
                       hcolor={theme.darkGrayColor}
-                      onClick={() => onEditComment(comment.commentId)}>
+                      onClick={() => onEditComment(comment.commentId)}
+                    >
                       <FaPenToSquare />
                     </Button>
                     <Button
@@ -94,7 +97,8 @@ const comments = ({
                       hbgcolor={theme.secondaryColor}
                       hbordercolor={theme.secondaryColor}
                       hcolor={theme.darkGrayColor}
-                      onClick={() => handleDelete(comment.commentId)}>
+                      onClick={() => handleDelete(comment.commentId)}
+                    >
                       <FaTrash />
                     </Button>
                   </ButtonWrapper>
@@ -119,6 +123,7 @@ const CommentsBlock = styled.div`
     list-style: none;
     border-bottom: 1px solid ${theme.lightGrayColor};
     padding: 10px 0;
+    height: 56px;
   }
 `;
 

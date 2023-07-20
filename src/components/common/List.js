@@ -1,10 +1,17 @@
 import React from "react";
 import { css, styled } from "styled-components";
 import theme from "../../lib/styles/Theme";
+import { FaLocationDot } from "react-icons/fa6";
 
 const List = ({ post }) => {
+  const truncateText = (text, maxLength) => {
+    if (text.length > maxLength) {
+      return text.slice(0, maxLength) + "...";
+    }
+    return text;
+  };
   if (!post) {
-    return <ListBlock>Loading...</ListBlock>;
+    return <ListBlock>등록된 게시물이 없습니다.</ListBlock>;
   }
   return (
     <ListBlock src={post.images[0]} isSold={post.isSold}>
@@ -13,13 +20,14 @@ const List = ({ post }) => {
         {post?.isSold && <div className="isSold">거래 완료</div>}
       </span>
       <span className="wrap-text-1">
-        <strong>{post.title}</strong>
+        <strong>{truncateText(post.title, 26)}</strong>
         <span>{post.username?.split("@")[0]}</span>
       </span>
       <span className="wrap-text-2">
         <span>
-          <span className="location">📍 </span>
-          <span>{post.location}</span>
+          <span className="location">
+            <FaLocationDot /> <span>{truncateText(post.location, 10)}</span>
+          </span>
         </span>
         <strong> ₩ {post.price?.toLocaleString()}</strong>
       </span>
@@ -37,7 +45,7 @@ const ListBlock = styled.div`
   flex-direction: column;
   justify-content: space-between;
   margin: 15px;
-  padding: 0 24px 28px;
+  padding: 0 24px 16px;
   border-radius: 20px;
   box-shadow: 4px 12px 30px 6px rgba(0, 0, 0, 0.09);
   overflow: hidden;
@@ -88,7 +96,16 @@ const ListBlock = styled.div`
   }
 
   .location {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
+    color: ${theme.mediumGrayColor};
+    position: relative;
+    left: -2px;
+
+    svg {
+      font-size: 1.1rem;
+      color: ${theme.lightGrayColor};
+      transform: translateY(4px);
+    }
   }
 
   strong {
@@ -101,16 +118,12 @@ const ListBlock = styled.div`
     line-height: 30px;
 
     font-size: 14px;
-    font-weight: 600;
-
-    &:nth-child(3) {
-      padding: 10px 0 0 0;
-    }
+    font-weight: 500;
   }
 
   .wrap-text-1 {
     flex-direction: column;
-    height: 80px;
+    height: 90px;
   }
 
   .wrap-text-2 {
