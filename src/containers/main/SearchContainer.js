@@ -27,7 +27,7 @@ const SearchContainer = () => {
       response.data.postList.map((post) => ({
         title: post.title,
         postId: post.postId,
-      })),
+      }))
     );
   };
 
@@ -74,7 +74,8 @@ const SearchContainer = () => {
                     console.log(post);
                     e.stopPropagation();
                     onClickItem(post.postId);
-                  }}>
+                  }}
+                >
                   {post.title} {" →"}
                 </li>
               );
@@ -110,7 +111,7 @@ const SearchBlock = styled.div`
     width: 260px;
     display: flex;
     flex-direction: column;
-    margin: 14px 0 0 30px;
+    margin: 14px 0 0 26px;
     padding: 8px 0;
     background: white;
     border: 1px solid ${theme.lightGrayColor};
