@@ -58,7 +58,8 @@ const Header = () => {
               size={"md"}
               bgcolor={theme.darkColor}
               color={theme.whiteColor}
-              onClick={handleWrite}>
+              onClick={handleWrite}
+            >
               글쓰기
             </Button>
           </>
@@ -71,7 +72,8 @@ const Header = () => {
               size={"md"}
               bgcolor={theme.primaryColor}
               color={theme.whiteColor}
-              onClick={handleWrite}>
+              onClick={handleWrite}
+            >
               글쓰기
             </Button>
           </>
@@ -106,10 +108,6 @@ const HeaderBlock = styled.div`
     a {
       margin-right: 6px;
     }
-  }
-
-  input {
-    //border: 1px solid ${theme.lightGrayColor};
   }
 
   .logo-wrapper {

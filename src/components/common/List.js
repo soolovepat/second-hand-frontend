@@ -12,9 +12,11 @@ const List = ({ post }) => {
         <span className="thumb-img" />
         {post?.isSold && <div className="isSold">거래 완료</div>}
       </span>
-      <strong>{post.title}</strong>
-      <span>{post.username?.split("@")[0]}</span>
-      <span>
+      <span className="wrap-text-1">
+        <strong>{post.title}</strong>
+        <span>{post.username?.split("@")[0]}</span>
+      </span>
+      <span className="wrap-text-2">
         <span>
           <span className="location">📍 </span>
           <span>{post.location}</span>
@@ -30,8 +32,10 @@ export default List;
 
 const ListBlock = styled.div`
   width: 300px;
+  height: 345px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   margin: 15px;
   padding: 0 24px 28px;
   border-radius: 20px;
@@ -95,13 +99,21 @@ const ListBlock = styled.div`
   > span {
     display: flex;
     line-height: 30px;
-    justify-content: space-between;
 
     font-size: 14px;
     font-weight: 600;
 
     &:nth-child(3) {
-      padding: 10px 0 30px 0;
+      padding: 10px 0 0 0;
     }
+  }
+
+  .wrap-text-1 {
+    flex-direction: column;
+    height: 80px;
+  }
+
+  .wrap-text-2 {
+    justify-content: space-between;
   }
 `;
