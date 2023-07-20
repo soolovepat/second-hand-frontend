@@ -29,7 +29,7 @@ const comments = ({
             {isEdit && editingCommentId === comment.commentId ? ( // editingCommentId와 현재 댓글의 id 비교
               <>
                 <ContentWrapper>
-                  {userEmail.split("@")[0]}
+                  {comment.username.split("@")[0]}
                   <Input
                     w={"696px"}
                     h={"35px"}
@@ -51,8 +51,7 @@ const comments = ({
                     hcolor={theme.darkGrayColor}
                     onClick={() =>
                       handleEdit(comment.commentId, comment.content)
-                    }
-                  >
+                    }>
                     <FaCheck />
                   </Button>
                   <Button
@@ -63,8 +62,7 @@ const comments = ({
                     hbgcolor={theme.secondaryColor}
                     hbordercolor={theme.secondaryColor}
                     hcolor={theme.darkGrayColor}
-                    onClick={() => handleDelete(comment.commentId)}
-                  >
+                    onClick={() => handleDelete(comment.commentId)}>
                     <FaTrash />
                   </Button>
                 </ButtonWrapper>
@@ -72,7 +70,7 @@ const comments = ({
             ) : (
               <>
                 <ContentWrapper>
-                  {userEmail.split("@")[0]}
+                  {comment.username.split("@")[0]}
                   <span> {comment.content}</span>
                 </ContentWrapper>
                 {comment.username === userEmail && (
@@ -85,8 +83,7 @@ const comments = ({
                       hbgcolor={theme.secondaryColor}
                       hbordercolor={theme.secondaryColor}
                       hcolor={theme.darkGrayColor}
-                      onClick={() => onEditComment(comment.commentId)}
-                    >
+                      onClick={() => onEditComment(comment.commentId)}>
                       <FaPenToSquare />
                     </Button>
                     <Button
@@ -97,8 +94,7 @@ const comments = ({
                       hbgcolor={theme.secondaryColor}
                       hbordercolor={theme.secondaryColor}
                       hcolor={theme.darkGrayColor}
-                      onClick={() => handleDelete(comment.commentId)}
-                    >
+                      onClick={() => handleDelete(comment.commentId)}>
                       <FaTrash />
                     </Button>
                   </ButtonWrapper>
